@@ -1,9 +1,11 @@
 # REST APIs
-  - [Login and Session Creation](#login-and-session-creation)
-  - [Retrieve available cluster images](#retrieve-available-cluster-images)
-  - [Retrieve available tenants](#retrieve-available-tenants)
+  - [1 Login and Session Creation](#1-login-and-session-creation)
+  - [2 Retrieve available cluster images](#2-retrieve-available-cluster-images)
+  - [3 Retrieve available tenants](#3-retrieve-available-tenants)
+  - [4 Retrieve tenant information such as resources security and other settings](#4-retrieve-tenant-information-such-as-resources-security-and-other-settings)
+  - [5. Retrieve tenant virtual clusters](#5-retrieve-tenant-virtual-clusters)
 
-## Login and Session Creation
+## 1 Login and Session Creation
   __API-URI__: /api/v1/login
 
   __Curl command__:
@@ -31,7 +33,7 @@
       Content-Length: 13
 
 
-## Retrieve available cluster images
+## 2 Retrieve available cluster images
 
   __API-URI__: /api/v1/catalog
 
@@ -83,7 +85,7 @@
 
 
 
-## Retrieve available tenants
+## 3 Retrieve available tenants
 
   __API-URI__: /api/v1/tenant
 
@@ -145,7 +147,7 @@
 
 
 
-## 4.   Retrieve tenant information such as resources, security, and other settings
+## 4 Retrieve tenant information such as resources, security, and other settings
 
   __API-URI__: /api/v1/tenant/<tenant-id>
 
@@ -207,7 +209,7 @@
       }
 
 
-## 5.   Retrieve tenant virtual clusters
+## 5. Retrieve tenant virtual clusters
 
   __API-URI__: /api/v1/cluster
 
@@ -227,9 +229,7 @@
 
 
 
-## 6.   Retrieve a virtual cluster configuration(image type, size, IPs and nodes)
-
-
+## Retrieve a virtual cluster configuration(image type, size, IPs and nodes)
 
   __API-URI__: /api/v1/cluster/?nodelist
 
@@ -430,7 +430,7 @@
       {"result":"Success"}
 
 
-## 12.   Delete an existing DataTap
+## 12. Delete an existing DataTap
 
 
 
