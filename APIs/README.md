@@ -1,6 +1,9 @@
 # REST APIs
+  - [Login and Session Creation](#login-and-session-creation)
+  - [Retrieve available cluster images](#retrieve-available-cluster-images)
+  - [Retrieve available tenants](#retrieve-available-tenants)
 
-## 1.	Login and Session Creation
+## Login and Session Creation
   __API-URI__: /api/v1/login
 
   __Curl command__:
@@ -14,11 +17,10 @@
       curl -i -X POST -d@login.json http://10.36.0.17:8080/api/v1/login
 
  __Json-file__: login.json:
-
-  		    {
-            "name" : "admin",
-            "password": "admin123"
-          }
+        {
+          "name" : "admin",
+          "password": "admin123"
+        }
 
   __Response__:
 
@@ -29,7 +31,7 @@
       Content-Length: 13
 
 
-## 2.	Retrieve available cluster images:
+## Retrieve available cluster images
 
   __API-URI__: /api/v1/catalog
 
@@ -45,11 +47,43 @@
 
   __Response__:
 
-     {"_links":{"self":{"href":"/api/v1/catalog/"},"feed":[{"href":"http://10.36.0.17:8080/api/v1/feed/local","name":"Feed generated from l	ocal bundles."},{"href":"http://10.2.12.27:8080/build/catalog-bundles/external-epic/feed/feed-centos-debug.json.nas3","name":"Official 	   BlueData EPIC Catalog"},{"href":"http://10.2.12.27:8080/build/catalog-bundles/internal-epic/feed/feed-centos-debug.json.nas3","name":"     Internal BlueData EPIC catalog"}]},"catalog_api_version":2,"feeds_refresh_period_seconds":86400,"feeds_read_counter":124,"catalog_writ	 e_counter":124,"_embedded":{"independent_catalog_entries":[{"_links":{"self":{"href":"/api/v1/catalog/1"}
+     {
+       "_links":{
+          "self":{
+             "href":"/api/v1/catalog/"
+          },
+          "feed":[
+             {
+                "href":"http://10.36.0.17:8080/api/v1/feed/local",
+                "name":"Feed generated from local bundles."
+             },
+             {
+                "href":"http://10.2.12.27:8080/build/catalog-bundles/external-epic/feed/feed-centos-debug.json.nas3",
+                "name":"Official BlueData EPIC Catalog"
+             },
+             {
+                "href":"http://10.2.12.27:8080/build/catalog-bundles/internal-epic/feed/feed-centos-debug.json.nas3",
+                "name":"     Internal BlueData EPIC catalog"
+             }
+          ]
+       },
+       "catalog_api_version":2,
+       "feeds_refresh_period_seconds":86400,
+       "feeds_read_counter":124,
+       "catalog_write_counter":124,
+       "_embedded":{
+          "independent_catalog_entries":[
+             {
+                "_links":{
+                   "self":{
+                      "href":"/api/v1/catalog/1"
+                   }
+                }
+             }......
 
 
 
-## 3.   Retrieve available tenants:
+## Retrieve available tenants
 
   __API-URI__: /api/v1/tenant
 
@@ -65,7 +99,49 @@
 
   __Response__:
 
-      {"_links":{"self":{"href":"/api/v1/tenant"}},"_embedded":{"tenants":[{"_links":{"self":{"href":"/api/v1/tenant/2"}},"label":{"name":"	 Demo Tenant","description":"Demo Tenant for BlueData Clusters"},"member_key_available":"all_admins","status":"ready","tenant_type":"d	    ocker","qos_multiplier":1,"quota":{},"inusequota":{"cores":44,"memory":102400,"disk":552960},"tenant_storage_quota_supported":true,"e      xternal_user_groups":[]},{"_links":{"self":{"href":"/api/v1/tenant/1"}},"label":{"name":"Site Admin","description":"Site Admin Tenant 	  for BlueData clusters"},"member_key_available":"all_admins","status":"ready"}
+      {
+        "_links":{
+          "self":{
+            "href":"/api/v1/tenant"
+          }
+        },
+        "_embedded":{
+          "tenants":[{
+            "_links":{
+              "self":{
+                "href":"/api/v1/tenant/2"
+                }
+              },
+            "label":{
+              "name":"Demo Tenant",
+              "description":"Demo Tenant for BlueData Clusters"
+              },
+            "member_key_available":"all_admins",
+            "status":"ready",
+            "tenant_type":"docker",
+            "qos_multiplier":1,
+            "quota":{},
+            "inusequota":{
+              "cores":44,
+              "memory":102400,
+              "disk":552960
+            },
+            "tenant_storage_quota_supported":true,
+            "external_user_groups":[]
+          },
+          {
+            "_links":{
+              "self":{
+                "href":"/api/v1/tenant/1"
+                }
+              },
+            "label":{
+              "name":"Site Admin",
+              "description":"Site Admin Tenant for BlueData clusters"
+              },
+            "member_key_available":"all_admins",
+            "status":"ready"
+          }
 
 
 
@@ -85,7 +161,50 @@
 
   __Response__:
 
-      {"_links":{"self":{"href":"/api/v1/tenant/3"},"all_tenants":{"href":"/api/v1/tenant"}},"label":{"name":"Active Directory","description":"All clusters with AD integration"},"member_key_available":"all_admins","status":"ready","tenant_type":"docker","qos_multiplier":1,"quota":{"cores":15,"memory":47104,"disk":561152,"tenant_storage":582},"inusequota":{"cores":4,"memory":8192,"disk":30720},"tenant_storage_quota_supported":true,"external_user_groups":[{"group":"CN=Eng,OU=Engineering,DC=BLUEDATA,DC=local","role":"/api/v1/role/2"}],"kdc_type":"Active Directory","kdc_host":"10.2.12.106","kdc_admin_user":"admin@BLUEDATA.LOCAL","kdc_admin_password":"Layer42!","kdc_realm":"BLUEDATA.LOCAL","krb_enc_types":["rc4-hmac","aes256-cts-hmac-sha1-96","aes128-cts-hmac-sha1-96","des3-cbc-sha1","arcfour-hmac","des-hmac-sha1","des-cbc-md5"],"kdc_ad_prefix":"ActiveDir","kdc_ad_suffix":"ou=Engineering,dc=BLUEDATA,dc=local"}
+      {
+        "_links":
+        {
+          "self":{
+            "href":"/api/v1/tenant/3"
+            },
+          "all_tenants":{
+            "href":"/api/v1/tenant"
+            }
+          },
+        "label":{
+          "name":"Active Directory",
+          "description":"All clusters with AD integration"
+          },
+        "member_key_available":"all_admins",
+        "status":"ready",
+        "tenant_type":"docker",
+        "qos_multiplier":1,
+        "quota":{
+          "cores":15,
+          "memory":47104,
+          "disk":561152,
+          "tenant_storage":582
+        },
+        "inusequota":{
+          "cores":4,
+          "memory":8192,
+          "disk":30720
+        },
+        "tenant_storage_quota_supported":true,
+        "external_user_groups":
+        [{
+          "group":"CN=Eng,OU=Engineering,DC=BLUEDATA, DC=local",
+          "role":"/api/v1/role/2"
+        }],
+        "kdc_type":"Active Directory",
+        "kdc_host":"10.2.12.106",
+        "kdc_admin_user":"admin@BLUEDATA.LOCAL",
+        "kdc_admin_password":"Layer42!",
+        "kdc_realm":"BLUEDATA.LOCAL",
+        "krb_enc_types":["rc4-hmac","aes256-cts-hmac-sha1-96","aes128-cts-hmac-sha1-96","des3-cbc-sha1","arcfour-hmac","des-hmac-sha1","des-cbc-md5"],
+        "kdc_ad_prefix":"ActiveDir",
+        "kdc_ad_suffix":"ou=Engineering,dc=BLUEDATA,dc=local"
+      }
 
 
 ## 5.   Retrieve tenant virtual clusters
