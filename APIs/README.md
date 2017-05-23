@@ -1,11 +1,16 @@
+<span style="color:#f2cf4a; font-family: 'Bookman Old Style';">
+
 # REST APIs
-  - [1 Login and Session Creation](#1-login-and-session-creation)
-  - [2 Retrieve available cluster images](#2-retrieve-available-cluster-images)
-  - [3 Retrieve available tenants](#3-retrieve-available-tenants)
-  - [4 Retrieve tenant information such as resources security and other settings](#4-retrieve-tenant-information-such-as-resources-security-and-other-settings)
+
+  - [1. Login and Session Creation](#1-login-and-session-creation)
+  - [2. Retrieve available cluster images](#2-retrieve-available-cluster-images)
+  - [3. Retrieve available tenants](#3-retrieve-available-tenants)
+  - [4. Retrieve tenant information such as resources security and other settings](#4-retrieve-tenant-information-such-as-resources-security-and-other-settings)
   - [5. Retrieve tenant virtual clusters](#5-retrieve-tenant-virtual-clusters)
 
-## 1 Login and Session Creation
+
+## 1. Login and Session Creation
+
   __API-URI__: /api/v1/login
 
   __Curl command__:
@@ -33,7 +38,7 @@
       Content-Length: 13
 
 
-## 2 Retrieve available cluster images
+## 2. Retrieve available cluster images
 
   __API-URI__: /api/v1/catalog
 
@@ -85,7 +90,7 @@
 
 
 
-## 3 Retrieve available tenants
+## 3. Retrieve available tenants
 
   __API-URI__: /api/v1/tenant
 
@@ -147,7 +152,7 @@
 
 
 
-## 4 Retrieve tenant information such as resources, security, and other settings
+## 4. Retrieve tenant information such as resources, security, and other settings
 
   __API-URI__: /api/v1/tenant/<tenant-id>
 
@@ -229,7 +234,7 @@
 
 
 
-## Retrieve a virtual cluster configuration(image type, size, IPs and nodes)
+## 6. Retrieve a virtual cluster configuration(image type, size, IPs and nodes)
 
   __API-URI__: /api/v1/cluster/?nodelist
 
@@ -248,9 +253,7 @@
       {"result":"Success","objects":[{"result":"Success","uuid":"65","cluster_name":"Spark-Nifi-test","cluster_type":"Spark","distro_name":"Spark 1.6.0","distro_version":"1.8","distro_state":"installed","cluster_context":"Persistent","master_flavor":{"root_disk_size":100,"label":{"name":"Medium","description":"system-created example flavor"},"cores":4,"memory":12288},"slave_count":2,"slave_flavor":{"root_disk_size":30,"label":{"name":"Small","description":"system-created example flavor"},"cores":4,"memory":8192},"status_message":"","error_info":"","ha_enabled":false,"apps_installed":false,"include_spark_installation":false,"mr_type":"","kerberos_enabled":false,"log_url":"http://10.36.0.17:8080/Logs/65.txt","client_config_xml":"","client_config_java":"","status":"ready","tenant_id":"/api/v1/tenant/2","tenant_name":"Demo Tenant","tenant_type":"docker"}
 
 
-## 7.   Get created DataTap in a certain Tenant
-
-
+## 7. Get created DataTap in a certain Tenant
 
   __API-URI__: /api/v1/cluster/?nodelist
 
@@ -269,8 +272,7 @@
       {"_links":{"self":{"href":"/api/v1/dataconn"}},"_embedded":{"data_connectors":[{"_links":{"self":{"href":"/api/v1/dataconn/1"},"query":{"href":"/api/v1/dataconn/1{?query}","templated":true}},"_embedded":{"label":{"_links":{"self":{"href":"/api/v1/dataconn/1?label"}},"name":"TenantStorage","description":"Protected DataTap for a tenant-specific sandboxed storage space."},"endpoint":{"_links":{"self":{"href":"/api/v1/dataconn/1?endpoint"}},"type":"hdfs","host":"yav-114.lab.bluedata.com","kdc_data":[{"host":"10.36.0.17","port":88}],"keytab":"datasrvr.headless.keytab","realm":"BLUEDATA.SITE","client_principal":"datasrvr/yav-114.lab.bluedata.com@BLUEDATA.SITE","service_id":"hdfs"},"bdfs_root":{"_links":{"self":{"href":"/api/v1/dataconn/1?bdfs_root"}},"path_from_endpoint":"/2/default"},"flags":{"_links":{"self":{"href":"/api/v1/dataconn/1?flags"}},"read_only":false},"is_protected":true}}]}}
 
 
-## 8.   Create a new cluster
-
+## 8. Create a new cluster
 
 
   __API-URI__: /api/v1/cluster
@@ -449,3 +451,5 @@
   __Response__:
 
       {"result":"Success"}
+
+</span>
