@@ -7,13 +7,13 @@
   - [3. Retrieve available tenants](#3-retrieve-available-tenants)
   - [4. Retrieve tenant information such as resources security and other settings](#4-retrieve-tenant-information-such-as-resources-security-and-other-settings)
   - [5. Retrieve tenant virtual clusters](#5-retrieve-tenant-virtual-clusters)
-  - [6. Retrieve a virtual cluster configuration(image type, size, IPs and nodes)](#6-retrieve-tenant-virtual-cluster-configuration)
-  - [7. Get created DataTap in a certain Tenant](#7-retrieve-datataps-per-tenant)
-  - [8. Create a new cluster](#8-create-new-cluster)
-  - [9. Create a cluster DataTap](#9-create-cluster-DataTap)
-  - [10. Enable virtual cluster Kerberos](#10-enable-cluster-kerberos)
-  - [11. Delete an existing cluster](#10-delete-existing-cluster)
-  - [12. Delete an existing DataTap](#10-delete-existing-datatap)
+  - [6. Retrieve a virtual cluster configuration](#6-retrieve-a-tenant-virtual-cluster-configuration)
+  - [7. Get created DataTap in a certain Tenant](#7-get-created-datataps-in-a-certain-tenant)
+  - [8. Create a new cluster](#8-create-a-new-cluster)
+  - [9. Create a cluster DataTap](#9-create-a-cluster-datatap)
+  - [10. Enable virtual cluster Kerberos](#10-enable-virtual-cluster-kerberos)
+  - [11. Delete an existing cluster](#11-delete-an-existing-cluster)
+  - [12. Delete an existing DataTap](#12-delete-an-existing-datatap)
 
 ## 1. Login and Session Creation
 
@@ -240,7 +240,7 @@
 
 
 
-## 6. Retrieve a virtual cluster configuration(image type, size, IPs and nodes)
+## 6. Retrieve a virtual cluster configuration
 
   __API-URI__: /api/v1/cluster/?nodelist
 
@@ -259,7 +259,7 @@
       {"result":"Success","objects":[{"result":"Success","uuid":"65","cluster_name":"Spark-Nifi-test","cluster_type":"Spark","distro_name":"Spark 1.6.0","distro_version":"1.8","distro_state":"installed","cluster_context":"Persistent","master_flavor":{"root_disk_size":100,"label":{"name":"Medium","description":"system-created example flavor"},"cores":4,"memory":12288},"slave_count":2,"slave_flavor":{"root_disk_size":30,"label":{"name":"Small","description":"system-created example flavor"},"cores":4,"memory":8192},"status_message":"","error_info":"","ha_enabled":false,"apps_installed":false,"include_spark_installation":false,"mr_type":"","kerberos_enabled":false,"log_url":"http://10.36.0.17:8080/Logs/65.txt","client_config_xml":"","client_config_java":"","status":"ready","tenant_id":"/api/v1/tenant/2","tenant_name":"Demo Tenant","tenant_type":"docker"}
 
 
-## 7. Get created DataTap in a certain Tenant
+## 7. Get created DataTap in a certain tenant
 
   __API-URI__: /api/v1/cluster/?nodelist
 
@@ -426,7 +426,7 @@
   __Curl command__:
 
       curl -v -X DELETE -H "X-BDS-SESSION:<session-id>" http://<controller-ip>:8080/api/v1/cluster/<uuid>
-  
+
   __API Type__: `DELETE`
 
   __Example__:
@@ -447,7 +447,7 @@
   __Curl command__:
 
       curl -v -X DELETE -H "X-BDS-SESSION:<session-id>" http://<controller-ip>/api/v1/dataconn/<datatap-id>
-  
+
   __API Type__: `DELETE`
 
   __Example__:
