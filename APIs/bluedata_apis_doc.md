@@ -7,7 +7,13 @@
   - [3. Retrieve available tenants](#3-retrieve-available-tenants)
   - [4. Retrieve tenant information such as resources security and other settings](#4-retrieve-tenant-information-such-as-resources-security-and-other-settings)
   - [5. Retrieve tenant virtual clusters](#5-retrieve-tenant-virtual-clusters)
-
+  - [6. Retrieve a virtual cluster configuration(image type, size, IPs and nodes)](#6-retrieve-tenant-virtual-cluster-configuration)
+  - [7. Get created DataTap in a certain Tenant](#7-retrieve-datataps-per-tenant)
+  - [8. Create a new cluster](#8-create-new-cluster)
+  - [9. Create a cluster DataTap](#9-create-cluster-DataTap)
+  - [10. Enable virtual cluster Kerberos](#10-enable-cluster-kerberos)
+  - [11. Delete an existing cluster](#10-delete-existing-cluster)
+  - [12. Delete an existing DataTap](#10-delete-existing-datatap)
 
 ## 1. Login and Session Creation
 
