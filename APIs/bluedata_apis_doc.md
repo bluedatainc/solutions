@@ -347,7 +347,7 @@
       201 Created
 
 
-## 9.   Create a cluster DataTap
+## 9. Create a cluster DataTap
 
 
 
@@ -385,7 +385,7 @@
       201 Created
 
 
-## 10.   Enable virtual cluster Kerberos
+## 10. Enable virtual cluster Kerberos
 
 
 
@@ -417,7 +417,7 @@
       None
 
 
-## 11.   Delete an existing cluster
+## 11. Delete an existing cluster
 
 
 
