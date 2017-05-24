@@ -14,6 +14,8 @@
   - [10. Enable virtual cluster Kerberos](#10-enable-virtual-cluster-kerberos)
   - [11. Delete an existing cluster](#11-delete-an-existing-cluster)
   - [12. Delete an existing DataTap](#12-delete-an-existing-datatap)
+  - [13. Create a new tenant](#13-create-a-new-tenant)
+  - [14. Assign security roles to a tenant](#14-assign-security-roles-to-a-tenant)
 
 ## 1. Login and Session Creation
 
@@ -458,4 +460,64 @@
 
       {"result":"Success"}
 
+
+## 13. Create a new tenant
+
+
+
+  __API-URI__: /api/v1/session/<session-id>?tenant
+
+  __Curl command__:
+
+      curl -X PUT -d@tenant.json -H "X-BDS-SESSION:<session-id>" http://<controller-ip><session-id>?tenant
+
+  __API Type__: `PUT`
+
+  __Example__:
+
+      curl –X PUT –d@tenant.json -H "X-BDS-SESSION:/api/v1/session/6a917f50-776b-4eea-8eaf-f1be402c8ea1"http://10.36.0.17:8080/api/v1/session/6a917f50-776b-4eea-8eaf-f1be402c8ea1?tenant
+
+ __Json-file__: tenant.json:
+
+        {
+          "role": "/api/v1/role/2"
+          "tenant": "/api/v1/tenant/3"
+        }
+
+  __Response__:
+
+      201 Created
+
+
+## 14. Assign security roles to a tenant
+
+
+
+  __API-URI__: /api/v1/tenant/<tenant-id>?external_user_groups
+
+  __Curl command__:
+
+      curl -X PUT -d@groups.json -H "X-BDS-SESSION:<session-id>" http://<controller-ip>:8080/api/v1/tenant/<tenant-id>?external_user_groups
+
+  __API Type__: `PUT`
+
+  __Example__:
+
+      curl -X PUT -d@groups.json -H "X-BDS-SESSION:/api/v1/session/021a76e2-083d-42b2-afb1-b7f1de2cb72e" http://10.36.0.17:8080/api/v1/tenant/5?external_user_groups
+
+ __Json-file__: groups.json:
+
+        {
+           "external_user_groups": [
+              {
+                "role": "/api/v1/role/3",
+                "group": "OU=Eng,DC=Bluedata,DC=local"
+              }
+              ]
+        }
+
+
+  __Response__:
+
+      None
 </span>
