@@ -16,6 +16,9 @@
   - [12. Delete an existing DataTap](#12-delete-an-existing-datatap)
   - [13. Create a new tenant](#13-create-a-new-tenant)
   - [14. Assign security roles to a tenant](#14-assign-security-roles-to-a-tenant)
+  - [15. Create a new user](#15-create-a-new-user)
+  - [16. Delete an existing user](#16-delete-an-existing-user)
+  - [17. Delete an existing tenant](#11-delete-an-existing-tenant)
 
 ## 1. Login and Session Creation
 
@@ -520,4 +523,81 @@
   __Response__:
 
       None
+
+
+## 15. Create a new user
+
+
+  __API-URI__: /api/v1/user
+
+  __Curl command__:
+
+      curl -X POST -d@user.json -H "X-BDS-SESSION:<session-id>" http://<controller-ip>/api/v1/user
+
+  __API Type__: `POST`
+
+  __Example__:
+
+      curl –X POST –d@user.json -H "X-BDS-SESSION:/api/v1/session/6a917f50-776b-4eea-8eaf-f1be402c8ea1" http://10.36.0.17:8080/api/v1/user
+
+ __Json-file__: user.json:
+
+        {
+           "password":"*******",
+           "is_external":true,
+           "label":{
+                      "name":"admin",
+                      "description":""
+                   }
+        }
+
+
+  __Response__:
+
+      201 Created
+
+
+## 16. Delete an existing user
+
+
+
+  __API-URI__: /api/v1/user/<user-id>
+
+  __Curl command__:
+
+      curl -v -X DELETE -H "X-BDS-SESSION:<session-id>" http://<controller-ip>/api/v1/user/<user-id>
+
+  __API Type__: `DELETE`
+
+  __Example__:
+
+      curl -v -X DELETE -H "X-BDS-SESSION:/api/v1/session/6a917f50-776b-4eea-8eaf-f1be402c8ea1" http://10.36.0.17:8080/api/v1/user/631
+
+  __Response__:
+
+      About to connect() to 10.36.0.17 port 8080 (#0)* Trying 10.36.0.17... connected* Connected to 10.36.0.17 (10.36.0.17) port 8080 (#0) DELETE /api/v1/user/631 HTTP/1.1 User-Agent: curl/7.19.7 (x86_64-redhat-linux-gnu) libcurl/7.19.7 NSS/3.21 Basic ECC zlib/1.2.3 libidn/1.18 libssh2/1.4.2 Host: 10.36.0.17:8080 Accept: */* X-BDS-<SESSION:/api/v1/session/0cd0f847-1169-4d82-bb45-ed0d9c0dd45c> <HTTP/1.1 204 No Content < Server: BlueData EPIC 2.6 < Date: Thu, 25 May 2017 22:50:33 GMT < Content-Length: 0 <* Connection #0 to host 10.36.0.17 left intact* Closing connection #0
+
+
+
+## 17. Delete an existing tenant
+
+
+
+  __API-URI__: /api/v1/tenant/<tenant-id>
+
+  __Curl command__:
+
+      curl -v -X DELETE -H "X-BDS-SESSION:<session-id>" http://<controller-ip>:8080/api/v1/tenant/<tenant-id>
+
+  __API Type__: `DELETE`
+
+  __Example__:
+
+      curl -v -X DELETE -H "X-BDS-SESSION: /api/v1/session/46f80cd5- 972d-41df-bcba-61c809b5470f" http://<IP_address>:8080/api/v1/tenant/10
+
+  __Response__:
+
+      About to connect() to 10.36.0.17 port 8080 (#0)* Trying 10.36.0.17... connected* Connected to 10.36.0.17 (10.36.0.17) port 8080 (#0) DELETE /api/v1/user/631 HTTP/1.1 User-Agent: curl/7.19.7 (x86_64-redhat-linux-gnu) libcurl/7.19.7 NSS/3.21 Basic ECC zlib/1.2.3 libidn/1.18 libssh2/1.4.2 Host: 10.36.0.17:8080 Accept: */* X-BDS-<SESSION:/api/v1/session/0cd0f847-1169-4d82-bb45-ed0d9c0dd45c> <HTTP/1.1 204 No Content < Server: BlueData EPIC 2.6 < Date: Thu, 25 May 2017 22:50:33 GMT < Content-Length: 0 <* Connection #0 to host 10.36.0.17 left intact* Closing connection #0
+
+
 </span>
