@@ -15,10 +15,11 @@
   - [11. Delete an existing cluster](#11-delete-an-existing-cluster)
   - [12. Delete an existing DataTap](#12-delete-an-existing-datatap)
   - [13. Create a new tenant](#13-create-a-new-tenant)
-  - [14. Assign security roles to a tenant](#14-assign-security-roles-to-a-tenant)
+  - [14. Assign groups to a tenant](#14-assign-groups-to-a-tenant)
   - [15. Create a new user](#15-create-a-new-user)
   - [16. Delete an existing user](#16-delete-an-existing-user)
   - [17. Delete an existing tenant](#11-delete-an-existing-tenant)
+  - [18. Assign security roles to a tenant](#18-assign-security-roles-to-a-tenant)
 
 ## 1. Login and Session Creation
 
@@ -468,31 +469,66 @@
 
 
 
-  __API-URI__: /api/v1/session/<session-id>?tenant
+  __API-URI__: /api/v1/tenant
 
   __Curl command__:
 
-      curl -X PUT -d@tenant.json -H "X-BDS-SESSION:<session-id>" http://<controller-ip><session-id>?tenant
+      curl -X POST -d@tenant.json -H "X-BDS-SESSION:<session-id>" http://<controller-ip>/api/v1/tenant
 
-  __API Type__: `PUT`
+  __API Type__: `POST`
 
   __Example__:
 
-      curl –X PUT –d@tenant.json -H "X-BDS-SESSION:/api/v1/session/6a917f50-776b-4eea-8eaf-f1be402c8ea1"http://10.36.0.17:8080/api/v1/session/6a917f50-776b-4eea-8eaf-f1be402c8ea1?tenant
+      curl –X POST –d@tenant.json -H "X-BDS-SESSION:/api/v1/session/6a917f50-776b-4eea-8eaf-f1be402c8ea1"http://10.36.0.17:8080/api/v1/tenant
 
  __Json-file__: tenant.json:
 
+On_Prem:
+
         {
-          "role": "/api/v1/role/2"
-          "tenant": "/api/v1/tenant/3"
+          "qos_multiplier": 1, 
+          "member_key_available": "all_admins", 
+          "tenant_type": "docker", 
+          "quota": 
+              {"cores": 15, 
+              "disk": 561152, 
+              "tenant_storage": 582, 
+              "memory": 47104}, 
+              "label": 
+                  {"name": "Marketing", 
+                  "description": "Marketing related clusters"
+                }
+              }
         }
+
+AWS:
+
+        {
+        "aws_secret_key": "<Enter AWS Secret Key>",
+        "aws_subnet_id": "<Enter your Subnet ID>",     
+        "tenant_type": "ec2",
+        "aws_access_key": "<Enter AWS Access Key",     
+        "member_key_available": "all_admins",
+        "aws_region": "<Enter AWS Region>",
+        "quota": {
+              "tenant_storage": 582,
+                  }          
+        "label": {
+              "name": "<Enter Tenant Name>",
+              "description": "<Enter Tenant Description>"
+                  }  
+        "aws_iam_instance_profile": "<Enter IAM name>" 
+        }    
+
+
+
 
   __Response__:
 
       201 Created
 
 
-## 14. Assign security roles to a tenant
+## 14. Assign groups to a tenant
 
 
 
@@ -598,6 +634,36 @@
   __Response__:
 
       About to connect() to 10.36.0.17 port 8080 (#0)* Trying 10.36.0.17... connected* Connected to 10.36.0.17 (10.36.0.17) port 8080 (#0) DELETE /api/v1/user/631 HTTP/1.1 User-Agent: curl/7.19.7 (x86_64-redhat-linux-gnu) libcurl/7.19.7 NSS/3.21 Basic ECC zlib/1.2.3 libidn/1.18 libssh2/1.4.2 Host: 10.36.0.17:8080 Accept: */* X-BDS-<SESSION:/api/v1/session/0cd0f847-1169-4d82-bb45-ed0d9c0dd45c> <HTTP/1.1 204 No Content < Server: BlueData EPIC 2.6 < Date: Thu, 25 May 2017 22:50:33 GMT < Content-Length: 0 <* Connection #0 to host 10.36.0.17 left intact* Closing connection #0
+
+
+
+## 18. Assign security roles to a tenant
+
+
+
+  __API-URI__:  /api/v1/session/?tenant
+
+  __Curl command__:
+
+      curl -X PUT -d@role_tenant.json -H "X-BDS-SESSION:<session-id>" http://<controller-ip>:8080<session-id>?tenant
+
+  __API Type__: `PUT`
+
+  __Example__:
+
+      curl -X PUT -d@role_tenant.json -H "X-BDS-SESSION:/api/v1/session/021a76e2-083d-42b2-afb1-b7f1de2cb72e" http://10.36.0.17:8080/api/v1/session/021a76e2-083d-42b2-afb1-b7f1de2cb72e?tenant
+
+  __Json-file__: role_tenant.json:
+
+        {
+           "role": "/api/v1/role/2"
+           "tenant": "/api/v1/tenant/3"
+        }
+
+
+  __Response__:
+
+      201 Created
 
 
 </span>
