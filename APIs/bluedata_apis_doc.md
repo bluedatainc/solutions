@@ -641,7 +641,7 @@ AWS:
 
 
 
-  __API-URI__:  /api/v1/session/?tenant
+  __API-URI__:  /api/v1/session/<session-id>?tenant
 
   __Curl command__:
 
