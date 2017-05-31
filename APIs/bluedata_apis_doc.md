@@ -20,6 +20,7 @@
   - [16. Delete an existing user](#16-delete-an-existing-user)
   - [17. Delete an existing tenant](#11-delete-an-existing-tenant)
   - [18. Assign security roles to a tenant](#18-assign-security-roles-to-a-tenant)
+  - [19. Submit a new job](#19-submit-a-new-job)
 
 ## 1. Login and Session Creation
 
@@ -665,5 +666,43 @@ AWS:
 
       201 Created
 
+
+
+
+## 19. Submit a new job
+
+
+
+  __API-URI__:  /api/v1/job
+
+  __Curl command__:
+
+      curl -X POST -d@job.json -H "X-BDS-SESSION:<session-id>" http://<controller-ip>:8080/api/v1/job
+
+  __API Type__: `POST`
+
+  __Example__:
+
+     curl -X POST -d@job.json -H "X-BDS-SESSION:/api/v1/session/20aa30d4-dc0e-478e-998a-9f264051eae5" http://10.36.0.17:8080/api/v1/job
+
+  __Json-file__: job.json:
+
+        {
+           "spark_command_line": " ", 
+           "app_name": "Bluedata Sample Python App", 
+           "jar_path": "/srv/bluedata/job-449186a9227b3736ea3f774f0f0f95c7/jar/spark-terasort-1.0.jar", "master_flavor": "/api/v1/flavor/5", 
+           "job_type": "Hadoop Custom Jar", 
+           "command_line": "hadoop jar  $jar_path$ $app_name$ ", "slave_count": 1, 
+           "dependencies": ["/srv/bluedata/job-449186a9227b3736ea3f774f0f0f95c7/jar/spark-terasort-1.0-jar-with-dependencies.jar"], 
+           "cluster_context": "Transient", 
+           "distro_name": "HDP 2.6 with Ambari 2.5", 
+           "slave_flavor": "/api/v1/flavor/4", 
+           "job_name": "Spark-Terasort"
+        }
+
+
+  __Response__:
+
+      {"result":"Success","uuid":"85"}
 
 </span>
