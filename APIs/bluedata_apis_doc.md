@@ -18,7 +18,7 @@
   - [14. Assign groups to a tenant](#14-assign-groups-to-a-tenant)
   - [15. Create a new user](#15-create-a-new-user)
   - [16. Delete an existing user](#16-delete-an-existing-user)
-  - [17. Delete an existing tenant](#11-delete-an-existing-tenant)
+  - [17. Delete an existing tenant](#17-delete-an-existing-tenant)
   - [18. Assign security roles to a tenant](#18-assign-security-roles-to-a-tenant)
   - [19. Submit a new job](#19-submit-a-new-job)
 
