@@ -23,9 +23,9 @@
   - [19. Submit a persistent job](#19-submit-a-persistent-job)
   - [20. Submit a Transient job](#20-submit-a-transient-job)
   - [21. Retrieve list of all jobs](#21-retrieve-list-of-all-jobs)
-  - [22. Assign a user to tenant](#14-assign-a-user-to-tenant)
+  - [22. Assign a user to tenant](#22-assign-a-user-to-tenant)
   - [23. Get Tenant info for a user](#23-get-tenant-info-for-a-user)
-  - [24. Get user info for a Tenant](#7-get-user-info-for-a-tenant)
+  - [24. Get user info for a Tenant](#24-get-user-info-for-a-tenant)
 ## 1. Login and Session Creation
 
   __API-URI__: /api/v1/login
