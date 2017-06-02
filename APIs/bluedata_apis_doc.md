@@ -23,6 +23,9 @@
   - [19. Submit a persistent job](#19-submit-a-persistent-job)
   - [20. Submit a Transient job](#20-submit-a-transient-job)
   - [21. Retrieve list of all jobs](#21-retrieve-list-of-all-jobs)
+  - [22. Assign a user to tenant](#14-assign-a-user-to-tenant)
+  - [23. Get Tenant info for a user](#23-get-tenant-info-for-a-user)
+  - [24. Get user info for a Tenant](#7-get-user-info-for-a-tenant)
 ## 1. Login and Session Creation
 
   __API-URI__: /api/v1/login
@@ -740,6 +743,8 @@ AWS:
 
 ## 21. Retrieve list of all jobs
 
+
+
   __API-URI__: /api/v1/job
 
   __Curl command__:
@@ -755,5 +760,82 @@ AWS:
   __Response__:
 
       {"result":"Success","objects":[{"result":"Success","uuid":"92","job_name":"WC-transient","job_type":"Hadoop Custom Jar","jar_path":"/srv/bluedata/job-0fbce6df8aa1feba2d0a9c7ee2e43d41/jar/hdp-examples.jar","app_name":"wordcount","mapper":"","reducer":"","status":"complete","setup_time":482076,"run_time":35069,"cluster_context":"Transient","cluster_id":"92","update_ts":1496436965,"command_line":"hadoop jar  $jar_path$ $app_name$ dtap://TenantStorage/test/sahithi/customer_demographics.csv dtap://TenantStorage/test/TransOutput","status_message":"","error_info":"","start_time":1496436448,"duration":517,"spark_confs":" ","dependencies":[],"log_url":"http://10.36.0.17:8080/Logs/92.txt","output_url":"http://10.36.0.17:8080/Output/92.txt","cluster_name":"","distro_name":"HDP 2.5 with Ambari 2.4","distro_version":"2.0","distro_state":"installed","mr_type":"YARN","slave_count":1,"master_flavor":{"root_disk_size":100,"label":{"name":"Medium","description":"system-created example flavor"},"cores":4,"memory":12288},"slave_flavor":{"root_disk_size":30,"label":{"name":"Small","description":"system-created example flavor"},"cores":4,"memory":8192}},{"result":"Success","uuid":"26","job_name":"Spark2.1-Test","job_type":"Spark - Scala Jar","jar_path":"/srv/bluedata/job-b52132b15c5d1957d64d875432f16bb7/jar/spark-terasort-1.0.jar","app_name":"com.github.ehiggs.spark.terasort.TeraGen","mapper":"","reducer":"","status":"complete","setup_time":0,"run_time":5085,"cluster_context":"Persistent","cluster_id":"10","update_ts":1492623327,"command_line":"","status_message":"","error_info":"","start_time":1492623321,"duration":6,"spark_confs":" ","dependencies":["/srv/bluedata/job-b52132b15c5d1957d64d875432f16bb7/jar/spark-terasort-1.0-jar-with-dependencies.jar"],"log_url":"","output_url":"http://10.36.0.17:8080/Output/26.txt","cluster_name":"","distro_name":"Spark 2.1.0 Hadoop 2.7 Centos 7","distro_version":"1.0","distro_state":"installed","mr_type":""},{"result":"Success","uuid":"90","job_name":"test","job_type":"Hadoop Custom Jar","jar_path":"/srv/bluedata/job-098f6bcd4621d373cade4e832627b4f6/jar/hdp-examples.jar","app_name":"wordcount","mapper":"","reducer":"","status":"complete","setup_time":0,"run_time":35062,"cluster_context":"Persistent","cluster_id":"78","update_ts":1496432346,"command_line":"hadoop jar  $jar_path$ $app_name$ dtap://TenantStorage/test/sahithi/customer_demographics.csv dtap://TenantStorage/test/out1","status_message":"","error_info":"","start_time":1496432311,"duration":35,"spark_confs":" ","dependencies":[],"log_url":"","output_url":"http://10.36.0.17:8080/Output/90.txt","cluster_name":"HDP2.6+Nifi","distro_name":"HDP 2.6 with Ambari 2.5","distro_version":"1.1","distro_state":"installed","mr_type":"YARN"},{"result":"Success","uuid":"19","job_name":"Spark-terasorTest","job_type":"Spark - Scala Jar","jar_path":"/srv/bluedata/job-3e87223a71fcc06f42bfe0cdb79dd86f/jar/spark-terasort-1.0.jar","app_name":"com.github.ehiggs.spark.terasort.TeraGen","mapper":"","reducer":"","status":"complete","setup_time":0,"run_time":5055,"cluster_context":"Persistent","cluster_id":"10","update_ts":1492204942,"command_line":"","status_message":"","error_info":"","start_time":1492204936,"duration":6,"spark_confs":" ","dependencies":["/srv/bluedata/job-3e87223a71fcc06f42bfe0cdb79dd86f/jar/spark-terasort-1.0-jar-with-dependencies.jar"],"log_url":"","output_url":"http://10.36.0.17:8080/Output/19.txt","cluster_name":"","distro_name":"Spark 2.1.0 Hadoop 2.7 Centos 7","distro_version":"1.0","distro_state":"installed","mr_type":""}]}
+
+
+
+## 22. Assign a user to tenant
+
+
+
+  __API-URI__: /api/v1/tenant/<tenant-id>?user
+
+  __Curl command__:
+
+      curl -X PUT -d@assign_user.json -H "X-BDS-SESSION:<session-id>" http://<controller-ip>:8080/api/v1/tenant/<tenant-id>?user
+
+  __API Type__: `PUT`
+
+  __Example__:
+
+      curl -X PUT -d@assign_user.json -H "X-BDS-SESSION:/api/v1/session/021a76e2-083d-42b2-afb1-b7f1de2cb72e" http://10.36.0.17:8080/api/v1/tenant/3?user
+
+ __Json-file__: groups.json:
+
+        {
+           "operation": "assign", 
+           "role": "/api/v1/role/3", 
+           "user": "/api/v1/user/261"
+        }
+
+
+  __Response__:
+
+      None
+
+
+
+## 23. Get Tenant info for a user
+
+
+
+  __API-URI__: /api/v1/user/<UserObj>?tenant
+
+  __Curl command__:
+
+      curl -X GET -H "X-BDS-SESSION:<session-id>" http://<controller-ip>/api/v1/user/<UserObj>?tenant
+
+  __API Type__: `GET`
+
+  __Example__:
+
+      curl -X GET -H "X-BDS-SESSION:/api/v1/session/985585be-685d-4a6a-a0f0-0c563ae32e56" http://10.36.0.17:8080/api/v1/user/263?tenant
+
+  __Response__:
+
+      {"_links":{"self":{"href":"/api/v1/user/263?tenant"}},"_embedded":{"tenants":[{"_links":{"self":{"href":"/api/v1/tenant/2"}},"_embedded":{"label":{"name":"Demo Tenant","description":"Demo Tenant for BlueData Clusters"},"role":"/api/v1/role/3"}}]}}
+
+
+
+
+
+## 24. Get user info for a tenant
+
+
+
+  __API-URI__: /api/v1/tenant/<tenant-id>?user
+
+  __Curl command__:
+
+      curl -X GET -H "X-BDS-SESSION:<session-id>" http://<controller-ip>/api/v1/tenant/<tenant-id>?user
+
+  __API Type__: `GET`
+
+  __Example__:
+
+      curl -X GET -H "X-BDS-SESSION:/api/v1/session/985585be-685d-4a6a-a0f0-0c563ae32e56" http://10.36.0.17:8080/api/v1/tenant/2?user
+
+  __Response__:
+
+      {"_links":{"self":{"href":"/api/v1/tenant/2?user"}},"_embedded":{"users":[{"_links":{"self":{"href":"/api/v1/user/263"}},"_embedded":{"label":{"name":"demo.user","description":"BlueData Anonymous User"},"role":"/api/v1/role/3"}},{"_links":{"self":{"href":"/api/v1/user/257"}},"_embedded":{"label":{"name":"admin","description":"BlueData Administrator"},"role":"/api/v1/role/2"}}]}}
 
 </span>
