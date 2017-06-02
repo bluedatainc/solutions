@@ -20,8 +20,9 @@
   - [16. Delete an existing user](#16-delete-an-existing-user)
   - [17. Delete an existing tenant](#17-delete-an-existing-tenant)
   - [18. Assign security roles to a tenant](#18-assign-security-roles-to-a-tenant)
-  - [19. Submit a new job](#19-submit-a-new-job)
-
+  - [19. Submit a persistent job](#19-submit-a-persistent-job)
+  - [20. Submit a Transient job](#20-submit-a-transient-job)
+  - [21. Retrieve list of all jobs](#21-retrieve-list-of-all-jobs)
 ## 1. Login and Session Creation
 
   __API-URI__: /api/v1/login
