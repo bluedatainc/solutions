@@ -669,7 +669,7 @@ AWS:
 
 
 
-## 19. Submit a new job
+## 19. Submit a persistent job
 
 
 
@@ -688,21 +688,71 @@ AWS:
   __Json-file__: job.json:
 
         {
-           "spark_command_line": " ", 
-           "app_name": "Bluedata Sample Python App", 
-           "jar_path": "/srv/bluedata/job-449186a9227b3736ea3f774f0f0f95c7/jar/spark-terasort-1.0.jar", "master_flavor": "/api/v1/flavor/5", 
-           "job_type": "Hadoop Custom Jar", 
-           "command_line": "hadoop jar  $jar_path$ $app_name$ ", "slave_count": 1, 
-           "dependencies": ["/srv/bluedata/job-449186a9227b3736ea3f774f0f0f95c7/jar/spark-terasort-1.0-jar-with-dependencies.jar"], 
-           "cluster_context": "Transient", 
-           "distro_name": "HDP 2.6 with Ambari 2.5", 
-           "slave_flavor": "/api/v1/flavor/4", 
-           "job_name": "Spark-Terasort"
+          "spark_command_line": " ", "app_name": "wordcount", "jar_path": "/srv/bluedata/job-a1226be7083d6f4704febdb273023251/jar/hdp-examples.jar", "job_type": "Hadoop Custom Jar", "command_line": "hadoop jar  $jar_path$ $app_name$ dtap://TenantStorage/test/sahithi/customer_demographics.csvdtap://TenantStorage/test/out1", "dependencies": [], "cluster_context": "Persistent", "cluster_uuid": "78", "job_name": "WC-Test"
         }
 
 
   __Response__:
 
       {"result":"Success","uuid":"85"}
+
+
+
+## 20. Submit a Transient job
+
+
+
+  __API-URI__:  /api/v1/job
+
+  __Curl command__:
+
+      curl -X POST -d@transient-job.json -H "X-BDS-SESSION:<session-id>" http://<controller-ip>:8080/api/v1/job
+
+  __API Type__: `POST`
+
+  __Example__:
+
+     curl -X POST -d@transient-job.json -H "X-BDS-SESSION:/api/v1/session/20aa30d4-dc0e-478e-998a-9f264051eae5" http://10.36.0.17:8080/api/v1/job
+
+  __Json-file__: transient-job.json:
+
+        {
+            "spark_command_line": " ", 
+            "app_name": "wordcount", 
+            "jar_path": "/srv/bluedata/job-0fbce6df8aa1feba2d0a9c7ee2e43d41/jar/hdp-examples.jar", "master_flavor": "/api/v1/flavor/2", 
+            "job_type": "Hadoop Custom Jar", 
+            "command_line": "hadoop jar  $jar_path$ $app_name$ dtap://TenantStorage/test/sahithi/customer_demographics.csv dtap://TenantStorage/test/TransientOutput", 
+            "slave_count": 1, 
+            "dependencies": [], 
+            "cluster_context": "Transient", 
+            "distro_name": "HDP 2.5 with Ambari 2.4", 
+            "slave_flavor": "/api/v1/flavor/1", 
+            "job_name": "Test-transient"
+        }
+
+
+  __Response__:
+
+      {"result":"Success","uuid":"93"}
+
+
+
+## 21. Retrieve list of all jobs
+
+  __API-URI__: /api/v1/job
+
+  __Curl command__:
+
+      curl -X GET -H "X-BDS-SESSION:<session-id>" http://<controller-ip>/api/v1/job
+
+  __API Type__: `GET`
+
+  __Example__:
+
+      curl -X GET -H "X-BDS-SESSION:/api/v1/session/985585be-685d-4a6a-a0f0-0c563ae32e56" http://10.36.0.17:8080/api/v1/job
+
+  __Response__:
+
+      {"result":"Success","objects":[{"result":"Success","uuid":"92","job_name":"WC-transient","job_type":"Hadoop Custom Jar","jar_path":"/srv/bluedata/job-0fbce6df8aa1feba2d0a9c7ee2e43d41/jar/hdp-examples.jar","app_name":"wordcount","mapper":"","reducer":"","status":"complete","setup_time":482076,"run_time":35069,"cluster_context":"Transient","cluster_id":"92","update_ts":1496436965,"command_line":"hadoop jar  $jar_path$ $app_name$ dtap://TenantStorage/test/sahithi/customer_demographics.csv dtap://TenantStorage/test/TransOutput","status_message":"","error_info":"","start_time":1496436448,"duration":517,"spark_confs":" ","dependencies":[],"log_url":"http://10.36.0.17:8080/Logs/92.txt","output_url":"http://10.36.0.17:8080/Output/92.txt","cluster_name":"","distro_name":"HDP 2.5 with Ambari 2.4","distro_version":"2.0","distro_state":"installed","mr_type":"YARN","slave_count":1,"master_flavor":{"root_disk_size":100,"label":{"name":"Medium","description":"system-created example flavor"},"cores":4,"memory":12288},"slave_flavor":{"root_disk_size":30,"label":{"name":"Small","description":"system-created example flavor"},"cores":4,"memory":8192}},{"result":"Success","uuid":"26","job_name":"Spark2.1-Test","job_type":"Spark - Scala Jar","jar_path":"/srv/bluedata/job-b52132b15c5d1957d64d875432f16bb7/jar/spark-terasort-1.0.jar","app_name":"com.github.ehiggs.spark.terasort.TeraGen","mapper":"","reducer":"","status":"complete","setup_time":0,"run_time":5085,"cluster_context":"Persistent","cluster_id":"10","update_ts":1492623327,"command_line":"","status_message":"","error_info":"","start_time":1492623321,"duration":6,"spark_confs":" ","dependencies":["/srv/bluedata/job-b52132b15c5d1957d64d875432f16bb7/jar/spark-terasort-1.0-jar-with-dependencies.jar"],"log_url":"","output_url":"http://10.36.0.17:8080/Output/26.txt","cluster_name":"","distro_name":"Spark 2.1.0 Hadoop 2.7 Centos 7","distro_version":"1.0","distro_state":"installed","mr_type":""},{"result":"Success","uuid":"90","job_name":"test","job_type":"Hadoop Custom Jar","jar_path":"/srv/bluedata/job-098f6bcd4621d373cade4e832627b4f6/jar/hdp-examples.jar","app_name":"wordcount","mapper":"","reducer":"","status":"complete","setup_time":0,"run_time":35062,"cluster_context":"Persistent","cluster_id":"78","update_ts":1496432346,"command_line":"hadoop jar  $jar_path$ $app_name$ dtap://TenantStorage/test/sahithi/customer_demographics.csv dtap://TenantStorage/test/out1","status_message":"","error_info":"","start_time":1496432311,"duration":35,"spark_confs":" ","dependencies":[],"log_url":"","output_url":"http://10.36.0.17:8080/Output/90.txt","cluster_name":"HDP2.6+Nifi","distro_name":"HDP 2.6 with Ambari 2.5","distro_version":"1.1","distro_state":"installed","mr_type":"YARN"},{"result":"Success","uuid":"19","job_name":"Spark-terasorTest","job_type":"Spark - Scala Jar","jar_path":"/srv/bluedata/job-3e87223a71fcc06f42bfe0cdb79dd86f/jar/spark-terasort-1.0.jar","app_name":"com.github.ehiggs.spark.terasort.TeraGen","mapper":"","reducer":"","status":"complete","setup_time":0,"run_time":5055,"cluster_context":"Persistent","cluster_id":"10","update_ts":1492204942,"command_line":"","status_message":"","error_info":"","start_time":1492204936,"duration":6,"spark_confs":" ","dependencies":["/srv/bluedata/job-3e87223a71fcc06f42bfe0cdb79dd86f/jar/spark-terasort-1.0-jar-with-dependencies.jar"],"log_url":"","output_url":"http://10.36.0.17:8080/Output/19.txt","cluster_name":"","distro_name":"Spark 2.1.0 Hadoop 2.7 Centos 7","distro_version":"1.0","distro_state":"installed","mr_type":""}]}
 
 </span>
