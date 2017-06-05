@@ -20,8 +20,8 @@
   - [16. Delete an existing user](#16-delete-an-existing-user)
   - [17. Delete an existing tenant](#17-delete-an-existing-tenant)
   - [18. Assign security roles to a tenant](#18-assign-security-roles-to-a-tenant)
-  - [19. Submit a persistent job](#19-submit-a-persistent-job)
-  - [20. Submit a Transient job](#20-submit-a-transient-job)
+  - [19. Submit a job to persistent cluster ](#19-submit-a-job-to-persistent-cluster)
+  - [20. Submit a job to Transient cluster](#20-submit-a-job-to-transient-cluster)
   - [21. Retrieve list of all jobs](#21-retrieve-list-of-all-jobs)
   - [22. Assign a user to tenant](#22-assign-a-user-to-tenant)
   - [23. Get Tenant info for a user](#23-get-tenant-info-for-a-user)
@@ -673,7 +673,7 @@ AWS:
 
 
 
-## 19. Submit a persistent job
+## 19. Submit a job to persistent cluster
 
 
 
@@ -702,7 +702,7 @@ AWS:
 
 
 
-## 20. Submit a Transient job
+## 20. Submit a  job to Transient cluster
 
 
 
