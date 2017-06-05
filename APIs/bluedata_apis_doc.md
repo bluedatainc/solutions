@@ -702,7 +702,7 @@ AWS:
 
 
 
-## 20. Submit a  job to Transient cluster
+## 20. Submit a job to Transient cluster
 
 
 
