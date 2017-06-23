@@ -20,12 +20,13 @@
   - [16. Delete an existing user](#16-delete-an-existing-user)
   - [17. Delete an existing tenant](#17-delete-an-existing-tenant)
   - [18. Assign security roles to a tenant](#18-assign-security-roles-to-a-tenant)
-  - [19. Submit a job to persistent cluster ](#19-submit-a-job-to-persistent-cluster)
+  - [19. Submit a job to persistent cluster](#19-submit-a-job-to-persistent-cluster)
   - [20. Submit a job to Transient cluster](#20-submit-a-job-to-transient-cluster)
   - [21. Retrieve list of all jobs](#21-retrieve-list-of-all-jobs)
   - [22. Assign a user to tenant](#22-assign-a-user-to-tenant)
   - [23. Get Tenant info for a user](#23-get-tenant-info-for-a-user)
   - [24. Get user info for a Tenant](#24-get-user-info-for-a-tenant)
+  
 ## 1. Login and Session Creation
 
   __API-URI__: /api/v1/login
@@ -41,6 +42,7 @@
       curl -i -X POST -d@login.json http://10.36.0.17:8080/api/v1/login
 
  __Json-file__: login.json:
+ 
         {
           "name" : "admin",
           "password": "admin123"
