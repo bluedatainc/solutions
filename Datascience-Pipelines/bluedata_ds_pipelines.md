@@ -2,7 +2,7 @@
 
 # Datascience-Pipelines
 
-  - [1. JupyterHub Server with Spark2.1.1](#1-jupyterhub-Server-with-spark2.1.1)
+  - [1. JupyterHub Server with Spark2.1.1](#1-jupyterhub-server-with-spark2.1.1)
   - [2. Nifi/HDF2.1 with embedded Zookeepers](#2-nifi/hdf2.1-with-embedded-zookeepers)
   - [3. Kafka Spark and Cassandra pipeline in BlueData](#3-kafka-spark-and-cassandra-pipeline-in-bluedata)
   - [4. R-Studio Server with Spark 2.1.0](#4-r-studio-server-with-spark-2.1.0)
