@@ -26,7 +26,16 @@
   - [22. Assign a user to tenant](#22-assign-a-user-to-tenant)
   - [23. Get Tenant info for a user](#23-get-tenant-info-for-a-user)
   - [24. Get user info for a Tenant](#24-get-user-info-for-a-tenant)
-  
+  - [25. Reset User Password](#25-reset-user-password)
+  - [26. Reboot Virtual Node](#26-reboot-virtual-node)
+  - [27. Reboot Virtual Cluster](#27-reboot-virtual-cluster)
+  - [28. Stop a Virtual Cluster](#28-stop-a-virtual-cluster)
+  - [29. Start a Virtual Cluster](#29-start-a-virtual-cluster)
+  - [30. Revoke User Access to a Tenant](#30-revoke-user-access-to-a-tenant)
+  - [31. Retrieve a List of All Virtual Nodes](#31-retrieve-a-list-of-all-virtual-nodes)
+  - [32. Delete a job](#32-delete-a-job)
+
+
 ## 1. Login and Session Creation
 
   __API-URI__: /api/v1/login
@@ -839,5 +848,222 @@ AWS:
   __Response__:
 
       {"_links":{"self":{"href":"/api/v1/tenant/2?user"}},"_embedded":{"users":[{"_links":{"self":{"href":"/api/v1/user/263"}},"_embedded":{"label":{"name":"demo.user","description":"BlueData Anonymous User"},"role":"/api/v1/role/3"}},{"_links":{"self":{"href":"/api/v1/user/257"}},"_embedded":{"label":{"name":"admin","description":"BlueData Administrator"},"role":"/api/v1/role/2"}}]}}
+
+
+
+
+
+## 25. Reset User Password
+
+
+  __API-URI__: /api/v1/user/<user-id>?password
+
+  __Curl command__:
+
+      curl -X PUT -d@password_reset.json -H "X-BDS-SESSION:<session-id> http://<controller-ip>:8080/api/v1/user/<user-id>?password
+
+  __API Type__: `PUT`
+
+  __Example__:
+
+      curl -X PUT -d@password_reset.json -H "X-BDS-SESSION:/api/v1/session/985585be-685d-4a6a-a0f0-0c563ae32e56" http://10.36.0.17:8080/api/v1/user/257?password
+
+ 
+ __Json-file__: password_.json:
+
+        {
+           "password": "*****",
+           "new_password": "<enter new password>"
+        }
+
+
+  __Response__:
+
+      {"result":"Success"}
+
+
+
+## 26. Reboot Virtual Node
+
+
+  __API-URI__: /api/v1/user/<user-id>?password
+
+  __Curl command__:
+
+      curl -X PUT -d@password_reset.json -H "X-BDS-SESSION:<session-id> http://<controller-ip>:8080/api/v1/user/<user-id>?password
+
+  __API Type__: `PUT`
+
+  __Example__:
+
+      curl -X PUT -d@password_reset.json -H "X-BDS-SESSION:/api/v1/session/985585be-685d-4a6a-a0f0-0c563ae32e56" http://10.36.0.17:8080/api/v1/user/257?password
+
+ 
+ __Json-file__: password_.json:
+
+        {
+           "password": "*****",
+           "new_password": "<enter new password>"
+        }
+
+
+  __Response__:
+
+      {"result":"Success"}
+
+
+
+## 27. Reboot Virtual Cluster
+
+
+  __API-URI__: /api/v1/cluster/<cluster-id>
+
+  __Curl command__:
+
+      curl -X PUT -d@reboot_cluster.json -H "X-BDS-SESSION:<session-id> http://<controller-ip>:8080/api/v1/cluster/<cluster-id> 
+
+  __API Type__: `PUT`
+
+  __Example__:
+
+      curl -X PUT -d@reboot_cluster.json -H "X-BDS-SESSION:/api/v1/session/985585be-685d-4a6a-a0f0-0c563ae32e56" http://10.36.0.17:8080/api/v1/cluster/70
+
+  __Json-file__: reboot_cluster.json:
+
+        {
+           "operation": "reboot"
+        }
+
+  __Response__:
+
+      {"result":"Success"}
+
+
+
+## 28. Stop a Virtual Cluster
+
+
+  __API-URI__: /api/v1/cluster/<cluster-id>
+
+  __Curl command__:
+
+      curl -X PUT -d@stop_cluster.json -H "X-BDS-SESSION:<session-id> http://<controller-ip>:8080/api/v1/cluster/<cluster-id> 
+
+  __API Type__: `PUT`
+
+  __Example__:
+
+      curl -X PUT -d@stop_cluster.json -H "X-BDS-SESSION:/api/v1/session/985585be-685d-4a6a-a0f0-0c563ae32e56" http://10.36.0.17:8080/api/v1/cluster/70
+
+  __Json-file__: stop_cluster.json:
+
+        {
+           "operation": "stop"
+        }
+
+  __Response__:
+
+      {"result":"Success"}
+
+
+
+## 29. Start a Virtual Cluster
+
+
+  __API-URI__: /api/v1/cluster/<cluster-id>
+
+  __Curl command__:
+
+      curl -X PUT -d@start_cluster.json -H "X-BDS-SESSION:<session-id> http://<controller-ip>:8080/api/v1/cluster/<cluster-id> 
+
+  __API Type__: `PUT`
+
+  __Example__:
+
+      curl -X PUT -d@start_cluster.json -H "X-BDS-SESSION:/api/v1/session/985585be-685d-4a6a-a0f0-0c563ae32e56" http://10.36.0.17:8080/api/v1/cluster/70
+
+  __Json-file__: start_cluster.json:
+
+        {
+           "operation": "start"
+        }
+
+  __Response__:
+
+      {"result":"Success"}
+
+
+
+
+## 30. Revoke User Access to a Tenant
+
+
+  __API-URI__: /api/v1/tenant/<tenant-id>?user
+
+  __Curl command__:
+
+      curl -X PUT -d@revoke_user.json -H "X-BDS-SESSION:<session-id>" http://<controller-ip>:8080/api/v1/tenant/<tenant-id>?user
+
+  __API Type__: `PUT`
+
+  __Example__:
+
+      curl -X PUT -d@revoke_user.json -H "X-BDS-SESSION:/api/v1/session/985585be-685d-4a6a-a0f0-0c563ae32e56" http://10.36.0.17:8080/api/v1/tenant/3?user
+
+  __Json-file__: revoke_user.json:
+
+        {
+            "operation": "revoke",
+            "role": "api/v1/role/<role-id>"
+            "user": "api/v1/user/<user-id>"
+        }
+
+  __Response__:
+
+      {"result":"Success"}
+
+
+
+
+## 31. Retrieve a List of All Virtual Nodes
+
+
+  __API-URI__: /api/v1/virtnode/
+
+  __Curl command__:
+
+      curl -X GET -H "X-BDS-SESSION:<session-id>" http://<controller-ip>:8080/api/v1/virtnode/
+
+  __API Type__: `GET`
+
+  __Example__:
+
+      curl -X GET -H "X-BDS-SESSION:/api/v1/session/985585be-685d-4a6a-a0f0-0c563ae32e56" http://10.36.0.17:8080/api/v1/virtnode/
+
+  __Response__:
+
+      [{"id":"bdae6652204c4c66ebbec33a213d1bf69565a1da38a8a9505e06d25a399fbcd8","name":"bluedata-70.bdlocal","flavor":{"root_disk_size":30,"label":{"name":"Small","description":"system-created example flavor"},"cores":4,"memory":8192},"root_disk_size":"30","nodegroup_id":"1","distro_name":"Rstudio-Server with shiny-server on AWS","distro_version":"5.0","distro_state":"installed","in_use":true,"persistent":true,"job_or_cluster":"Rstudio","hypervisor_host":"yav-204.lab.bluedata.com","node_ip":"10.39.252.11","tenant_name":"SalesAnalytics","tenant_type":"docker"},{"id":"d5c650eb473ac81abb21147fb8459938f1c78586661829ed60b850af98443c36","name":"bluedata-138.bdlocal","flavor":{"root_disk_size":30,"label":{"name":"Small","description":"system-created example flavor"},"cores":4,"memory":8192},"root_disk_size":"30","nodegroup_id":"1","distro_name":"HDP 2.6 with Ambari 2.5","distro_version":"1.1","distro_state":"installed","in_use":true,"persistent":true,"job_or_cluster":"HDP2.6+Nifi","hypervisor_host":"yav-114.lab.bluedata.com","node_ip":"10.39.252.8","tenant_name":"Demo Tenant","tenant_type":"docker"}
+
+
+
+## 32. Delete a job
+
+
+  __API-URI__: /api/v1/job/<job-id>
+
+  __Curl command__:
+
+      curl -v -X DELETE -H "X-BDS-SESSION:<session-id> http://<controller-ip>:8080/api/v1/job/<job-id>
+
+  __API Type__: `DELETE`
+
+  __Example__:
+
+      curl -v -X DELETE -H "X-BDS-SESSION:/api/v1/session/985585be-685d-4a6a-a0f0-0c563ae32e56" http://10.36.0.17:8080/api/v1/job/2
+
+  __Response__:
+
+      None
+
 
 </span>
