@@ -236,7 +236,7 @@
 
 
 
-## 10.Update the hue ini safety valve to point to dtap
+## 10. Update the hue ini safety valve to point to dtap
 
 
   __Script__:
