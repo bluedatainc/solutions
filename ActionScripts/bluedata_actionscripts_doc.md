@@ -10,8 +10,8 @@
   - [6. Check Spark version](#6-check-spark-version)
   - [7. Restart Jupyter Server](#7-restart-jupyter-server)
   - [8. Run a wordcount Java program](#8-run-a-wordcount-java-program)
-  - [9. Mount the created DataTap to the virtual cluster created](#9-mount-the-created-datatap-to-virtual-cluster-created)
-  - [10.Update the hue.ini safety valve to point to dtap](#10-update-the-hue.ini-saftey-valve-to-point-to-dtap)
+  - [9. Mount the created DataTap to the virtual cluster created](#9-mount-the-created-datatap-to-the-virtual-cluster-created)
+  - [10. Update the hue.ini safety valve to point to dtap](#10-update-the-hue.ini-saftey-valve-to-point-to-dtap)
 
 
 
@@ -233,7 +233,7 @@
 
 
 
-## 10.Update the hue.ini safety valve to point to dtap
+## 10.Update the hue ini safety valve to point to dtap
 
 
   __Script__:
