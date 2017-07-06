@@ -10,6 +10,8 @@
   - [6. Check Spark version](#6-check-spark-version)
   - [7. Restart Jupyter Server](#7-restart-jupyter-server)
   - [8. Run a wordcount Java program](#8-run-a-wordcount-java-program)
+  - [9. Mount the created DataTap to the virtual cluster created](#9-mount-the-created-datatap-to-virtual-cluster-created)
+  - [10.Update the hue.ini safety valve to point to dtap](#10-update-the-hue.ini-saftey-valve-to-point-to-dtap)
 
 
 
@@ -203,5 +205,50 @@
   __Result__:
 
       
+
+
+## 9. Mount the created DataTap to the virtual cluster created
+
+
+  __Script__:
+
+      #/bin/bash
+      export node=`bdvcli --get node.role_id`
+      export PASSWORD=admin
+      export CLUSTER_NAME=CDH5.10.1
+      if [[ $node == "controller" ]]; then
+          curl -iv -X PUT -H "Content-Type:application/json" -H "Accept:application/json" -d '{"items":[{ "name": "yarn_core_site_safety_valve","value":"fs.defaultFSdtap://TenantStorage"}]}' http://admin:admin@10.39.250.14:7180/api/v14/clusters/CDH5.10.1/services/YARN/config
+          curl -u admin:$PASSWORD -X POST 'http://10.39.250.14:7180/api/v14/clusters/CDH5.10.1/services/HIVE/commands/restart'
+          curl -u admin:$PASSWORD -X POST 'http://10.39.250.14:7180/api/v14/clusters/CDH5.10.1/services/HUE/commands/restart'
+          curl -u admin:$PASSWORD -X POST 'http://10.39.250.14:7180/api/v14/clusters/CDH5.10.1/services/OOZIE/commands/restart'
+          curl -u admin:$PASSWORD -X POST 'http://10.39.250.14:7180/api/v14/clusters/CDH5.10.1/services/SQOOP/commands/restart'
+          curl -u admin:$PASSWORD -X POST 'http://10.39.250.14:7180/api/v14/clusters/CDH5.10.1/services/YARN/commands/restart'
+          echo -n Restarting All services...
+    fi
+
+
+  __Result__:
+
+      
+
+
+
+## 10.Update the hue.ini safety valve to point to dtap
+
+
+  __Script__:
+
+      #/bin/bash
+      export PASSWORD=admin
+      sed -i -e '/fs_defaultfs=/ s/=.*/= dtap:\/\/TenantStorage\//' /etc/hue/conf/hue.ini
+      curl -u admin:$PASSWORD -X POST 'http://10.39.250.14:7180/api/v14/clusters/CDH5.10.1/services/HUE/commands/restart'
+
+
+
+  __Result__:
+
+      # Enter the filesystem uri
+      fs_defaultfs= dtap://TenantStorage/
+
 
 </span>
