@@ -11,7 +11,7 @@
   - [7. Restart Jupyter Server](#7-restart-jupyter-server)
   - [8. Run a wordcount Java program](#8-run-a-wordcount-java-program)
   - [9. Mount the created DataTap to the virtual cluster created](#9-mount-the-created-datatap-to-the-virtual-cluster-created)
-  - [10. Update the hue ini safety valve to point to dtap](#10-update-the-hue-ini-saftey-valve-to-point-to-dtap)
+  - [10. Update the hue ini saftey valve to point to dtap](#10-update-the-hue-ini-saftey-valve-to-point-to-dtap)
 
 
 
@@ -236,7 +236,7 @@
 
 
 
-## 10. Update the hue ini safety valve to point to dtap
+## 10. Update the hue ini saftey valve to point to dtap
 
 
   __Script__:
@@ -245,7 +245,6 @@
       export PASSWORD=admin
       sed -i -e '/fs_defaultfs=/ s/=.*/= dtap:\/\/TenantStorage\//' /etc/hue/conf/hue.ini
       curl -u admin:$PASSWORD -X POST 'http://10.39.250.14:7180/api/v14/clusters/CDH5.10.1/services/HUE/commands/restart'
-
 
 
   __Result__:
