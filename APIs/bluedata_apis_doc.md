@@ -35,7 +35,7 @@
   - [31. Retrieve a List of All Virtual Nodes](#31-retrieve-a-list-of-all-virtual-nodes)
   - [32. Delete a job](#32-delete-a-job)
   - [33. Invoke ActionScript](#33-invoke-actionscript)
-
+  - [34. Mount dtap to Virtual cluster ActionScript](#34-mount-dtap-to-virtual-cluster-actionscript)
 
 ## 1. Login and Session Creation
 
@@ -1098,4 +1098,40 @@ AWS:
   __Response__:
 
       {"result":"Success","uuid":"action_166"}
+
+
+
+
+## 34. Mount dtap to Virtual cluster ActionScript
+
+
+  __API-URI__: /api/v2/cluster/<cluster-id>/action_task
+
+  __Curl command__:
+
+      curl -X POST http://<controller-ip>:8080/api/v2/cluster/<cluster-id>/action_task -H 'cache-control:no-cache' -H 'content-type: application/json' -H 'x-bds-session:<session-id>' -d@fs_defaultFS_dtap.json
+
+  __API Type__: `POST`
+
+  __Example__:
+
+      curl -X POST http://10.36.0.27:8080/api/v2/cluster/132/action_task -H 'cache-control:no-cache' -H 'content-type: application/json' -H 'x-bds-session:/api/v1/session/9b4e6dea-158e-484d-ad64-916cb738563c' -d@fs_defaultFS_dtap.json
+
+ __Json-file__: fs_defaultFS_dtap.json:
+
+        {
+            "action_args": "",
+            "action_as_root": "true",
+            "action_cluster": "132",
+            "action_cmd": "#/bin/bash\n\nexport node=`bdvcli --get node.role_id`\nexport PASSWORD=admin\nexport CLUSTER_NAME=CDH5.10.1\n#export CMHOST=10.39.250.14\n#export CMPORT=7180\n#export SERVICE=YARN\n#export BASEURL=http://$CMHOST:$CMPORT\n\nif [[ $node == \"controller\" ]]; then\n\t\n\tcurl -iv -X PUT -H \"Content-Type:application/json\" -H \"Accept:application/json\" -d '{\"items\":[{ \"name\": \"yarn_core_site_safety_valve\",\"value\":\"<property><name>fs.defaultFS</name><value>dtap://TenantStorage</value></property>\"}]}' http://admin:admin@10.39.250.14:7180/api/v14/clusters/CDH5.10.1/services/YARN/config\n\tcurl -u admin:$PASSWORD -X POST 'http://10.39.250.14:7180/api/v14/clusters/CDH5.10.1/services/HIVE/commands/restart'\n\tcurl -u admin:$PASSWORD -X POST 'http://10.39.250.14:7180/api/v14/clusters/CDH5.10.1/services/HUE/commands/restart'\n\tcurl -u admin:$PASSWORD -X POST 'http://10.39.250.14:7180/api/v14/clusters/CDH5.10.1/services/OOZIE/commands/restart'\n\tcurl -u admin:$PASSWORD -X POST 'http://10.39.250.14:7180/api/v14/clusters/CDH5.10.1/services/SQOOP/commands/restart'\n\tcurl -u admin:$PASSWORD -X POST 'http://10.39.250.14:7180/api/v14/clusters/CDH5.10.1/services/YARN/commands/restart'\n\techo -n Restarting All services...\nfi\n",
+            "action_name": "final-dtapMount_ActionSource_cdh_defaultFS.sh",
+            "action_nodegroupid": "1",
+            "action_user": "admin"}
+
+
+  __Response__:
+
+      {"result":"Success","uuid":"action_170"}
+
+
 </span>
