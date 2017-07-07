@@ -10,32 +10,33 @@
   - [6. Retrieve a virtual cluster configuration](#6-retrieve-a-virtual-cluster-configuration)
   - [7. Get created DataTap in a certain Tenant](#7-get-created-datatap-in-a-certain-tenant)
   - [8. Create a new cluster](#8-create-a-new-cluster)
-  - [9. Create a cluster DataTap](#9-create-a-cluster-datatap)
-  - [10. Enable virtual cluster Kerberos](#10-enable-virtual-cluster-kerberos)
-  - [11. Delete an existing cluster](#11-delete-an-existing-cluster)
-  - [12. Delete an existing DataTap](#12-delete-an-existing-datatap)
-  - [13. Create a new tenant](#13-create-a-new-tenant)
-  - [14. Assign groups to a tenant](#14-assign-groups-to-a-tenant)
-  - [15. Create a new user](#15-create-a-new-user)
-  - [16. Delete an existing user](#16-delete-an-existing-user)
-  - [17. Delete an existing tenant](#17-delete-an-existing-tenant)
-  - [18. Assign security roles to a tenant](#18-assign-security-roles-to-a-tenant)
-  - [19. Submit a job to persistent cluster](#19-submit-a-job-to-persistent-cluster)
-  - [20. Submit a job to Transient cluster](#20-submit-a-job-to-transient-cluster)
-  - [21. Retrieve list of all jobs](#21-retrieve-list-of-all-jobs)
-  - [22. Assign a user to tenant](#22-assign-a-user-to-tenant)
-  - [23. Get Tenant info for a user](#23-get-tenant-info-for-a-user)
-  - [24. Get user info for a Tenant](#24-get-user-info-for-a-tenant)
-  - [25. Reset User Password](#25-reset-user-password)
-  - [26. Reboot Virtual Node](#26-reboot-virtual-node)
-  - [27. Reboot Virtual Cluster](#27-reboot-virtual-cluster)
-  - [28. Stop a Virtual Cluster](#28-stop-a-virtual-cluster)
-  - [29. Start a Virtual Cluster](#29-start-a-virtual-cluster)
-  - [30. Revoke User Access to a Tenant](#30-revoke-user-access-to-a-tenant)
-  - [31. Retrieve a List of All Virtual Nodes](#31-retrieve-a-list-of-all-virtual-nodes)
-  - [32. Delete a job](#32-delete-a-job)
-  - [33. Invoke ActionScript](#33-invoke-actionscript)
-  - [34. Mount dtap to Virtual cluster ActionScript](#34-mount-dtap-to-virtual-cluster-actionscript)
+  - [9. Create a cluster with gateway node](#9-create-a-cluster-with-gateway-node)
+  - [10. Create a cluster DataTap](#10-create-a-cluster-datatap)
+  - [11. Enable virtual cluster Kerberos](#11-enable-virtual-cluster-kerberos)
+  - [12. Delete an existing cluster](#12-delete-an-existing-cluster)
+  - [13. Delete an existing DataTap](#13-delete-an-existing-datatap)
+  - [14. Create a new tenant](#14-create-a-new-tenant)
+  - [15. Assign groups to a tenant](#15-assign-groups-to-a-tenant)
+  - [16. Create a new user](#16-create-a-new-user)
+  - [17. Delete an existing user](#17-delete-an-existing-user)
+  - [18. Delete an existing tenant](#18-delete-an-existing-tenant)
+  - [19. Assign security roles to a tenant](#19-assign-security-roles-to-a-tenant)
+  - [20. Submit a job to persistent cluster](#20-submit-a-job-to-persistent-cluster)
+  - [21. Submit a job to Transient cluster](#21-submit-a-job-to-transient-cluster)
+  - [22. Retrieve list of all jobs](#22-retrieve-list-of-all-jobs)
+  - [23. Assign a user to tenant](#23-assign-a-user-to-tenant)
+  - [24. Get Tenant info for a user](#24-get-tenant-info-for-a-user)
+  - [25. Get user info for a Tenant](#25-get-user-info-for-a-tenant)
+  - [26. Reset User Password](#26-reset-user-password)
+  - [27. Reboot Virtual Node](#27-reboot-virtual-node)
+  - [28. Reboot Virtual Cluster](#28-reboot-virtual-cluster)
+  - [29. Stop a Virtual Cluster](#29-stop-a-virtual-cluster)
+  - [30. Start a Virtual Cluster](#30-start-a-virtual-cluster)
+  - [31. Revoke User Access to a Tenant](#31-revoke-user-access-to-a-tenant)
+  - [32. Retrieve a List of All Virtual Nodes](#32-retrieve-a-list-of-all-virtual-nodes)
+  - [33. Delete a job](#33-delete-a-job)
+  - [34. Invoke ActionScript](#34-invoke-actionscript)
+  - [35. Mount dtap to Virtual cluster ActionScript](#35-mount-dtap-to-virtual-cluster-actionscript)
 
 ## 1. Login and Session Creation
 
@@ -361,8 +362,6 @@
                   "property_name":"yarn.nodemanager.vmem-checkenabled"
               }
             ]
-
-
         }
 
   __Response__:
@@ -370,7 +369,46 @@
       201 Created
 
 
-## 9. Create a cluster DataTap
+
+## 9. Create a cluster with gateway node
+
+  
+  __API-URI__: /api/v1/cluster
+
+  __Curl command__:
+
+      curl -X POST -d@spark_cluster.json -H "X-BDS-SESSION:<session-id>" http://<controller-ip>:8080/api/v1/cluster
+
+  __API Type__: `POST`
+
+  __Example__:
+
+      curl -X POST -d@spark_cluster.json -H "X-BDS-SESSION:/api/v1/session/446468df-6869-4e42-bbba-c8cc11cb4a54" http://127.0.0.1:8080/api/v1/cluster
+
+ __Json-file__: spark_cluster.json:
+
+        {
+    "cluster_name": "Spark-Test",
+    "cluster_type": "Spark",
+    "debug": true,
+    "dependent_distros": [
+        {
+            "distro_name": "Spark 2.0.1 Gateway",
+            "flavor": "/api/v1/flavor/4",
+            "scaleout_count": 1
+        }
+    ],
+    "distro_name": "Spark 2.0.1",
+    "master_flavor": "/api/v1/flavor/7",
+    "slave_count": 2,
+    "slave_flavor": "/api/v1/flavor/4" }
+
+  __Response__:
+
+      201 Created
+
+
+## 10. Create a cluster DataTap
 
 
 
@@ -408,7 +446,7 @@
       201 Created
 
 
-## 10. Enable virtual cluster Kerberos
+## 11. Enable virtual cluster Kerberos
 
 
 
@@ -440,7 +478,7 @@
       None
 
 
-## 11. Delete an existing cluster
+## 12. Delete an existing cluster
 
 
 
@@ -461,7 +499,7 @@
       {"result":"Success"}
 
 
-## 12. Delete an existing DataTap
+## 13. Delete an existing DataTap
 
 
 
@@ -482,7 +520,7 @@
       {"result":"Success"}
 
 
-## 13. Create a new tenant
+## 14. Create a new tenant
 
 
 
@@ -545,7 +583,7 @@ AWS:
       201 Created
 
 
-## 14. Assign groups to a tenant
+## 15. Assign groups to a tenant
 
 
 
@@ -578,7 +616,7 @@ AWS:
       None
 
 
-## 15. Create a new user
+## 16. Create a new user
 
 
   __API-URI__: /api/v1/user
@@ -610,7 +648,7 @@ AWS:
       201 Created
 
 
-## 16. Delete an existing user
+## 17. Delete an existing user
 
 
 
@@ -632,7 +670,7 @@ AWS:
 
 
 
-## 17. Delete an existing tenant
+## 18. Delete an existing tenant
 
 
 
@@ -654,7 +692,7 @@ AWS:
 
 
 
-## 18. Assign security roles to a tenant
+## 19. Assign security roles to a tenant
 
 
 
@@ -685,7 +723,7 @@ AWS:
 
 
 
-## 19. Submit a job to persistent cluster
+## 20. Submit a job to persistent cluster
 
 
 
@@ -714,7 +752,7 @@ AWS:
 
 
 
-## 20. Submit a job to Transient cluster
+## 21. Submit a job to Transient cluster
 
 
 
@@ -753,7 +791,7 @@ AWS:
 
 
 
-## 21. Retrieve list of all jobs
+## 22. Retrieve list of all jobs
 
 
 
@@ -775,7 +813,7 @@ AWS:
 
 
 
-## 22. Assign a user to tenant
+## 23. Assign a user to tenant
 
 
 
@@ -806,7 +844,7 @@ AWS:
 
 
 
-## 23. Get Tenant info for a user
+## 24. Get Tenant info for a user
 
 
 
@@ -830,7 +868,7 @@ AWS:
 
 
 
-## 24. Get user info for a tenant
+## 25. Get user info for a tenant
 
 
 
@@ -854,7 +892,7 @@ AWS:
 
 
 
-## 25. Reset User Password
+## 26. Reset User Password
 
 
   __API-URI__: /api/v1/user/<user-id>?password
@@ -884,7 +922,7 @@ AWS:
 
 
 
-## 26. Reboot Virtual Node
+## 27. Reboot Virtual Node
 
 
   __API-URI__: /api/v1/user/<user-id>?password
@@ -914,7 +952,7 @@ AWS:
 
 
 
-## 27. Reboot Virtual Cluster
+## 28. Reboot Virtual Cluster
 
 
   __API-URI__: /api/v1/cluster/<cluster-id>
@@ -941,7 +979,7 @@ AWS:
 
 
 
-## 28. Stop a Virtual Cluster
+## 29. Stop a Virtual Cluster
 
 
   __API-URI__: /api/v1/cluster/<cluster-id>
@@ -968,7 +1006,7 @@ AWS:
 
 
 
-## 29. Start a Virtual Cluster
+## 30. Start a Virtual Cluster
 
 
   __API-URI__: /api/v1/cluster/<cluster-id>
@@ -996,7 +1034,7 @@ AWS:
 
 
 
-## 30. Revoke User Access to a Tenant
+## 31. Revoke User Access to a Tenant
 
 
   __API-URI__: /api/v1/tenant/<tenant-id>?user
@@ -1026,7 +1064,7 @@ AWS:
 
 
 
-## 31. Retrieve a List of All Virtual Nodes
+## 32. Retrieve a List of All Virtual Nodes
 
 
   __API-URI__: /api/v1/virtnode/
@@ -1047,7 +1085,7 @@ AWS:
 
 
 
-## 32. Delete a job
+## 33. Delete a job
 
 
   __API-URI__: /api/v1/job/<job-id>
@@ -1068,7 +1106,7 @@ AWS:
 
 
 
-## 33. Invoke ActionScript
+## 34. Invoke ActionScript
 
 
   __API-URI__: /api/v2/cluster/<cluster-id>/action_task
@@ -1102,7 +1140,7 @@ AWS:
 
 
 
-## 34. Mount dtap to Virtual cluster ActionScript
+## 35. Mount dtap to Virtual cluster ActionScript
 
 
   __API-URI__: /api/v2/cluster/<cluster-id>/action_task
