@@ -34,6 +34,7 @@
   - [30. Revoke User Access to a Tenant](#30-revoke-user-access-to-a-tenant)
   - [31. Retrieve a List of All Virtual Nodes](#31-retrieve-a-list-of-all-virtual-nodes)
   - [32. Delete a job](#32-delete-a-job)
+  - [33. Invoke ActionScript](#33-invoke-actionscript)
 
 
 ## 1. Login and Session Creation
@@ -1066,4 +1067,35 @@ AWS:
       None
 
 
+
+## 33. Invoke ActionScript
+
+
+  __API-URI__: /api/v2/cluster/<cluster-id>/action_task
+
+  __Curl command__:
+
+      curl -X POST http://<controller-ip>:8080/api/v2/cluster/<cluster-id>/action_task -H 'cache-control:no-cache' -H 'content-type: application/json' -H 'x-bds-session:<session-id>' -d@hue_ini_dtap.json
+
+  __API Type__: `POST`
+
+  __Example__:
+
+      curl -X POST http://10.36.0.27:8080/api/v2/cluster/132/action_task -H 'cache-control:no-cache' -H 'content-type: application/json' -H 'x-bds-session:/api/v1/session/9b4e6dea-158e-484d-ad64-916cb738563c' -d@hue_ini_dtap.json
+
+ __Json-file__: hue_ini_dtap.json:
+
+        {
+          "action_args": "",
+          "action_as_root": "true",
+          "action_cluster": "132",
+          "action_cmd": "#/bin/bash\n\nexport PASSWORD=admin\nexport VAL=dtap://TenantStorage\nsed -i \"s/^\\(fs\\_defaultfs\\s*=\\s*\\).*\\$/\\1$VAL/\" /etc/hue/conf/hue.ini\ncurl -u admin:$PASSWORD -X POST 'http://10.39.250.14:7180/api/v14/clusters/CDH5.10.1/services/HUE/commands/restart'\n",
+          "action_name": "hue-test_ActionSource_hue_Property_replace.sh",
+          "action_nodegroupid": "1",
+          "action_user": "admin"
+        }
+
+  __Response__:
+
+      {"result":"Success","uuid":"action_166"}
 </span>
