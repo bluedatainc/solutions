@@ -6,6 +6,7 @@
   - [2. Nifi/HDF2.1 with embedded Zookeepers](#2-nifi/hdf2.1-with-embedded-zookeepers)
   - [3. Kafka Spark and Cassandra pipeline in BlueData](#3-kafka-spark-and-cassandra-pipeline-in-bluedata)
   - [4. R-Studio Server with Spark 2.1.0](#4-r-studio-server-with-spark-2.1.0)
+
   
 ## 1. JupyterHub Server with Spark2.1.1
  
@@ -187,7 +188,7 @@ _Output_: Sample output is as given below.
  
 
 
-## 3.Kafka Spark and Cassandra pipeline in BlueData 
+## 3. Kafka Spark and Cassandra pipeline in BlueData 
  
  
 _Location_: 
@@ -336,4 +337,87 @@ _Consume Kafka events using Spark streaming_:
 
 
  
+## 4. R-Studio Server with Spark 2.1.0 
+ 
+ 
+_Location_: https://s3.amazonaws.com/bluedata-catalog/solutions/bins/bdcatalog-centos-bluedata-rstudio136sp210-3.0.bin
+
+_DistroId_: bluedata/rstudio136sp210
+
+_Version_: 3.0
+
+_Category_: DataScience
+
+_Software Included_: 
+
+      R version 3.3.2
+      R libraries pre-installed on all nodes - sparklyr, devtools, knitr, tidyr, ggplot2, shiny
+      R Hadoop client for accessing HDFS from R - rHadoopClient_0.2.tar.gz
+      spark-2.1.0-bin-hadoop2.6
+
+ 
+_R-Studio access_:
+
+     R-Studio Server - Create a OS user for each user who needs access on cluster controller node.
+     ‘sudo useradd test’
+     ‘sudo passwd test’ -> provide password 
+     Login with test/test
+
+
+_Systemv Service names and commands_:
+
+     sudo service rstudioserver status (start, stop)
+     sudo service spark-master status (start, stop)
+     sudo service spak-slave status (start, stop)
+
+
+_OS_: Centos. Works on both Centos and RHEL base machines
+
+
+_Sample code for Testing_: 
+ 
+_Base-R Testing_:
+
+    data(iris)  # Load the dataset iris
+    str(iris)  # Structure of the dataset
+    mean(iris$Sepal.Length)
+    str(iris$Sepal.Length)
+    tapply(iris$Sepal.Length, iris$Species, mean)
+
+_Sparklyr Testing_: 
+ 
+     if (nchar(Sys.getenv("SPARK_HOME")) < 1) {
+        Sys.setenv(SPARK_HOME = "/usr/lib/spark/spark-2.1.0-bin-hadoop2.6")}
+     library(sparklyr)
+     sc <- spark_connect(master = "spark://bluedata-266.bdlocal:7077")  (*Replace with your master)
+     # Simple Test
+     data(iris)  # Load the dataset iris
+     str(iris)  # Structure of the dataset
+     mean(iris$Sepal.Length)
+     str(iris$Sepal.Length)
+     tapply(iris$Sepal.Length, iris$Species, mean)
+     #MLLib usage test
+     library(dplyr)
+     # copy mtcars into spark
+     mtcars_tbl <- copy_to(sc, mtcars)
+     #  ** May show an error regarding problem with database. Seems to work OK after that
+     src_tbls(sc)
+     # transform our data set, and then partition into 'training', 'test'
+     partitions <- mtcars_tbl %>%
+     filter(hp >= 100) %>%
+     mutate(cyl8 = cyl == 8) %>%
+     sdf_partition(training = 0.5, test = 0.5, seed = 1099)
+     # fit a linear model to the training dataset
+     fit <- partitions$training %>%
+     ml_linear_regression(response = "mpg", features = c("wt", "cyl"))
+     summary(fit)
+
+
+_Reading data from dtap_:
+ 
+       count_lines <- function(sc, file) {
+        spark_context(sc) %>% 
+          invoke("textFile", file, 1L) %>% 
+          invoke("count")}
+    count_lines(sc, "dtap://TenantStorage/data/samples/bank-full.csv")
   
