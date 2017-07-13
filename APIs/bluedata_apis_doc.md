@@ -36,7 +36,10 @@
   - [32. Retrieve a List of All Virtual Nodes](#32-retrieve-a-list-of-all-virtual-nodes)
   - [33. Delete a job](#33-delete-a-job)
   - [34. Invoke ActionScript](#34-invoke-actionscript)
-  - [35. Mount dtap to Virtual cluster ActionScript](#35-mount-dtap-to-virtual-cluster-actionscript)
+  - [35. Update the hue.ini safety valve to point to datatap](#35-update-the-hue.ini-saftey-valve-to-point-to-datatap)
+  - [36. Mount dtap to Virtual cluster ActionScript](#35-mount-dtap-to-virtual-cluster-actionscript)
+  - [37. Switch Tenant](#37-switch-tenant)
+  - [38. Verify current session role and tenant](#verify-current-session-role-and-tenant)
 
 ## 1. Login and Session Creation
 
@@ -1113,6 +1116,41 @@ AWS:
 
   __Curl command__:
 
+      curl -X POST http://<controller-ip>:8080/api/v2/cluster/<cluster-id>/action_task -H 'cache-control:no-cache' -H 'content-type: application/json' -H 'x-bds-session:<session-id>' -d@Spark_submit.json
+
+  __API Type__: `POST`
+
+  __Example__:
+
+      curl -X POST http://10.36.0.27:8080/api/v2/cluster/8/action_task -H 'cache-control:no-cache' -H 'content-type: application/json' -H 'x-bds-session:/api/v1/session/9b4e6dea-158e-484d-ad64-916cb738563c' -d@Spark_submit.json
+
+ __Json-file__: hue_ini_dtap.json:
+
+        {
+    "action_args": "",
+    "action_as_root": "true",
+    "action_cluster": "8",
+    "action_cmd": "#/bin/bash\nexport node=`bdvcli --get node.role_id`\nif [[ $node == \"controller\" ]]; then\n    /usr/lib/spark/spark-2.1.1-bin-hadoop2.7/bin/spark-submit --class org.apache.spark.examples.SparkPi --master spark://bluedata-4.bdlocal:7077 /usr/lib/spark/spark-2.1.1-bin-hadoop2.7/examples/jars/spark-examples_2.11-2.1.1.jar 100\nfi",
+    "action_name": "Spark-submit_ActionSource_spark_submit_job.sh",
+    "action_nodegroupid": "1",
+    "action_user": "admin" }
+
+
+  __Response__:
+
+      {"result":"Success","uuid":"action_170"}
+
+
+
+
+
+## 35. Update the hue.ini safety valve to point to datatap
+
+
+  __API-URI__: /api/v2/cluster/<cluster-id>/action_task
+
+  __Curl command__:
+
       curl -X POST http://<controller-ip>:8080/api/v2/cluster/<cluster-id>/action_task -H 'cache-control:no-cache' -H 'content-type: application/json' -H 'x-bds-session:<session-id>' -d@hue_ini_dtap.json
 
   __API Type__: `POST`
@@ -1140,7 +1178,7 @@ AWS:
 
 
 
-## 35. Mount dtap to Virtual cluster ActionScript
+## 36. Mount dtap to Virtual cluster ActionScript
 
 
   __API-URI__: /api/v2/cluster/<cluster-id>/action_task
@@ -1171,5 +1209,48 @@ AWS:
 
       {"result":"Success","uuid":"action_170"}
 
+
+## 37. Switch Tenant
+
+  __API-URI__: /api/v1/tenant
+
+  __Curl command__:
+
+      curl -X PUT -d@switch_tenant.json -H "X-BDS-SESSION:<Session-ID>" http://<Controller-ID>:8080/api/v1/session/<session-id>?tenant
+
+  __API Type__: `PUT`
+
+  __Example__:
+
+      curl -X PUT -d@switch_tenant.json -H "X-BDS-SESSION:/api/v1/session/2b7066ae-4ce2-49be-8294-d16b028a7657" http://10.36.0.17:8080/api/v1/session/2b7066ae-4ce2-49be-8294-d16b028a7657?tenant
+
+ __Json-file__: switch_tenant.json:
+
+           {"role": "/api/v1/role/1",
+           "tenant": "/api/v1/tenant/2"}
+
+
+  __Response__:
+
+      None
+
+
+## 38. Verify current session role and tenant:
+
+  __API-URI__: /api/v1/session/<session-id>
+
+  __Curl command__:
+
+      curl -X GET -H "X-BDS-SESSION:<Session-ID>" http://<Controller-ID>:8080/api/v1/session/<session-id>
+
+  __API Type__: `GET`
+
+  __Example__:
+
+      curl -X GET -H "X-BDS-SESSION:/api/v1/session/930dd6cc-57ef-4bb2-aa24-23a17744fe14" http://10.36.0.17:8080/api/v1/session/930dd6cc-57ef-4bb2-aa24-23a17744fe14
+
+  __Response__:
+
+    {"_links":{"self":{"href":"/api/v1/session/930dd6cc-57ef-4bb2-aa24-23a17744fe14"},"all_sessions":{"href":"/api/v1/session"}},"user":"/api/v1/user/257","tenant":"/api/v1/tenant/1","role":"/api/v1/role/1","expiry":"2017-7-14 11:22:29"}
 
 </span>

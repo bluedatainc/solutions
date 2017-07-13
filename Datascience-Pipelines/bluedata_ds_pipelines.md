@@ -3,13 +3,13 @@
 # Datascience-Pipelines
 
   - [1. JupyterHub Server with Spark2.1.1](#1-jupyterhub-server-with-spark2.1.1)
-  - [2. Nifi/HDF2.1 with embedded Zookeepers](#2-nifi/hdf2.1-with-embedded-zookeepers)
+  - [2. Nifi or HDF2.1 with embedded Zookeepers](#2-nifi-or-hdf2.1-with-embedded-zookeepers)
   - [3. Kafka Spark and Cassandra pipeline in BlueData](#3-kafka-spark-and-cassandra-pipeline-in-bluedata)
-  - [4. R-Studio Server with Spark 2.1.0](#4-r-studio-server-with-spark-2.1.0)
+  - [4. RStudio Server with Spark 2.1.0 ](#4-rstudio-server-with-spark-2.1.0)
 
   
 ## 1. JupyterHub Server with Spark2.1.1
- 
+
 _Location_: https://s3.amazonaws.com/bluedata-catalog/solutions/bins/bdcatalog-centos-bluedata-jupyterhubsp-1.2.bin
 
 _DistroId_: bluedata/jupyterhubsp
@@ -131,7 +131,7 @@ _Output_: Sample output is as given below.
  
 
 
-## 2. Nifi/HDF2.1 with embedded Zookeepers
+## 2. Nifi or HDF2.1 with embedded Zookeepers
  
 _Location_: https://s3.amazonaws.com/bluedata-catalog/solutions/bins/bdcatalog-centos-bluedata-hdf21base-3.0.bin
 
