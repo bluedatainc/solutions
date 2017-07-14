@@ -47,7 +47,7 @@
 
   __Curl command__:
 
-      curl -i -X POST -d@login.json http://<controller-ip>/api/v1/login
+      curl -i -X POST -d@login.json http://<controller-ip>:8080/api/v1/login
 
   __API Type__: `POST`
 
@@ -77,7 +77,7 @@
 
   __Curl command__:
 
-      curl -X GET -H "X-BDS-SESSION:<session-id>" http://<controller-ip>/api/v1/catalog/
+      curl -X GET -H "X-BDS-SESSION:<session-id>" http://<controller-ip>:8080/api/v1/catalog/
 
   __API Type__: `GET`
 
@@ -129,7 +129,7 @@
 
   __Curl command__:
 
-      curl -X GET -H "X-BDS-SESSION:<Session-ID>" http://<Controller-ID>/api/v1/tenant
+      curl -X GET -H "X-BDS-SESSION:<Session-ID>" http://<controller-ip>:8080/api/v1/tenant
 
   __API Type__: `GET`
 
@@ -191,7 +191,7 @@
 
   __Curl command__:
 
-      curl -X GET -H "X-BDS-SESSION:<session-id>" http://<controller-ip>/api/v1/tenant/<tenant-id>
+      curl -X GET -H "X-BDS-SESSION:<session-id>" http://<controller-ip>:8080/api/v1/tenant/<tenant-id>
 
   __API Type__: `GET`
 
@@ -253,7 +253,7 @@
 
   __Curl command__:
 
-      curl -X GET -H "X-BDS-SESSION:<session-id>" http://<controller-ip>/api/v1/cluster
+      curl -X GET -H "X-BDS-SESSION:<session-id>" http://<controller-ip>:8080/api/v1/cluster
 
   __API Type__: `GET`
 
@@ -273,7 +273,7 @@
 
   __Curl command__:
 
-      curl -X GET -H "X-BDS-SESSION:<session-id>" http://<controller-ip>/api/v1/cluster/?nodelist
+      curl -X GET -H "X-BDS-SESSION:<session-id>" http://<controller-ip>:8080/api/v1/cluster/?nodelist
 
   __API Type__: `GET`
 
@@ -292,7 +292,7 @@
 
   __Curl command__:
 
-      curl -X GET -H "X-BDS-SESSION:<session-id>" http://<controller-ip>/api/v1/dataconn
+      curl -X GET -H "X-BDS-SESSION:<session-id>" http://<controller-ip>:8080/api/v1/dataconn
 
   __API Type__: `GET`
 
@@ -510,7 +510,7 @@
 
   __Curl command__:
 
-      curl -v -X DELETE -H "X-BDS-SESSION:<session-id>" http://<controller-ip>/api/v1/dataconn/<datatap-id>
+      curl -v -X DELETE -H "X-BDS-SESSION:<session-id>" http://<controller-ip>:8080/api/v1/dataconn/<datatap-id>
 
   __API Type__: `DELETE`
 
@@ -531,7 +531,7 @@
 
   __Curl command__:
 
-      curl -X POST -d@tenant.json -H "X-BDS-SESSION:<session-id>" http://<controller-ip>/api/v1/tenant
+      curl -X POST -d@tenant.json -H "X-BDS-SESSION:<session-id>" http://<controller-ip>:8080/api/v1/tenant
 
   __API Type__: `POST`
 
@@ -626,7 +626,7 @@ AWS:
 
   __Curl command__:
 
-      curl -X POST -d@user.json -H "X-BDS-SESSION:<session-id>" http://<controller-ip>/api/v1/user
+      curl -X POST -d@user.json -H "X-BDS-SESSION:<session-id>" http://<controller-ip>:8080/api/v1/user
 
   __API Type__: `POST`
 
@@ -659,7 +659,7 @@ AWS:
 
   __Curl command__:
 
-      curl -v -X DELETE -H "X-BDS-SESSION:<session-id>" http://<controller-ip>/api/v1/user/<user-id>
+      curl -v -X DELETE -H "X-BDS-SESSION:<session-id>" http://<controller-ip>:8080/api/v1/user/<user-id>
 
   __API Type__: `DELETE`
 
@@ -802,7 +802,7 @@ AWS:
 
   __Curl command__:
 
-      curl -X GET -H "X-BDS-SESSION:<session-id>" http://<controller-ip>/api/v1/job
+      curl -X GET -H "X-BDS-SESSION:<session-id>" http://<controller-ip>:8080/api/v1/job
 
   __API Type__: `GET`
 
@@ -855,7 +855,7 @@ AWS:
 
   __Curl command__:
 
-      curl -X GET -H "X-BDS-SESSION:<session-id>" http://<controller-ip>/api/v1/user/<UserObj>?tenant
+      curl -X GET -H "X-BDS-SESSION:<session-id>" http://<controller-ip>:8080/api/v1/user/<UserObj>?tenant
 
   __API Type__: `GET`
 
@@ -879,7 +879,7 @@ AWS:
 
   __Curl command__:
 
-      curl -X GET -H "X-BDS-SESSION:<session-id>" http://<controller-ip>/api/v1/tenant/<tenant-id>?user
+      curl -X GET -H "X-BDS-SESSION:<session-id>" http://<controller-ip>:8080/api/v1/tenant/<tenant-id>?user
 
   __API Type__: `GET`
 
@@ -1241,7 +1241,7 @@ AWS:
 
   __Curl command__:
 
-      curl -X GET -H "X-BDS-SESSION:<Session-ID>" http://<Controller-ID>:8080/api/v1/session/<session-id>
+      curl -X GET -H "X-BDS-SESSION:<Session-ID>" http://<controller-ip>:8080/api/v1/session/<session-id>
 
   __API Type__: `GET`
 
