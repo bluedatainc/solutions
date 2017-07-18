@@ -1124,7 +1124,7 @@ AWS:
 
       curl -X POST http://10.36.0.27:8080/api/v2/cluster/8/action_task -H 'cache-control:no-cache' -H 'content-type: application/json' -H 'x-bds-session:/api/v1/session/9b4e6dea-158e-484d-ad64-916cb738563c' -d@Spark_submit.json
 
- __Json-file__: hue_ini_dtap.json:
+ __Json-file__: Spark_submit.json:
 
         {
     "action_args": "",
