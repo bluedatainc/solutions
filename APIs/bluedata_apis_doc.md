@@ -333,38 +333,6 @@
             "spark_installed":false,
             "apps_installed":true,
             "mr_type":"YARN",
-            "config_nondefaults":[
-              {
-                  "namespace":"yarn-site.xml",
-                  "value":"2046",
-                  "property_name":"yarn.nodemanager.resource.memory-mb"
-              },
-              {
-                  "namespace":"mapred-site-yarn.xml",
-                  "value":"1364",
-                  "property_name":"mapreduce.reduce.memory.mb"
-              },
-              {
-                  "namespace":"mapred-site-yarn.xml",
-                  "value":"1364",
-                  "property_name":"yarn.app.mapreduce.am.resource.mb"
-              },
-              {
-                  "namespace":"mapred-site-yarn.xml",
-                  "value":"682",
-                  "property_name":"mapreduce.map.memory.mb"
-              },
-              {
-                  "namespace":"mapred-site-yarn.xml",
-                  "value":"272",
-                  "property_name":"mapreduce.task.io.sort.mb"
-              },
-              {
-                  "namespace":"yarn-site.xml",
-                  "value":"false",
-                  "property_name":"yarn.nodemanager.vmem-checkenabled"
-              }
-            ]
         }
 
   __Response__:
