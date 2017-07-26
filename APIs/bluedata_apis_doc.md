@@ -337,7 +337,7 @@
 
   __Response__:
 
-      201 Created
+      {"result":"Success","uuid":"216"}
 
 
 
@@ -376,7 +376,7 @@
 
   __Response__:
 
-      201 Created
+      {"result":"Success","uuid":"107"}
 
 
 ## 10. Create a cluster DataTap
