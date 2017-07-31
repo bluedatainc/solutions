@@ -187,7 +187,7 @@
 
 ## 4. Retrieve tenant information such as resources, security, and other settings
 
-  __API-URI__: /api/v1/tenant/<tenant-id>
+  __API-URI__: /api/v1/tenant/{tenant-id}
 
   __Curl command__:
 
