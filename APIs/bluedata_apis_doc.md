@@ -421,7 +421,7 @@
 
 
 
-  __API-URI__: /api/v1/tenant/<tenant-id>?tenant_kdc
+  __API-URI__: /api/v1/tenant/{tenant-id}?tenant_kdc
 
   __Curl command__:
 
@@ -453,7 +453,7 @@
 
 
 
-  __API-URI__: /api/v1/cluster/<uuid>
+  __API-URI__: /api/v1/cluster/{uuid}
 
   __Curl command__:
 
@@ -474,7 +474,7 @@
 
 
 
-  __API-URI__: /api/v1/dataconn/<datatap-id>
+  __API-URI__: /api/v1/dataconn/{datatap-id}
 
   __Curl command__:
 
@@ -558,7 +558,7 @@ AWS:
 
 
 
-  __API-URI__: /api/v1/tenant/<tenant-id>?external_user_groups
+  __API-URI__: /api/v1/tenant/{tenant-id}?external_user_groups
 
   __Curl command__:
 
@@ -623,7 +623,7 @@ AWS:
 
 
 
-  __API-URI__: /api/v1/user/<user-id>
+  __API-URI__: /api/v1/user/{user-id}
 
   __Curl command__:
 
@@ -645,7 +645,7 @@ AWS:
 
 
 
-  __API-URI__: /api/v1/tenant/<tenant-id>
+  __API-URI__: /api/v1/tenant/{tenant-id}
 
   __Curl command__:
 
@@ -667,7 +667,7 @@ AWS:
 
 
 
-  __API-URI__:  /api/v1/session/<session-id>?tenant
+  __API-URI__:  /api/v1/session/{session-id}?tenant
 
   __Curl command__:
 
@@ -788,7 +788,7 @@ AWS:
 
 
 
-  __API-URI__: /api/v1/tenant/<tenant-id>?user
+  __API-URI__: /api/v1/tenant/{tenant-id}?user
 
   __Curl command__:
 
@@ -819,7 +819,7 @@ AWS:
 
 
 
-  __API-URI__: /api/v1/user/<UserObj>?tenant
+  __API-URI__: /api/v1/user/{UserObj}?tenant
 
   __Curl command__:
 
@@ -843,7 +843,7 @@ AWS:
 
 
 
-  __API-URI__: /api/v1/tenant/<tenant-id>?user
+  __API-URI__: /api/v1/tenant/{tenant-id}?user
 
   __Curl command__:
 
@@ -866,7 +866,7 @@ AWS:
 ## 26. Reset User Password
 
 
-  __API-URI__: /api/v1/user/<user-id>?password
+  __API-URI__: /api/v1/user/{user-id}?password
 
   __Curl command__:
 
@@ -896,7 +896,7 @@ AWS:
 ## 27. Reboot Virtual Node
 
 
-  __API-URI__: /api/v1/user/<user-id>?password
+  __API-URI__: /api/v1/user/{user-id}?password
 
   __Curl command__:
 
@@ -926,7 +926,7 @@ AWS:
 ## 28. Reboot Virtual Cluster
 
 
-  __API-URI__: /api/v1/cluster/<cluster-id>
+  __API-URI__: /api/v1/cluster/{cluster-id}
 
   __Curl command__:
 
@@ -953,7 +953,7 @@ AWS:
 ## 29. Stop a Virtual Cluster
 
 
-  __API-URI__: /api/v1/cluster/<cluster-id>
+  __API-URI__: /api/v1/cluster/{cluster-id}
 
   __Curl command__:
 
@@ -980,7 +980,7 @@ AWS:
 ## 30. Start a Virtual Cluster
 
 
-  __API-URI__: /api/v1/cluster/<cluster-id>
+  __API-URI__: /api/v1/cluster/{cluster-id}
 
   __Curl command__:
 
@@ -1008,7 +1008,7 @@ AWS:
 ## 31. Revoke User Access to a Tenant
 
 
-  __API-URI__: /api/v1/tenant/<tenant-id>?user
+  __API-URI__: /api/v1/tenant/{tenant-id}?user
 
   __Curl command__:
 
@@ -1059,7 +1059,7 @@ AWS:
 ## 33. Delete a job
 
 
-  __API-URI__: /api/v1/job/<job-id>
+  __API-URI__: /api/v1/job/{job-id}
 
   __Curl command__:
 
@@ -1080,7 +1080,7 @@ AWS:
 ## 34. Invoke ActionScript
 
 
-  __API-URI__: /api/v2/cluster/<cluster-id>/action_task
+  __API-URI__: /api/v2/cluster/{cluster-id}/action_task
 
   __Curl command__:
 
@@ -1115,7 +1115,7 @@ AWS:
 ## 35. Update the hue.ini safety valve to point to datatap
 
 
-  __API-URI__: /api/v2/cluster/<cluster-id>/action_task
+  __API-URI__: /api/v2/cluster/{cluster-id}/action_task
 
   __Curl command__:
 
@@ -1149,7 +1149,7 @@ AWS:
 ## 36. Mount dtap to Virtual cluster ActionScript
 
 
-  __API-URI__: /api/v2/cluster/<cluster-id>/action_task
+  __API-URI__: /api/v2/cluster/{cluster-id}/action_task
 
   __Curl command__:
 
@@ -1205,7 +1205,7 @@ AWS:
 
 ## 38. Verify current session role and tenant:
 
-  __API-URI__: /api/v1/session/<session-id>
+  __API-URI__: /api/v1/session/{session-id}
 
   __Curl command__:
 
