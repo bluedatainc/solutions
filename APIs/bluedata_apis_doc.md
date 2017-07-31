@@ -37,7 +37,7 @@
   - [33. Delete a job](#33-delete-a-job)
   - [34. Invoke ActionScript](#34-invoke-actionscript)
   - [35. Update the hue.ini safety valve to point to datatap](#35-update-the-hue.ini-saftey-valve-to-point-to-datatap)
-  - [36. Mount dtap to Virtual cluster ActionScript](#35-mount-dtap-to-virtual-cluster-actionscript)
+  - [36. Mount dtap to Virtual cluster ActionScript](#36-mount-dtap-to-virtual-cluster-actionscript)
   - [37. Switch Tenant](#37-switch-tenant)
   - [38. Verify current session role and tenant](#verify-current-session-role-and-tenant)
 
