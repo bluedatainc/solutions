@@ -263,7 +263,54 @@
 
   __Response__:
 
-      {"result":"Success","objects":[{"result":"Success","uuid":"65","cluster_name":"Spark-Nifi-test","cluster_type":"Spark","distro_name":"Spark 1.6.0","distro_version":"1.8","distro_state":"installed","cluster_context":"Persistent","master_flavor":{"root_disk_size":100,"label":{"name":"Medium","description":"system-created example flavor"},"cores":4,"memory":12288},"slave_count":2,"slave_flavor":{"root_disk_size":30,"label":{"name":"Small","description":"system-created example flavor"},"cores":4,"memory":8192},"status_message":"","error_info":"","ha_enabled":false,"apps_installed":false,"include_spark_installation":false,"mr_type":"","kerberos_enabled":false,"log_url":"http://10.36.0.17:8080/Logs/65.txt","client_config_xml":"","client_config_java":"","status":"ready","tenant_id":"/api/v1/tenant/2","tenant_name":"Demo Tenant","tenant_type":"docker"}
+      {
+        "result": "Success",
+        "objects": [
+          {
+            "result": "Success",
+            "uuid": "65",
+            "cluster_name": "Spark-Nifi-test",
+            "cluster_type": "Spark",
+            "distro_name": "Spark 1.6.0",
+            "distro_version": "1.8",
+            "distro_state": "installed",
+            "cluster_context": "Persistent",
+            "master_flavor": {
+              "root_disk_size": 100,
+              "label": {
+                "name": "Medium",
+                "description": "system-created example flavor"
+              },
+              "cores": 4,
+              "memory": 12288
+            },
+            "slave_count": 2,
+            "slave_flavor": {
+              "root_disk_size": 30,
+              "label": {
+                "name": "Small",
+                "description": "system-created example flavor"
+              },
+              "cores": 4,
+              "memory": 8192
+            },
+            "status_message": "",
+            "error_info": "",
+            "ha_enabled": false,
+            "apps_installed": false,
+            "include_spark_installation": false,
+            "mr_type": "",
+            "kerberos_enabled": false,
+            "log_url": "http://10.36.0.17:8080/Logs/65.txt",
+            "client_config_xml": "",
+            "client_config_java": "",
+            "status": "ready",
+            "tenant_id": "/api/v1/tenant/2",
+            "tenant_name": "Demo Tenant",
+            "tenant_type": "docker"
+          }
+        ]
+      }
 
 
 
@@ -283,7 +330,54 @@
 
   __Response__:
 
-      {"result":"Success","objects":[{"result":"Success","uuid":"65","cluster_name":"Spark-Nifi-test","cluster_type":"Spark","distro_name":"Spark 1.6.0","distro_version":"1.8","distro_state":"installed","cluster_context":"Persistent","master_flavor":{"root_disk_size":100,"label":{"name":"Medium","description":"system-created example flavor"},"cores":4,"memory":12288},"slave_count":2,"slave_flavor":{"root_disk_size":30,"label":{"name":"Small","description":"system-created example flavor"},"cores":4,"memory":8192},"status_message":"","error_info":"","ha_enabled":false,"apps_installed":false,"include_spark_installation":false,"mr_type":"","kerberos_enabled":false,"log_url":"http://10.36.0.17:8080/Logs/65.txt","client_config_xml":"","client_config_java":"","status":"ready","tenant_id":"/api/v1/tenant/2","tenant_name":"Demo Tenant","tenant_type":"docker"}
+      {
+        "result": "Success",
+        "objects": [
+          {
+            "result": "Success",
+            "uuid": "65",
+            "cluster_name": "Spark-Nifi-test",
+            "cluster_type": "Spark",
+            "distro_name": "Spark 1.6.0",
+            "distro_version": "1.8",
+            "distro_state": "installed",
+            "cluster_context": "Persistent",
+            "master_flavor": {
+              "root_disk_size": 100,
+              "label": {
+                "name": "Medium",
+                "description": "system-created example flavor"
+              },
+              "cores": 4,
+              "memory": 12288
+            },
+            "slave_count": 2,
+            "slave_flavor": {
+              "root_disk_size": 30,
+              "label": {
+                "name": "Small",
+                "description": "system-created example flavor"
+              },
+              "cores": 4,
+              "memory": 8192
+            },
+            "status_message": "",
+            "error_info": "",
+            "ha_enabled": false,
+            "apps_installed": false,
+            "include_spark_installation": false,
+            "mr_type": "",
+            "kerberos_enabled": false,
+            "log_url": "http://10.36.0.17:8080/Logs/65.txt",
+            "client_config_xml": "",
+            "client_config_java": "",
+            "status": "ready",
+            "tenant_id": "/api/v1/tenant/2",
+            "tenant_name": "Demo Tenant",
+            "tenant_type": "docker"
+          }
+        ]
+      }
 
 
 ## 7. Get created DataTap in a certain tenant
@@ -302,7 +396,75 @@
 
   __Response__:
 
-      {"_links":{"self":{"href":"/api/v1/dataconn"}},"_embedded":{"data_connectors":[{"_links":{"self":{"href":"/api/v1/dataconn/1"},"query":{"href":"/api/v1/dataconn/1{?query}","templated":true}},"_embedded":{"label":{"_links":{"self":{"href":"/api/v1/dataconn/1?label"}},"name":"TenantStorage","description":"Protected DataTap for a tenant-specific sandboxed storage space."},"endpoint":{"_links":{"self":{"href":"/api/v1/dataconn/1?endpoint"}},"type":"hdfs","host":"yav-114.lab.bluedata.com","kdc_data":[{"host":"10.36.0.17","port":88}],"keytab":"datasrvr.headless.keytab","realm":"BLUEDATA.SITE","client_principal":"datasrvr/yav-114.lab.bluedata.com@BLUEDATA.SITE","service_id":"hdfs"},"bdfs_root":{"_links":{"self":{"href":"/api/v1/dataconn/1?bdfs_root"}},"path_from_endpoint":"/2/default"},"flags":{"_links":{"self":{"href":"/api/v1/dataconn/1?flags"}},"read_only":false},"is_protected":true}}]}}
+      {
+        "_links": {
+          "self": {
+            "href": "/api/v1/dataconn"
+          }
+        },
+        "_embedded": {
+          "data_connectors": [
+            {
+              "_links": {
+                "self": {
+                  "href": "/api/v1/dataconn/1"
+                },
+                "query": {
+                  "href": "/api/v1/dataconn/1{?query}",
+                  "templated": true
+                }
+              },
+              "_embedded": {
+                "label": {
+                  "_links": {
+                    "self": {
+                      "href": "/api/v1/dataconn/1?label"
+                    }
+                  },
+                  "name": "TenantStorage",
+                  "description": "Protected DataTap for a tenant-specific sandboxed storage space."
+                },
+                "endpoint": {
+                  "_links": {
+                    "self": {
+                      "href": "/api/v1/dataconn/1?endpoint"
+                    }
+                  },
+                  "type": "hdfs",
+                  "host": "yav-114.lab.bluedata.com",
+                  "kdc_data": [
+                    {
+                      "host": "10.36.0.17",
+                      "port": 88
+                    }
+                  ],
+                  "keytab": "datasrvr.headless.keytab",
+                  "realm": "BLUEDATA.SITE",
+                  "client_principal": "datasrvr/yav-114.lab.bluedata.com@BLUEDATA.SITE",
+                  "service_id": "hdfs"
+                },
+                "bdfs_root": {
+                  "_links": {
+                    "self": {
+                      "href": "/api/v1/dataconn/1?bdfs_root"
+                    }
+                  },
+                  "path_from_endpoint": "/2/default"
+                },
+                "flags": {
+                  "_links": {
+                    "self": {
+                      "href": "/api/v1/dataconn/1?flags"
+                    }
+                  },
+                  "read_only": false
+                },
+                "is_protected": true
+              }
+            }
+          ]
+        }
+      }
 
 
 ## 8. Create a new cluster
@@ -713,7 +875,15 @@ AWS:
   __Json-file__: job.json:
 
         {
-          "spark_command_line": " ", "app_name": "wordcount", "jar_path": "/srv/bluedata/job-a1226be7083d6f4704febdb273023251/jar/hdp-examples.jar", "job_type": "Hadoop Custom Jar", "command_line": "hadoop jar  $jar_path$ $app_name$ dtap://TenantStorage/test/sahithi/customer_demographics.csvdtap://TenantStorage/test/out1", "dependencies": [], "cluster_context": "Persistent", "cluster_uuid": "78", "job_name": "WC-Test"
+          "spark_command_line": " ",
+          "app_name": "wordcount",
+          "jar_path": "/srv/bluedata/job-a1226be7083d6f4704febdb273023251/jar/hdp-examples.jar",
+          "job_type": "Hadoop Custom Jar",
+          "command_line": "hadoop jar  $jar_path$ $app_name$ dtap://TenantStorage/test/sahithi/customer_demographics.csvdtap://TenantStorage/test/out1",
+          "dependencies": [],
+          "cluster_context": "Persistent",
+          "cluster_uuid": "78",
+          "job_name": "WC-Test"
         }
 
 
@@ -833,7 +1003,31 @@ AWS:
 
   __Response__:
 
-      {"_links":{"self":{"href":"/api/v1/user/263?tenant"}},"_embedded":{"tenants":[{"_links":{"self":{"href":"/api/v1/tenant/2"}},"_embedded":{"label":{"name":"Demo Tenant","description":"Demo Tenant for BlueData Clusters"},"role":"/api/v1/role/3"}}]}}
+      {
+        "_links": {
+          "self": {
+            "href": "/api/v1/user/263?tenant"
+          }
+        },
+        "_embedded": {
+          "tenants": [
+            {
+              "_links": {
+                "self": {
+                  "href": "/api/v1/tenant/2"
+                }
+              },
+              "_embedded": {
+                "label": {
+                  "name": "Demo Tenant",
+                  "description": "Demo Tenant for BlueData Clusters"
+                },
+                "role": "/api/v1/role/3"
+              }
+            }
+          ]
+        }
+      }
 
 
 
@@ -857,7 +1051,45 @@ AWS:
 
   __Response__:
 
-      {"_links":{"self":{"href":"/api/v1/tenant/2?user"}},"_embedded":{"users":[{"_links":{"self":{"href":"/api/v1/user/263"}},"_embedded":{"label":{"name":"demo.user","description":"BlueData Anonymous User"},"role":"/api/v1/role/3"}},{"_links":{"self":{"href":"/api/v1/user/257"}},"_embedded":{"label":{"name":"admin","description":"BlueData Administrator"},"role":"/api/v1/role/2"}}]}}
+      {
+        "_links": {
+          "self": {
+            "href": "/api/v1/tenant/2?user"
+          }
+        },
+        "_embedded": {
+          "users": [
+            {
+              "_links": {
+                "self": {
+                  "href": "/api/v1/user/263"
+                }
+              },
+              "_embedded": {
+                "label": {
+                  "name": "demo.user",
+                  "description": "BlueData Anonymous User"
+                },
+                "role": "/api/v1/role/3"
+              }
+            },
+            {
+              "_links": {
+                "self": {
+                  "href": "/api/v1/user/257"
+                }
+              },
+              "_embedded": {
+                "label": {
+                  "name": "admin",
+                  "description": "BlueData Administrator"
+                },
+                "role": "/api/v1/role/2"
+              }
+            }
+          ]
+        }
+      }
 
 
 
@@ -1052,7 +1284,7 @@ AWS:
 
   __Response__:
 
-      [{"id":"bdae6652204c4c66ebbec33a213d1bf69565a1da38a8a9505e06d25a399fbcd8","name":"bluedata-70.bdlocal","flavor":{"root_disk_size":30,"label":{"name":"Small","description":"system-created example flavor"},"cores":4,"memory":8192},"root_disk_size":"30","nodegroup_id":"1","distro_name":"Rstudio-Server with shiny-server on AWS","distro_version":"5.0","distro_state":"installed","in_use":true,"persistent":true,"job_or_cluster":"Rstudio","hypervisor_host":"yav-204.lab.bluedata.com","node_ip":"10.39.252.11","tenant_name":"SalesAnalytics","tenant_type":"docker"},{"id":"d5c650eb473ac81abb21147fb8459938f1c78586661829ed60b850af98443c36","name":"bluedata-138.bdlocal","flavor":{"root_disk_size":30,"label":{"name":"Small","description":"system-created example flavor"},"cores":4,"memory":8192},"root_disk_size":"30","nodegroup_id":"1","distro_name":"HDP 2.6 with Ambari 2.5","distro_version":"1.1","distro_state":"installed","in_use":true,"persistent":true,"job_or_cluster":"HDP2.6+Nifi","hypervisor_host":"yav-114.lab.bluedata.com","node_ip":"10.39.252.8","tenant_name":"Demo Tenant","tenant_type":"docker"}
+      [{"id":"bdae6652204c4c66ebbec33a213d1bf69565a1da38a8a9505e06d25a399fbcd8","name":"bluedata-70.bdlocal","flavor":{"root_disk_size":30,"label":{"name":"Small","description":"system-created example flavor"},"cores":4,"memory":8192},"root_disk_size":"30","nodegroup_id":"1","distro_name":"Rstudio-Server with shiny-server on AWS","distro_version":"5.0","distro_state":"installed","in_use":true,"persistent":true,"job_or_cluster":"Rstudio","hypervisor_host":"yav-204.lab.bluedata.com","node_ip":"10.39.252.11","tenant_name":"SalesAnalytics","tenant_type":"docker"},{"id":"d5c650eb473ac81abb21147fb8459938f1c78586661829ed60b850af98443c36","name":"bluedata-138.bdlocal","flavor":{"root_disk_size":30,"label":{"name":"Small","description":"system-created example flavor"},"cores":4,"memory":8192},"root_disk_size":"30","nodegroup_id":"1","distro_name":"HDP 2.6 with Ambari 2.5","distro_version":"1.1","distro_state":"installed","in_use":true,"persistent":true,"job_or_cluster":"HDP2.6+Nifi","hypervisor_host":"yav-114.lab.bluedata.com","node_ip":"10.39.252.8","tenant_name":"Demo Tenant","tenant_type":"docker"}]
 
 
 
@@ -1219,6 +1451,19 @@ AWS:
 
   __Response__:
 
-    {"_links":{"self":{"href":"/api/v1/session/930dd6cc-57ef-4bb2-aa24-23a17744fe14"},"all_sessions":{"href":"/api/v1/session"}},"user":"/api/v1/user/257","tenant":"/api/v1/tenant/1","role":"/api/v1/role/1","expiry":"2017-7-14 11:22:29"}
+    {
+      "_links": {
+        "self": {
+          "href": "/api/v1/session/930dd6cc-57ef-4bb2-aa24-23a17744fe14"
+        },
+        "all_sessions": {
+          "href": "/api/v1/session"
+        }
+      },
+      "user": "/api/v1/user/257",
+      "tenant": "/api/v1/tenant/1",
+      "role": "/api/v1/role/1",
+      "expiry": "2017-7-14 11:22:29"
+    }
 
 </span>
