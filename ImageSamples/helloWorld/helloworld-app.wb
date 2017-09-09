@@ -104,7 +104,7 @@ logo file --filepath helloworld-logo.png
 #  This section creates docker tgz and bin file                              #
 ##############################################################################
 image build --basedir image/centos --imgversion 1.0 --os centos7
-catalog save --filepath staging/hellworld-centos.json --force
+catalog save --filepath staging/helloworld-centos.json --force
 sources package
 catalog package
 ################################################################################
