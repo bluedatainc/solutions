@@ -1,0 +1,49 @@
+#!/bin/bash
+#
+# Copyright (c) 2016, BlueData Software, Inc.
+
+SELF=$(readlink -nf $0)
+export CONFIG_BASE_DIR=$(dirname ${SELF})
+
+JOBID=''
+JOBTYPE=''
+JOBCMDLINE=''
+
+JOBSTART='false'
+
+parse_args() {
+    while getopts ":si:t:c:" opt; do
+        case ${opt} in
+            s)
+                JOBSTART='true'
+                ;;
+            i)
+                JOBID=${OPTARG}
+                ;;
+            t)
+                JOBTYPE=${OPTARG}
+                ;;
+            c)
+                shift $((OPTIND - 2))
+                JOBCMDLINE=$@
+                ;;
+        esac
+    done
+
+    if [[ -z ${JOBID} || -z ${JOBTYPE} || -z ${JOBCMDLINE} ]]; then
+        echo "ERROR: -i, -t and -c command line options are mandatory."
+        exit 1
+    fi
+}
+parse_args $@
+
+APPJOB_LOG_DIR=/var/log/bluedata/
+[[ ! -e ${APPJOB_LOG_DIR} ]] && mkdir -p ${APPJOB_LOG_DIR}
+
+export LOG_FILE_PATH="${APPJOB_LOG_DIR}/${JOBID}.out"
+source ${CONFIG_BASE_DIR}/logging.sh
+source ${CONFIG_BASE_DIR}/utils.sh
+
+################################################################################
+#           Add application specific job invocation code below.                #
+################################################################################

@@ -1,0 +1,88 @@
+#!/usr/bin/env bdwb
+#########################################################
+#  Specify organization name for Apps (Required)        #
+#########################################################
+builder organization --name Bluedata
+
+#################### Catalog Metadata ########################################
+#  This section generates or loads catalog metadata json file                  #  
+#  Metadata includes: 			      			               #
+#         Identification info: Distro ID, Name, Desc                           #
+#         Supported roles: Example; Controller,worker,edge,gateway, custom     # 
+#         Deployed services: All registered services with display link (y/n)   #
+#         Role to Service : Associate specific services to selected roles      #
+##############################################################################
+
+######## Identification #############
+# App id, name, version, description, group (category)
+######################################
+
+catalog load --filepath helloworld-centos.json
+
+#################### CONTAINER CONFIGURATION SCRIPT (STARTSCRIPT) #################################
+#  This section generates or loads the startscript that runs on each container                     # 
+#  during cluster creation or cluster expansion/shrinking                                          #
+#  Startscript performs operations including but not limited to :                                  #
+#       *  Copying and updating configuration files from metadata repo to containers               #
+#       *  Replacing templatized values with runtime information                                   #
+#       *  Running app specific configuration scripts                                              #
+#       *  Starting selected services as per role/service assignment                               #
+#       *  Waiting on parent services before starting dependent services                           #
+#       *  Call other bootstrap scripts specified                                                  #
+###################################################################################################
+
+##########################   Required ####################
+# Configuration API helps keep bakward compatibility. New management features are enabled/disabled
+#  based on confiapi verison.   
+########################################################
+appconfig autogen --new --configapi 4
+
+############# Copy config files from metadata repo to container #############
+# These files are stored in a metadata repo until cluster creation 
+# After a cluster is created, it will be copied to specified destinations
+############
+appconfig autogen --pkgfile index.html --dest /var/www/html/index.html
+
+########### Update files with runtime information ############
+# Replace template variables with runtime values 
+###############################################################
+
+appconfig autogen --replace /var/www/html/index.html --pattern @@@@FQDN@@@@            \
+                  --macro GET_NODE_FQDN
+appconfig autogen --replace /var/www/html/index.html \
+                  --pattern @@@@CORES@@@@ --macro GET_TOTAL_VCORES
+appconfig autogen --replace /var/www/html/index.html    \
+                  --pattern @@@@MEMORY@@@@ --macro GET_TOTAL_VMEMORY_MB
+
+########### Copy init.d or systemctl (service) scripts to /etc/init.d ####
+# To automatically register and start/stop services create and copy systemd scripts
+############################
+
+#None
+# httpd install automatically creates a systemctl script
+
+########### Service start commands #######################
+# Start the services, in the order specified, with defined relationships 
+###############################
+appconfig autogen --srvcid httpd --sysv httpd
+
+################# Package app catalog in a tgz ##########################
+# This section generates app configuration bundle (appconfig.tgz)        #
+# Running the generate command executes and bundles the config Package   #
+#########################################################################
+appconfig autogen --generate
+appconfig package
+
+########################################################
+# Add Logo file for App store visual                   #
+########################################################
+logo file --filepath helloworld-logo.png
+
+################### Final bin package creation ###############################
+#  This section creates docker tgz and bin file                              #
+##############################################################################
+image build --basedir image/centos --imgversion 1.0 --os centos7
+catalog save --filepath staging/hellworld-centos.json --force
+sources package
+catalog package
+################################################################################
