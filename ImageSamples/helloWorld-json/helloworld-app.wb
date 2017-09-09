@@ -13,10 +13,6 @@ builder organization --name Bluedata
 #         Role to Service : Associate specific services to selected roles      #
 ##############################################################################
 
-######## Identification #############
-# App id, name, version, description, group (category)
-######################################
-
 catalog load --filepath helloworld-centos.json
 
 #################### CONTAINER CONFIGURATION SCRIPT (STARTSCRIPT) #################################
