@@ -2,13 +2,13 @@
 #########################################################
 #  Specify organization name for Apps (Required)        #
 #########################################################
-builder organization --name Bluedata
+builder organization --name Sample
 
 #################### Catalog Metadata ########################################
-#  This section generates or loads catalog metadata json file                  #  
+#  This section generates or loads catalog metadata json file                  #
 #  Metadata includes: 			      			               #
 #         Identification info: Distro ID, Name, Desc                           #
-#         Supported roles: Example; Controller,worker,edge,gateway, custom     # 
+#         Supported roles: Example; Controller,worker,edge,gateway, custom     #
 #         Deployed services: All registered services with display link (y/n)   #
 #         Role to Service : Associate specific services to selected roles      #
 ##############################################################################
@@ -16,7 +16,7 @@ builder organization --name Bluedata
 catalog load --filepath helloworld-centos.json
 
 #################### CONTAINER CONFIGURATION SCRIPT (STARTSCRIPT) #################################
-#  This section generates or loads the startscript that runs on each container                     # 
+#  This section generates or loads the startscript that runs on each container                     #
 #  during cluster creation or cluster expansion/shrinking                                          #
 #  Startscript performs operations including but not limited to :                                  #
 #       *  Copying and updating configuration files from metadata repo to containers               #
@@ -29,18 +29,18 @@ catalog load --filepath helloworld-centos.json
 
 ##########################   Required ####################
 # Configuration API helps keep bakward compatibility. New management features are enabled/disabled
-#  based on confiapi verison.   
+#  based on confiapi verison.
 ########################################################
 appconfig autogen --new --configapi 4
 
 ############# Copy config files from metadata repo to container #############
-# These files are stored in a metadata repo until cluster creation 
+# These files are stored in a metadata repo until cluster creation
 # After a cluster is created, it will be copied to specified destinations
 ############
 appconfig autogen --pkgfile index.html --dest /var/www/html/index.html
 
 ########### Update files with runtime information ############
-# Replace template variables with runtime values 
+# Replace template variables with runtime values
 ###############################################################
 
 appconfig autogen --replace /var/www/html/index.html --pattern @@@@FQDN@@@@            \
@@ -58,7 +58,7 @@ appconfig autogen --replace /var/www/html/index.html    \
 # httpd install automatically creates a systemctl script
 
 ########### Service start commands #######################
-# Start the services, in the order specified, with defined relationships 
+# Start the services, in the order specified, with defined relationships
 ###############################
 appconfig autogen --srvcid httpd --sysv httpd
 

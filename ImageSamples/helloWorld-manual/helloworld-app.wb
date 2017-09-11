@@ -2,13 +2,13 @@
 #########################################################
 #  Specify organization name for Apps (Required)        #
 #########################################################
-builder organization --name Bluedata
+builder organization --name Sample
 
 #################### Catalog Metadata ########################################
-#  This section generates or loads catalog metadata json file                  #  
+#  This section generates or loads catalog metadata json file                  #
 #  Metadata includes: 			      			               #
 #         Identification info: Distro ID, Name, Desc                           #
-#         Supported roles: Example; Controller,worker,edge,gateway, custom     # 
+#         Supported roles: Example; Controller,worker,edge,gateway, custom     #
 #         Deployed services: All registered services with display link (y/n)   #
 #         Role to Service : Associate specific services to selected roles      #
 ##############################################################################
@@ -16,7 +16,7 @@ builder organization --name Bluedata
 catalog load --filepath helloworld-centos.json
 
 #################### CONTAINER CONFIGURATION SCRIPT (STARTSCRIPT) #################################
-#  This section generates or loads the startscript that runs on each container                     # 
+#  This section generates or loads the startscript that runs on each container                     #
 #  during cluster creation or cluster expansion/shrinking                                          #
 #  Startscript performs operations including but not limited to :                                  #
 #       *  Copying and updating configuration files from metadata repo to containers               #
