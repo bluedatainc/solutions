@@ -40,6 +40,7 @@
   - [36. Mount dtap to Virtual cluster ActionScript](#36-mount-dtap-to-virtual-cluster-actionscript)
   - [37. Switch Tenant](#37-switch-tenant)
   - [38. Verify current session role and tenant](#verify-current-session-role-and-tenant)
+  - [39. Invoke ActionScript from dtap](#39-invoke-actionscript-from-dtap)
 
 ## 1. Login and Session Creation
 
@@ -1220,5 +1221,39 @@ AWS:
   __Response__:
 
     {"_links":{"self":{"href":"/api/v1/session/930dd6cc-57ef-4bb2-aa24-23a17744fe14"},"all_sessions":{"href":"/api/v1/session"}},"user":"/api/v1/user/257","tenant":"/api/v1/tenant/1","role":"/api/v1/role/1","expiry":"2017-7-14 11:22:29"}
+
+
+## 39. Invoke ActionScript from dtap
+
+
+  __API-URI__: /api/v2/cluster/{cluster-id}/action_task
+
+  __Curl command__:
+
+      curl -X POST http://<controller-ip>:8080/api/v2/cluster/<cluster-id>/action_task -H 'cache-control:no-cache' -H 'content-type: application/json' -H 'x-bds-session:<session-id>' -d@Spark_submit_dtap.json
+
+  __API Type__: `POST`
+
+  __Example__:
+
+      curl -X POST http://10.36.0.27:8080/api/v2/cluster/8/action_task -H 'cache-control:no-cache' -H 'content-type: application/json' -H 'x-bds-session:/api/v1/session/78486fbe-be9c-49aa-8c72-1fef74191fc5' -d@Spark_submit_dtap.json
+
+
+ __Json-file__: Spark_submit_dtap.json:
+
+        {
+    "action_args": "",
+    "action_as_root": "true",
+    "action_cluster": "8",
+    "action_cmd": "hadoop fs -get dtap://TenantStorage/tmp/sample-scripts/spark_submit_job.sh /tmp/\n   chmod a+x /tmp/spark_submit_job.sh\n   /tmp/spark_submit_job.sh\n   rm /tmp/spark_submit_job.sh",
+    "action_name": "Testdtap_ActionSource_Typed script commands",
+    "action_nodegroupid": "1",
+    "action_user": "admin"}
+
+
+
+  __Response__:
+
+      {"result":"Success","uuid":"action_316"}
 
 </span>
