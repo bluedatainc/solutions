@@ -270,21 +270,56 @@
 
 ## 6. Retrieve a virtual cluster configuration
 
-  __API-URI__: /api/v1/cluster/?nodelist
+  __API-URI__: /api/v1/cluster/<uuid>?nodelist
 
   __Curl command__:
 
-      curl -X GET -H "X-BDS-SESSION:<session-id>" http://<controller-ip>:8080/api/v1/cluster/?nodelist
+      curl -X GET -H "X-BDS-SESSION:<session-id>" http://<controller-ip>:8080/api/v1/cluster/<uuid>?nodelist
 
   __API Type__: `GET`
 
   __Example__:
 
-      curl -X GET -H "X-BDS-SESSION:/api/v1/session/985585be-685d-4a6a-a0f0-0c563ae32e56" http://10.36.0.17:8080/api/v1/cluster/?nodelist
+      curl -X GET -H "X-BDS-SESSION:/api/v1/session/985585be-685d-4a6a-a0f0-0c563ae32e56" http://10.36.0.17:8080/api/v1/cluster/10?nodelist
 
   __Response__:
+{
+  "node_list": [
+         {
+            "container_name": "bluedata-127",
+            "distro_name": "CentOS 6.x",
+            "distro_state": "installed",
+            "distro_version": "2.6",
+            "flavor": {
+                "cores": 4,
+                "label": {
+                    "description": "system-created example flavor",
+                    "name": "Small"
+                },
+                "memory": 8192,
+                "root_disk_size": 30
+            },
+            "id": "1be5b57587256e867e8c16239fc5e49b503b2dc5b1616a4b517f054d4de5a1f8",
+            "in_use": true,
+            "job_or_cluster": "KDC-EnableKeytabs",
+            "name": "bluedata-127.bdlocal",
+            "node_ip": "10.35.234.9",
+            "nodegroup_id": "1",
+            "persistent": true,
+            "process_list": [
+                {
+                    "endpoint": "10.35.234.9:22",
+                    "is_dashboard": false,
+                    "name": "SSH"
+                }
+            ],
+            "role": "controller",
+            "root_disk_size": "30"
+        }
+    ],
+    "result": "Success"
+}
 
-      {"result":"Success","objects":[{"result":"Success","uuid":"65","cluster_name":"Spark-Nifi-test","cluster_type":"Spark","distro_name":"Spark 1.6.0","distro_version":"1.8","distro_state":"installed","cluster_context":"Persistent","master_flavor":{"root_disk_size":100,"label":{"name":"Medium","description":"system-created example flavor"},"cores":4,"memory":12288},"slave_count":2,"slave_flavor":{"root_disk_size":30,"label":{"name":"Small","description":"system-created example flavor"},"cores":4,"memory":8192},"status_message":"","error_info":"","ha_enabled":false,"apps_installed":false,"include_spark_installation":false,"mr_type":"","kerberos_enabled":false,"log_url":"http://10.36.0.17:8080/Logs/65.txt","client_config_xml":"","client_config_java":"","status":"ready","tenant_id":"/api/v1/tenant/2","tenant_name":"Demo Tenant","tenant_type":"docker"}
 
 
 ## 7. Get created DataTap in a certain tenant
