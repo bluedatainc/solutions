@@ -318,8 +318,7 @@
             "root_disk_size": "30"
         }
     ],
-    "result": "Success"
-}
+    "result": "Success"}
 
 
 
