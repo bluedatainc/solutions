@@ -283,9 +283,9 @@
       curl -X GET -H "X-BDS-SESSION:/api/v1/session/985585be-685d-4a6a-a0f0-0c563ae32e56" http://10.36.0.17:8080/api/v1/cluster/10?nodelist
 
   __Response__:
-{
-  "node_list": [
-         {
+      {
+        "node_list": [
+          {
             "container_name": "bluedata-127",
             "distro_name": "CentOS 6.x",
             "distro_state": "installed",
@@ -315,10 +315,10 @@
             ],
             "role": "controller",
             "root_disk_size": "30"
-        }
-    ],
-    "result": "Success"
-}
+          }
+        ],
+        "result": "Success"
+      }
 
 
 
