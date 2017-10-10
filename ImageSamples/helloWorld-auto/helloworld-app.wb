@@ -18,28 +18,21 @@ builder organization --name Bluedata
 ######################################
 catalog new --distroid helloworld --name "Hello World on Centos"  \
             --desc "http service running Hello World page"    \
-            --categories Greetings --version 2.0
+            --categories Greetings --version 3.0
 
 ####### Supported Roles ############
 # All possible roles supported in the app
 #######################################
-role add controller 1
-role add worker 0+
+role add webserver 1
 
 ############## All registered services #########
 # All possible services running on any of the nodes. 
 # Display option creates a clickable link for that http based service
 ##################################################
 service add --srvcid httpd --name "HelloWorld" --scheme "http" --port 80 \
-            --path "/" --display
-
-################## Role and Service Map ############## 
-# Define a deployment map by associating roles to services.
-# Given below is a default deployment map
-#################################################
-clusterconfig new --configid default
-clusterconfig assign --configid default --role controller                      \
-                     --srvcids httpd
+            --path "/" --display  \
+            --sysctl httpd \
+            --onroles webserver   
 
 #################### CONTAINER CONFIGURATION SCRIPT (STARTSCRIPT) #################################
 #  This section generates or loads the startscript that runs on each container                     # 
@@ -57,7 +50,7 @@ clusterconfig assign --configid default --role controller                      \
 # Configuration API helps keep bakward compatibility. New management features are enabled/disabled
 #  based on confiapi verison.   
 ########################################################
-appconfig autogen --new --configapi 4
+appconfig autogen --new --configapi 5
 
 ############# Copy config files from metadata repo to container #############
 # These files are stored in a metadata repo until cluster creation 
@@ -68,12 +61,9 @@ appconfig autogen --pkgfile index.html --dest /var/www/html/index.html
 ########### Update files with runtime information ############
 # Replace template variables with runtime values 
 ###############################################################
-
-appconfig autogen --replace /var/www/html/index.html --pattern @@@@FQDN@@@@            \
-                  --macro GET_NODE_FQDN
 appconfig autogen --replace /var/www/html/index.html \
-                  --pattern @@@@CORES@@@@ --macro GET_TOTAL_VCORES
-appconfig autogen --replace /var/www/html/index.html    \
+                  --pattern @@@@FQDN@@@@  --macro GET_NODE_FQDN  \
+                  --pattern @@@@CORES@@@@ --macro GET_TOTAL_VCORES \
                   --pattern @@@@MEMORY@@@@ --macro GET_TOTAL_VMEMORY_MB
 
 ########### Copy init.d or systemctl (service) scripts to /etc/init.d ####
@@ -83,10 +73,6 @@ appconfig autogen --replace /var/www/html/index.html    \
 #None
 # httpd install automatically creates a systemctl script
 
-########### Service start commands #######################
-# Start the services, in the order specified, with defined relationships 
-###############################
-appconfig autogen --srvcid httpd --sysv httpd
 
 ################# Package app catalog in a tgz ##########################
 # This section generates app configuration bundle (appconfig.tgz)        #
