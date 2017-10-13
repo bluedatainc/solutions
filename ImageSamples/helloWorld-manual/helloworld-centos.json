@@ -1,5 +1,5 @@
 {
-    "catalog_api_version": "2", 
+    "catalog_api_version": "3", 
     "config": {
         "config_meta": {}, 
         "config_choices": [], 
@@ -55,7 +55,7 @@
         "source_file": "helloworld-logo.png"
     }, 
     "setup_package": {
-        "config_api_version": 4, 
+        "config_api_version": 6, 
         "checksum": "84e9bec79d0e01a0408d93772c071eeb", 
         "source_file": "appconfig.tgz"
     }, 
