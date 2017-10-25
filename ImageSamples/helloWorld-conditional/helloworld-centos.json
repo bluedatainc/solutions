@@ -3,7 +3,7 @@
     "node_roles": [
         {
             "cardinality": "1", 
-            "id": "controller"
+            "id": "webserver"
         } 
     ], 
     "image": {
@@ -11,7 +11,7 @@
         "source_file": "bluedata-helloworldm-centos7-1.0.tar.gz"
     }, 
     "label": {
-        "name": "Hello World manual on Centos", 
+        "name": "Hello World manual on Centos conditional", 
         "description": "http service running Hello World page manually generated"
     }, 
     "distro_id": "bluedata/helloworldm", 
@@ -71,7 +71,7 @@
                                     "service_ids": [
                                         "mariadb"
                                     ], 
-                                    "role_id": "controller"
+                                    "role_id": "webserver"
                                 }
                             ], 
                             "selected_roles": []
@@ -105,11 +105,11 @@
                     "httpd", 
                     "ssh"
                 ], 
-                "role_id": "controller"
+                "role_id": "webserver"
             }
         ], 
         "selected_roles": [
-            "controller"
+            "webserver"
         ]
     }, 
     "categories": [

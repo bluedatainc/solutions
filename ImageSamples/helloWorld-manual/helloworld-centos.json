@@ -9,11 +9,11 @@
                     "httpd", 
                     "ssh"
                 ], 
-                "role_id": "controller"
+                "role_id": "webserver"
             }
         ], 
         "selected_roles": [
-            "controller"
+            "webserver"
         ]
     }, 
     "image": {
@@ -21,11 +21,11 @@
         "source_file": "bluedata-helloworld-centos7-1.0.tar.gz"
     }, 
     "label": {
-        "name": "Hello World on Centos", 
+        "name": "Hello World on Centos manual", 
         "description": "http service running Hello World page"
     }, 
     "distro_id": "bluedata/helloworld", 
-    "version": "4.0", 
+    "version": "5.0", 
     "services": [
         {
             "endpoint": {
@@ -62,12 +62,8 @@
     "node_roles": [
         {
             "cardinality": "1", 
-            "id": "controller"
-        }, 
-        {
-            "cardinality": "0+", 
-            "id": "worker"
-        }
+            "id": "webserver"
+        } 
     ], 
     "categories": [
         "Greetings"
