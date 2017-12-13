@@ -1299,6 +1299,11 @@ AWS:
 
   __API-URI__: /api/v1/catalog/{catalog-id}
 
+  __NOTE__: 
+
+      Inorder to get catalog_id, run API#2
+
+
   __Curl command__:
 
       curl -X POST -d@install_image.json -H "X-BDS-SESSION:<session-id>" http://<controller-ip>:8080/api/v1/catalog/<catalog_id>
