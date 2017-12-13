@@ -41,6 +41,7 @@
   - [37. Switch Tenant](#37-switch-tenant)
   - [38. Verify current session role and tenant](#verify-current-session-role-and-tenant)
   - [39. Invoke ActionScript from dtap](#39-invoke-actionscript-from-dtap)
+  - [40. Install catalog Image](#40-install-catalog-image)
 
 ## 1. Login and Session Creation
 
@@ -1291,5 +1292,34 @@ AWS:
   __Response__:
 
       {"result":"Success","uuid":"action_316"}
+
+
+## 40. Install catalog Image
+
+
+  __API-URI__: /api/v1/catalog/{catalog-id}
+
+  __Curl command__:
+
+      curl -X POST -d@install_image.json -H "X-BDS-SESSION:<session-id>" http://<controller-ip>:8080/api/v1/catalog/<catalog_id>
+
+  __API Type__: `POST`
+
+  __Example__:
+
+     curl -X POST -d@install_image.json -H "X-BDS-SESSION:/api/v1/session/3705cffd-de19-4a75-80a7-05797ab071d7" http://10.32.1.116:8080/api/v1/catalog/50
+
+
+ __Json-file__: install_image.json:
+
+        {
+          "action" : "install"
+    }
+
+
+
+  __Response__:
+
+      None
 
 </span>
