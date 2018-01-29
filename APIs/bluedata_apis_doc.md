@@ -2,6 +2,8 @@
 
 # REST APIs
 
+__Note__: Makesure to run API#1 and API#37 prior to running other API's.
+
   - [1. Login and Session Creation](#1-login-and-session-creation)
   - [2. Retrieve available cluster images](#2-retrieve-available-cluster-images)
   - [3. Retrieve available tenants](#3-retrieve-available-tenants)
