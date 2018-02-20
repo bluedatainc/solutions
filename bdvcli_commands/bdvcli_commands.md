@@ -1,9 +1,29 @@
 <span style="color:#f2cf4a; font-family: 'Bookman Old Style';">
 
-# BDVCLI COMMANDS
+   __BDVCLI OVERVIEW__
 
-__Note__: Makesure to run these commands inside the cluster container
 
+      Bdvcli is a CLI tool that is available within each docker container instance to add, remove, or query the metadata at
+
+        1. Container or current node level information
+
+        2. using Node Namespace
+
+        3. Parent cluster level information from individual containers using Cluster NameSpace
+
+        4. Parent tenant level information of the node/cluster using Tenant NameSpace
+
+        As an example, available information includes node fqdn, node ip, cluster name, cluster type, tenant AD/KDC setup and more. This basic and extended metadata allows users to automate and/or script appropriate actions and provide successful implementations of big data clusters.  
+
+
+  __NOTE__:
+
+          Make sure to run these commands inside the cluster container.
+          Each node has a set of attributes including fqdn, ip_address, role within the cluster, services on this node, node-group of this node, and more.
+
+  __BDVCLI COMMANDS__:
+
+  - [0. Get list of namespaces](#0-get-list-of-namespaces)
   - [1. Get Role ID of the container](#1-get-role-id-of-the-container)
   - [2. Get Hostname of the container](#2-get-hostname-of-the-container)
   - [3. Get Domain name of the container](#3-get-domain-name-of-the-container)
@@ -23,6 +43,21 @@ __Note__: Makesure to run these commands inside the cluster container
   - [17. Get List of all current mappings](#17-get-list-of-all-current-mappings)
   - [18. Add a port mapping](#18-add-a-port-mapping)
   - [19. Get Clusters and Tenant ids](#19-get-clusters-and-tenant-ids)
+
+
+## 0. Get list of namespaces
+
+  __Description__: List of namespaces
+
+  __Command__:
+
+        bdvcli --get namespaces
+
+  __Example__:
+
+        > bdvcli --get namespaces
+        version,node,cluster,services
+
 
 ## 1. Get Role ID of the container
 
@@ -176,7 +211,7 @@ __Note__: Makesure to run these commands inside the cluster container
   __Example__:
 
       > bdvcli --get cluster.config_choice_selections.1
-
+      mrtype,yarn_ha,kerberos,apps,spark,hbase
 
 
 ## 12. Get Value assigned to the specific key
@@ -189,7 +224,8 @@ __Note__: Makesure to run these commands inside the cluster container
 
   __Example__:
 
-      > bdvcli --get cluster.config_choice_selections.1.
+      > bdvcli --get cluster.config_choice_selections.1.mrtype
+      yarn
 
 
 
@@ -222,6 +258,7 @@ __Note__: Makesure to run these commands inside the cluster container
 
 
 
+
 ## 15. Get Value assigned to specific config metadata key
 
   __Description__: Value assigned to the specific key.
@@ -233,6 +270,7 @@ __Note__: Makesure to run these commands inside the cluster container
   __Example__:
 
       > bdvcli --get cluster.config_metadata.1.
+
 
 
 
@@ -310,7 +348,7 @@ __Note__: Makesure to run these commands inside the cluster container
 # Other BDVCLI Commands
 
 
-__Note__: In your cluster container, run the following commands below.
+__Note__: In your cluster container , run the following commands below.
 
 __[root@bluedata-100 ~]# bdvcli --help__
 
