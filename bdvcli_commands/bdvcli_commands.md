@@ -13,11 +13,7 @@
 
         4. Parent tenant level information of the node/cluster using Tenant NameSpace
 
-        As an example, available information includes node fqdn, 
-        node ip, cluster name, cluster type, tenant AD/KDC setup
-        and more. This basic and extended metadata allows
-        users to automate and/or script appropriate actions
-        and provide successful implementations of big data clusters.  
+        As an example, available information includes node fqdn, node ip, cluster name, cluster type, tenant AD/KDC setup and more. This basic and extended metadata allows users to automate and/or script appropriate actions and provide successful implementations of big data clusters.  
 
 
   __NOTE__:
@@ -25,9 +21,7 @@
         -  Make sure to run all "bdvcli" commands inside the cluster container
            and "bdconfig" commands on Epic controller physical machine.
 
-        -  Each node has a set of attributes including fqdn,
-           ip_address, role within the cluster,
-           services on this node, node-group of this node, and more.
+        -  Each node has a set of attributes including fqdn, ip_address, role within the cluster, services on this node, node-group of this node, and more.
 
   __BDVCLI & BDCONFIG COMMANDS__:
 
