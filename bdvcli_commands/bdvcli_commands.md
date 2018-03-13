@@ -13,15 +13,21 @@
 
         4. Parent tenant level information of the node/cluster using Tenant NameSpace
 
-        As an example, available information includes node fqdn, node ip, cluster name, cluster type, tenant AD/KDC setup and more. This basic and extended metadata allows users to automate and/or script appropriate actions and provide successful implementations of big data clusters.  
+        As an example, available information includes node fqdn, 
+        node ip, cluster name, cluster type, tenant AD/KDC setup
+        and more. This basic and extended metadata allows
+        users to automate and/or script appropriate actions
+        and provide successful implementations of big data clusters.  
 
 
   __NOTE__:
 
-          Make sure to run all "bdvcli" commands inside the cluster container 
-          and "bdconfig" commands on Epic controller physical machine.
+        -  Make sure to run all "bdvcli" commands inside the cluster container
+           and "bdconfig" commands on Epic controller physical machine.
 
-          Each node has a set of attributes including fqdn, ip_address, role within the cluster, services on this node, node-group of this node, and more.
+        -  Each node has a set of attributes including fqdn,
+           ip_address, role within the cluster,
+           services on this node, node-group of this node, and more.
 
   __BDVCLI & BDCONFIG COMMANDS__:
 
@@ -49,11 +55,13 @@
 
 ## 0. Get list of namespaces
 
-  __Description__: List of namespaces
+  __Description__:
+
+    List of namespaces
 
   __Command__:
 
-        bdvcli --get namespaces
+    bdvcli --get namespaces
 
   __Example__:
 
@@ -63,11 +71,13 @@
 
 ## 1. Get Role ID of the container
 
-  __Description__: Role identifier of the node as specified in the catalog
+  __Description__:
+
+    Role identifier of the node as specified in the catalog
 
   __Command__:
 
-      bdvcli --get node.role_id
+    bdvcli --get node.role_id
 
   __Example__:
 
@@ -76,11 +86,13 @@
 
 ## 2. Get Hostname of the container
 
-  __Description__: The hostname assigned to the node
+  __Description__:
+
+    The hostname assigned to the node
 
   __Command__:
 
-      bdvcli --get node.hostname
+    bdvcli --get node.hostname
 
   __Example__:
 
@@ -90,11 +102,13 @@
 
 ## 3. Get Domain name of the container
 
-  __Description__: The domain name of the node
+  __Description__:
+
+    The domain name of the node
 
   __Command__:
 
-      bdvcli --get node.domain
+    bdvcli --get node.domain
 
   __Example__:
 
@@ -104,11 +118,13 @@
 
 ## 4. Get FQDN of the container
 
-  __Description__: The fully qualified domain name of the host
+  __Description__:
+
+    The fully qualified domain name of the host
 
   __Command__:
 
-      bdvcli --get node.fqdn
+    bdvcli --get node.fqdn
 
   __Example__:
 
@@ -118,11 +134,14 @@
 
 ## 5. Get Distro ID of the container
 
-  __Description__: Distro identification of the node as specified by the catalog. This value may be empty
+  __Description__:
+
+    Distro identification of the node as specified by the catalog.
+    This value may be empty
 
   __Command__:
 
-      bdvcli --get node.distro_id
+    bdvcli --get node.distro_id
 
   __Example__:
 
@@ -132,11 +151,13 @@
 
 ## 6. Get Nodegroup ID of the cluster
 
-  __Description__: Cluster wide unique node group identifier this node belongs to
+  __Description__:
+
+    Cluster wide unique node group identifier this node belongs to
 
   __Command__:
 
-      bdvcli --get node.nodegroup_id
+    bdvcli --get node.nodegroup_id
 
   __Example__:
 
@@ -146,13 +167,17 @@
 
 ## 7. Get Controller FQDN of the cluster
 
-  __Description__: The Controller FQDN of the cluster
+  __Description__:
 
-  __Note__: Run #5 to get ${DISTRO} and #6 to get ${NODEGROUP}
+    The Controller FQDN of the cluster
+
+  __Note__:
+
+    Run #5 to get ${DISTRO} and #6 to get ${NODEGROUP}
 
   __Command__:
 
-      bdvcli --get distros.${DISTRO}.${NODEGROUP}.roles.controller.fqdns
+    bdvcli --get distros.${DISTRO}.${NODEGROUP}.roles.controller.fqdns
 
   __Example__:
 
@@ -162,11 +187,13 @@
 
 ## 8. Get Depends on parent distro id of the container
 
-  __Description__: Cluster wide unique services ids that this node depends on
+  __Description__:
+
+    Cluster wide unique services ids that this node depends on
 
   __Command__:
 
-      bdvcli --get node.depends_on
+    bdvcli --get node.depends_on
 
   __Example__:
 
@@ -176,11 +203,13 @@
 
 ## 9. Get Cluster name
 
-  __Description__: The cluster name assigned by user
+  __Description__:
+
+    The cluster name assigned by user
 
   __Command__:
 
-      bdvcli --get cluster.name
+    bdvcli --get cluster.name
 
   __Example__:
 
@@ -190,11 +219,15 @@
 
 ## 10. Get Cluster config selections
 
-  __Description__: A list of all node group ids that are part of the virtual cluster. This information is based on what is specified in the catalog and specific selections made by the user at cluster creation time
+  __Description__:
+
+    A list of all node group ids that are part of the virtual cluster.
+    This information is based on what is specified in the catalog and
+    specific selections made by the user at cluster creation time.
 
   __Command__:
 
-      bdvcli --get cluster.config_choice_selections
+    bdvcli --get cluster.config_choice_selections
 
   __Example__:
 
@@ -204,11 +237,13 @@
 
 ## 11. Get Keys for specific node group
 
-  __Description__: Keys that may be available for the specific node group.
+  __Description__:
+
+    Keys that may be available for the specific node group.
 
   __Command__:
 
-       bdvcli --get cluster.config_choice_selections.<ng_id>
+    bdvcli --get cluster.config_choice_selections.<ng_id>
 
   __Example__:
 
@@ -218,11 +253,13 @@
 
 ## 12. Get Value assigned to the specific key
 
-  __Description__: Value assigned to the specific key.
+  __Description__:
+
+    Value assigned to the specific key.
 
   __Command__:
 
-       bdvcli --get cluster.config_choice_selections.<ng_id>.<key>
+    bdvcli --get cluster.config_choice_selections.<ng_id>.<key>
 
   __Example__:
 
@@ -234,11 +271,13 @@
 
 ## 13. Get List of node group ids
 
-  __Description__: A list of all node group ids that are part of the virtual cluster.
+  __Description__:
+
+    A list of all node group ids that are part of the virtual cluster.
 
   __Command__:
 
-       bdvcli --get cluster.config_metadata
+    bdvcli --get cluster.config_metadata
 
   __Example__:
 
@@ -248,11 +287,16 @@
 
 ## 14. Get List of config metadata keys for a specific node group
 
-  __Description__: List of all configuration metadata keys available for the particular node group. The available keys are gathered from the information specified in the catalog of this distribution.
+  __Description__:
+
+    List of all configuration metadata keys available
+    for the particular node group.
+    The available keys are gathered from the
+    information specified in the catalog of this distribution.
 
   __Command__:
 
-       bdvcli --get cluster.config_metadata.<ng_id>
+    bdvcli --get cluster.config_metadata.<ng_id>
 
   __Example__:
 
@@ -263,11 +307,13 @@
 
 ## 15. Get Value assigned to specific config metadata key
 
-  __Description__: Value assigned to the specific key.
+  __Description__:
+
+    Value assigned to the specific key.
 
   __Command__:
 
-      bdvcli --get cluster.config_metadata.<ng_id>.<key>
+    bdvcli --get cluster.config_metadata.<ng_id>.<key>
 
   __Example__:
 
@@ -278,12 +324,17 @@
 
 ## 16. Get List of virtual nodes or container names
 
-  __Description__: Prints the list of container names. 
-                   Run this command on Epic controller machine.
+  __Description__:
+
+    Prints the list of container names.
+
+  __Note__:
+
+    Run this command on Epic controller host machine.
 
   __Command__:
 
-       bdconfig --getvms
+    bdconfig --getvms
 
   __Example__:
 
@@ -297,15 +348,21 @@
 
 ## 17. Get List of all current mappings
 
-  __Description__: Prints current mappings list.
-                   Run this command on Epic controller machine.
+  __Description__:
+
+    Prints current mappings list.
+
+  __Note__:
+
+    Run this command on Epic controller host machine.
+
   __Command__:
 
-       bdconfig --getmapping --vmName <vmname>
+    bdconfig --getmapping --vmName <vmname>
 
   __Example__:
 
-      > bdconfig --getmapping --vmName bluedata-61
+    > bdconfig --getmapping --vmName bluedata-61
 
       VM NAME       GATEWAY SET HOSTNAME            MAPPINGS
       ---------     ----------------------          ----------
@@ -316,11 +373,16 @@
 
 ## 18. Add a port mapping
 
-  __Description__: Adds a port mapping where, "<vm name>" is the name of the virtual node/container,
-                   "<port>" is the port number being mapped (such as 22 for SSH or 443 for https), 
-                   "<map mode>" Either http or tcp, depending on the service you are mapping and <tenant-id> is the ID of the tenant where this port mapping will apply.
+  __Description__:
 
-                   Run this command on Epic controller machine.
+    Adds a port mapping where, "vm name" is the name of the virtual node/container,
+    "port" is the port number being mapped (such as 22 for SSH or 443 for https),
+    "map mode" Either http or tcp, depending on the service you are mapping
+    and <tenant-id> is the ID of the tenant where this port mapping will apply.
+
+ __Note__:
+
+      Run this command on Epic controller host machine.
 
   __Command__:
 
@@ -335,13 +397,17 @@
 
 ## 19. Get Clusters and Tenant ids
 
-  __Description__: Gets cluster and tenant ids
+  __Description__:
 
-                   Run this command on Epic controller machine.
+    Gets cluster and tenant ids
+
+  __Note__:
+
+    Run this command on Epic controller host machine.
 
   __Command__:
 
-       bdconfig --getclusters
+    bdconfig --getclusters
 
   __Example__:
 
