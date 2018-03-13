@@ -7,7 +7,7 @@
 
         1. Container or current node level information
 
-        2. using Node Namespace
+        2. Using Node Namespace
 
         3. Parent cluster level information from individual containers using Cluster NameSpace
 
@@ -18,10 +18,12 @@
 
   __NOTE__:
 
-          Make sure to run these commands inside the cluster container.
+          Make sure to run all "bdvcli" commands inside the cluster container 
+          and "bdconfig" commands on Epic controller physical machine.
+
           Each node has a set of attributes including fqdn, ip_address, role within the cluster, services on this node, node-group of this node, and more.
 
-  __BDVCLI COMMANDS__:
+  __BDVCLI & BDCONFIG COMMANDS__:
 
   - [0. Get list of namespaces](#0-get-list-of-namespaces)
   - [1. Get Role ID of the container](#1-get-role-id-of-the-container)
@@ -276,7 +278,8 @@
 
 ## 16. Get List of virtual nodes or container names
 
-  __Description__: Prints the list of container names.
+  __Description__: Prints the list of container names. 
+                   Run this command on Epic controller machine.
 
   __Command__:
 
@@ -295,7 +298,7 @@
 ## 17. Get List of all current mappings
 
   __Description__: Prints current mappings list.
-
+                   Run this command on Epic controller machine.
   __Command__:
 
        bdconfig --getmapping --vmName <vmname>
@@ -313,8 +316,11 @@
 
 ## 18. Add a port mapping
 
-  __Description__: Adds a port mapping where, <vm name> is the name of the virtual node/container,
-  <port> is the port number being mapped (such as 22 for SSH or 443 for https), <map mode> Either http or tcp, depending on the service you are mapping and <tenant-id> is the ID of the tenant where this port mapping will apply.
+  __Description__: Adds a port mapping where, "<vm name>" is the name of the virtual node/container,
+                   "<port>" is the port number being mapped (such as 22 for SSH or 443 for https), 
+                   "<map mode>" Either http or tcp, depending on the service you are mapping and <tenant-id> is the ID of the tenant where this port mapping will apply.
+
+                   Run this command on Epic controller machine.
 
   __Command__:
 
@@ -330,6 +336,8 @@
 ## 19. Get Clusters and Tenant ids
 
   __Description__: Gets cluster and tenant ids
+
+                   Run this command on Epic controller machine.
 
   __Command__:
 

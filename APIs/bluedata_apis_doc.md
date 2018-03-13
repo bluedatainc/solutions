@@ -2,7 +2,11 @@
 
 # REST APIs
 
-__Note__: Makesure to run API#1 and API#37 prior to running other API's.
+__Note__:
+
+  - For Epic3.2 and later you can find v2 API docs for a given EPIC installation by connecting to the /apidocs URL on its controller host "http://<controller-IP>:8080/apidocs". For more information on difference between v1 and v2 APIs, here is the link 
+
+  -  Make sure to run API#1 and API#37 prior to running other API's.
 
   - [1. Login and Session Creation](#1-login-and-session-creation)
   - [2. Retrieve available cluster images](#2-retrieve-available-cluster-images)
@@ -60,7 +64,7 @@ __Note__: Makesure to run API#1 and API#37 prior to running other API's.
       curl -i -X POST -d@login.json http://10.36.0.17:8080/api/v1/login
 
  __Json-file__: login.json:
- 
+
         {
           "name" : "admin",
           "password": "admin123"
@@ -383,7 +387,7 @@ __Note__: Makesure to run API#1 and API#37 prior to running other API's.
 
 ## 9. Create a cluster with gateway node
 
-  
+
   __API-URI__: /api/v1/cluster
 
   __Curl command__:
@@ -552,16 +556,16 @@ __Note__: Makesure to run API#1 and API#37 prior to running other API's.
 On_Prem:
 
         {
-          "qos_multiplier": 1, 
-          "member_key_available": "all_admins", 
-          "tenant_type": "docker", 
-          "quota": 
-              {"cores": 15, 
-              "disk": 561152, 
-              "tenant_storage": 582, 
-              "memory": 47104}, 
-              "label": 
-                  {"name": "Marketing", 
+          "qos_multiplier": 1,
+          "member_key_available": "all_admins",
+          "tenant_type": "docker",
+          "quota":
+              {"cores": 15,
+              "disk": 561152,
+              "tenant_storage": 582,
+              "memory": 47104},
+              "label":
+                  {"name": "Marketing",
                   "description": "Marketing related clusters"
                 }
               }
@@ -583,7 +587,7 @@ AWS:
               "name": "<Enter Tenant Name>",
               "description": "<Enter Tenant Description>"
                   }  
-        "aws_iam_instance_profile": "<Enter IAM name>" 
+        "aws_iam_instance_profile": "<Enter IAM name>"
         }    
 
 
@@ -782,16 +786,16 @@ AWS:
   __Json-file__: transient-job.json:
 
         {
-            "spark_command_line": " ", 
-            "app_name": "wordcount", 
-            "jar_path": "/srv/bluedata/job-0fbce6df8aa1feba2d0a9c7ee2e43d41/jar/hdp-examples.jar", "master_flavor": "/api/v1/flavor/2", 
-            "job_type": "Hadoop Custom Jar", 
-            "command_line": "hadoop jar  $jar_path$ $app_name$ dtap://TenantStorage/test/sahithi/customer_demographics.csv dtap://TenantStorage/test/TransientOutput", 
-            "slave_count": 1, 
-            "dependencies": [], 
-            "cluster_context": "Transient", 
-            "distro_name": "HDP 2.5 with Ambari 2.4", 
-            "slave_flavor": "/api/v1/flavor/1", 
+            "spark_command_line": " ",
+            "app_name": "wordcount",
+            "jar_path": "/srv/bluedata/job-0fbce6df8aa1feba2d0a9c7ee2e43d41/jar/hdp-examples.jar", "master_flavor": "/api/v1/flavor/2",
+            "job_type": "Hadoop Custom Jar",
+            "command_line": "hadoop jar  $jar_path$ $app_name$ dtap://TenantStorage/test/sahithi/customer_demographics.csv dtap://TenantStorage/test/TransientOutput",
+            "slave_count": 1,
+            "dependencies": [],
+            "cluster_context": "Transient",
+            "distro_name": "HDP 2.5 with Ambari 2.4",
+            "slave_flavor": "/api/v1/flavor/1",
             "job_name": "Test-transient"
         }
 
@@ -843,8 +847,8 @@ AWS:
  __Json-file__: groups.json:
 
         {
-           "operation": "assign", 
-           "role": "/api/v1/role/3", 
+           "operation": "assign",
+           "role": "/api/v1/role/3",
            "user": "/api/v1/user/261"
         }
 
@@ -918,7 +922,7 @@ AWS:
 
       curl -X PUT -d@password_reset.json -H "X-BDS-SESSION:/api/v1/session/985585be-685d-4a6a-a0f0-0c563ae32e56" http://10.36.0.17:8080/api/v1/user/257?password
 
- 
+
  __Json-file__: password_.json:
 
         {
@@ -948,7 +952,7 @@ AWS:
 
       curl -X PUT -d@password_reset.json -H "X-BDS-SESSION:/api/v1/session/985585be-685d-4a6a-a0f0-0c563ae32e56" http://10.36.0.17:8080/api/v1/user/257?password
 
- 
+
  __Json-file__: password_.json:
 
         {
@@ -970,7 +974,7 @@ AWS:
 
   __Curl command__:
 
-      curl -X PUT -d@reboot_cluster.json -H "X-BDS-SESSION:<session-id> http://<controller-ip>:8080/api/v1/cluster/<cluster-id> 
+      curl -X PUT -d@reboot_cluster.json -H "X-BDS-SESSION:<session-id> http://<controller-ip>:8080/api/v1/cluster/<cluster-id>
 
   __API Type__: `PUT`
 
@@ -997,7 +1001,7 @@ AWS:
 
   __Curl command__:
 
-      curl -X PUT -d@stop_cluster.json -H "X-BDS-SESSION:<session-id> http://<controller-ip>:8080/api/v1/cluster/<cluster-id> 
+      curl -X PUT -d@stop_cluster.json -H "X-BDS-SESSION:<session-id> http://<controller-ip>:8080/api/v1/cluster/<cluster-id>
 
   __API Type__: `PUT`
 
@@ -1024,7 +1028,7 @@ AWS:
 
   __Curl command__:
 
-      curl -X PUT -d@start_cluster.json -H "X-BDS-SESSION:<session-id> http://<controller-ip>:8080/api/v1/cluster/<cluster-id> 
+      curl -X PUT -d@start_cluster.json -H "X-BDS-SESSION:<session-id> http://<controller-ip>:8080/api/v1/cluster/<cluster-id>
 
   __API Type__: `PUT`
 
@@ -1301,7 +1305,7 @@ AWS:
 
   __API-URI__: /api/v1/catalog/{catalog-id}
 
-  __NOTE__: 
+  __NOTE__:
 
       Inorder to get catalog_id, run API#2
 
