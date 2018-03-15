@@ -48,6 +48,7 @@ __Note__:
   - [38. Verify current session role and tenant](#verify-current-session-role-and-tenant)
   - [39. Invoke ActionScript from dtap](#39-invoke-actionscript-from-dtap)
   - [40. Install catalog Image](#40-install-catalog-image)
+  - [41. Get a tenant keypair file](#41-get-a-tenant-keypair-file)
 
 ## 1. Login and Session Creation
 
@@ -1332,5 +1333,32 @@ AWS:
   __Response__:
 
       None
+
+## 41. Get a tenant keypair file
+
+  __API-URI__: /api/v1/tenant/<tenant-id>?privatekey
+
+  __NOTE__:
+
+      Inorder to get tenant_id, run API#3
+
+
+  __Curl command__:
+
+      curl -X GET -H "X-BDS-SESSION:<session-ID>" http://<controller-IP>:8080/api/v1/tenant/<tenant-id>?privatekey
+
+
+  __API Type__: `GET`
+
+  __Example__:
+
+     curl -X GET -H "X-BDS-SESSION:/api/v1/session/7f27a1a9-5354-486f-ba44-f414e4f144b7" http://10.36.0.17:8080/api/v1/tenant/3?privatekey
+
+
+  __Response__:
+
+    {"private_key":"-----BEGIN RSA PRIVATE KEY-----\nMIGeMA0GCSqGSIb3DQEBAQUAA4GMADCBiAKBgH/YVs/NDEnVyVPKOgo0ShTjsg6u CaCYJL7tNcTR8EEMZmUHYy7Bd3Et8P5CZBK0GsJL/Phl2OAIXXZ60u4tTIVU8Jpf h2VquBSm4wNoXXL9W0tfjpGx7H97BnuUy1Q6PNqUDjTm1lixqq/4am9we/JTCb2L 
+    lyKPlEhupS8kequ1AgMBAAE=\n-----END RSA PRIVATE KEY-----\n"}
+
 
 </span>
