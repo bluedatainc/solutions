@@ -1288,22 +1288,21 @@ AWS:
  __Json-file__: Spark_submit_dtap.json:
 
         {
-    "args": "",
+    "args":"",
     "label":{
 	"name":"Testdtap_ActionSource_Typed script commands",
 	"description":"test"
     },
-    "as_root": "true",
-    "cmd": "hadoop fs -get dtap://TenantStorage/tmp/sample-scripts/spark_submit_job.sh /tmp/\n   chmod a+x /tmp/spark_submit_job.sh\n   /tmp/spark_submit_job.sh\n   rm /tmp/spark_submit_job.sh",
-    "nodegroupid": "1",
+    "as_root":"true",
+    "cmd":"hadoop fs -get dtap://TenantStorage/tmp/sample-scripts/spark_submit_job.sh /tmp/\n   chmod a+x /tmp/spark_submit_job.sh\n   /tmp/spark_submit_job.sh\n   rm /tmp/spark_submit_job.sh",
+    "nodegroupid":"1"
     }
 
 
 
   __Response__:
 
-      {"result":"Success","uuid":"action_316"}
-
+	201 created
 
 ## 40. Install catalog Image
 
