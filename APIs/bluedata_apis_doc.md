@@ -1147,13 +1147,12 @@ AWS:
     },
     "as_root": "true",
     "cmd": "#/bin/bash\nexport node=`bdvcli --get node.role_id`\nif [[ $node == \"controller\" ]]; then\n    /usr/lib/spark/spark-2.1.1-bin-hadoop2.7/bin/spark-submit --class org.apache.spark.examples.SparkPi --master spark://bluedata-4.bdlocal:7077 /usr/lib/spark/spark-2.1.1-bin-hadoop2.7/examples/jars/spark-examples_2.11-2.1.1.jar 100\nfi",
-    "nodegroupid": "1"
- }
+    "nodegroupid": "1" }
 
 
   __Response__:
 
-      {"result":"Success","uuid":"action_170"}
+      201 created
 
 
 
@@ -1287,7 +1286,7 @@ AWS:
 
  __Json-file__: Spark_submit_dtap.json:
 
-        {
+      {
     "args":"",
     "label":{
 	"name":"Testdtap_ActionSource_Typed script commands",
@@ -1302,7 +1301,7 @@ AWS:
 
   __Response__:
 
-	201 created
+	 201 created
 
 ## 40. Install catalog Image
 
