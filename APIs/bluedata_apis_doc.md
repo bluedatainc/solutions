@@ -1140,13 +1140,15 @@ AWS:
  __Json-file__: Spark_submit.json:
 
         {
-    "action_args": "",
-    "action_as_root": "true",
-    "action_cluster": "8",
-    "action_cmd": "#/bin/bash\nexport node=`bdvcli --get node.role_id`\nif [[ $node == \"controller\" ]]; then\n    /usr/lib/spark/spark-2.1.1-bin-hadoop2.7/bin/spark-submit --class org.apache.spark.examples.SparkPi --master spark://bluedata-4.bdlocal:7077 /usr/lib/spark/spark-2.1.1-bin-hadoop2.7/examples/jars/spark-examples_2.11-2.1.1.jar 100\nfi",
-    "action_name": "Spark-submit_ActionSource_spark_submit_job.sh",
-    "action_nodegroupid": "1",
-    "action_user": "admin" }
+    "args": "",
+    "label":{
+	"name":"Spark-submit_ActionSource_spark_submit_job.sh",
+	"description":"test"
+    },
+    "as_root": "true",
+    "cmd": "#/bin/bash\nexport node=`bdvcli --get node.role_id`\nif [[ $node == \"controller\" ]]; then\n    /usr/lib/spark/spark-2.1.1-bin-hadoop2.7/bin/spark-submit --class org.apache.spark.examples.SparkPi --master spark://bluedata-4.bdlocal:7077 /usr/lib/spark/spark-2.1.1-bin-hadoop2.7/examples/jars/spark-examples_2.11-2.1.1.jar 100\nfi",
+    "nodegroupid": "1"
+ }
 
 
   __Response__:
@@ -1286,13 +1288,15 @@ AWS:
  __Json-file__: Spark_submit_dtap.json:
 
         {
-    "action_args": "",
-    "action_as_root": "true",
-    "action_cluster": "8",
-    "action_cmd": "hadoop fs -get dtap://TenantStorage/tmp/sample-scripts/spark_submit_job.sh /tmp/\n   chmod a+x /tmp/spark_submit_job.sh\n   /tmp/spark_submit_job.sh\n   rm /tmp/spark_submit_job.sh",
-    "action_name": "Testdtap_ActionSource_Typed script commands",
-    "action_nodegroupid": "1",
-    "action_user": "admin"}
+    "args": "",
+    "label":{
+	"name":"Testdtap_ActionSource_Typed script commands",
+	"description":"test"
+    },
+    "as_root": "true",
+    "cmd": "hadoop fs -get dtap://TenantStorage/tmp/sample-scripts/spark_submit_job.sh /tmp/\n   chmod a+x /tmp/spark_submit_job.sh\n   /tmp/spark_submit_job.sh\n   rm /tmp/spark_submit_job.sh",
+    "nodegroupid": "1",
+    }
 
 
 
