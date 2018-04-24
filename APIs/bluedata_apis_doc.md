@@ -1240,7 +1240,7 @@ AWS:
 
  __Json-file__: switch_tenant.json:
 
-           {"role": "/api/v1/role/1",
+           {"role": "/api/v1/role/2",
            "tenant": "/api/v1/tenant/2"}
 
 
