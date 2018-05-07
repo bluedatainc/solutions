@@ -4,8 +4,10 @@
 
 __Note__:
 
-  - For Epic3.2 and later you can find v2 API docs for a given EPIC installation by connecting to the /apidocs URL on its controller host "http://<controller-IP>:8080/apidocs". For more information on difference between v1 and v2 APIs, here is the link 
+  - For Epic3.2 and later you can find v2 API docs for a given EPIC installation by connecting to the /apidocs URL on its controller host "http://{controller-IP}:8080/apidocs". For more information on difference between v1 and v2 APIs, please refer to v1_vs_v2_apidocs.pdf in the same location. These are some sample examples of v2 APIs but for more detail info please check the docs under /apidocs location on your controller host machine.
 
+  - Inorder to login and create a session there is no v2 API, you should still use v1 API to perform that action(Refer to v1_bluedata_apis_doc for the exact command).
+  
   - [0. Fetch a session](#0-fetch-a-session)
   - [1. Retrieve all tenants](#1-retrieve-all-tenants)
   - [2. Retrieve a specific tenant](#2-create-a-specific-tenant)
@@ -176,171 +178,171 @@ __Note__:
 
       % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100 10092  100 10092    0     0   347k      0 --:--:-- --:--:-- --:--:--  365k
-{
-    "_embedded": {
-        "clusters": [
-            {
-                "_links": {
-                    "all_cluster_action_histories": {
-                        "href": "/api/v2/cluster/33/action_history"
-                    },
-                    "all_cluster_action_tasks": {
-                        "href": "/api/v2/cluster/33/action_task"
-                    },
-                    "all_cluster_change_histories": {
-                        "href": "/api/v2/cluster/33/change_history"
-                    },
-                    "all_cluster_change_tasks": {
-                        "href": "/api/v2/cluster/33/change_task"
-                    },
-                    "all_cluster_nodes": {
-                        "href": "/api/v2/cluster/33/node"
-                    },
-                    "all_clusters": {
-                        "href": "/api/v2/cluster"
-                    },
-                    "include_nodes": {
-                        "href": "/api/v2/cluster/33?nodes"
-                    },
-                    "include_services": {
-                        "href": "/api/v2/cluster/33?services"
-                    },
-                    "self": {
-                        "href": "/api/v2/cluster/33"
-                    },
-                    "tenant": {
-                        "href": "/api/v1/tenant/2",
-                        "title": "Demo Tenant"
-                    }
-                },
-                "created_by_user": "/api/v1/user/4",
-                "created_by_user_name": "admin",
-                "created_time": 1525308032,
-                "debug": true,
-                "error_info": "",
-                "isolated": false,
-                "label": {
-                    "description": "cdh",
-                    "name": "cdh5121-test"
-                },
-                "log_url": "http://10.36.0.27:8080/Logs/33.txt",
-                "nodegroup": {
-                    "catalog_entry": "/api/v1/catalog/21",
-                    "catalog_entry_distro_id": "bluedata/cdh5121multicr",
-                    "catalog_entry_label": {
-                        "description": "CDH 5.12.1 with YARN and HBase support. Includes Pig, Hive, Hue and Spark.",
-                        "name": "CDH 5.12.1 multirole 6x"
-                    },
-                    "catalog_entry_state": "installed",
-                    "catalog_entry_version": "2.6",
-                    "config_choice_selections": [
-                        {
-                            "choice_id": "kerberos",
-                            "selection_id": false
-                        },
-                        {
-                            "choice_id": "mrtype",
-                            "selection_id": "yarn"
-                        },
-                        {
-                            "choice_id": "hbase",
-                            "selection_id": false
-                        },
-                        {
-                            "choice_id": "yarn_ha",
-                            "selection_id": false
-                        },
-                        {
-                            "choice_id": "apps",
-                            "selection_id": true
-                        },
-                        {
-                            "choice_id": "spark",
-                            "selection_id": true
-                        }
-                    ],
-                    "config_meta": {
-                        "cdh_full_version": "5.12.1",
-                        "cdh_major_version": "CDH5",
-                        "cdh_parcel_repo": "http://archive.cloudera.com/cdh5/parcels/5.12.1",
-                        "cdh_parcel_version": "5.12.1-1.cdh5.12.1.p0.3",
-                        "impala_jar_version": "0.1-SNAPSHOT",
-                        "streaming_jar": "/opt/cloudera/parcels/CDH/lib/hadoop-mapreduce/hadoop-streaming.jar"
-                    },
-                    "constraints": [],
-                    "id": "1",
-                    "role_configs": [
-                        {
-                            "flavor": {
-                                "cores": 4,
-                                "gpus": 0,
-                                "label": {
-                                    "description": "system-created example flavor",
-                                    "name": "Small"
-                                },
-                                "memory": 8192,
-                                "root_disk_size": 30
-                            },
-                            "node_count": 1,
-                            "role_id": "cmserver",
-                            "selected": true
-                        },
-                        {
-                            "flavor": {
-                                "cores": 4,
-                                "gpus": 0,
-                                "label": {
-                                    "description": "system-created example flavor",
-                                    "name": "Medium"
-                                },
-                                "memory": 12288,
-                                "root_disk_size": 100
-                            },
-                            "node_count": 1,
-                            "role_id": "controller",
-                            "selected": true
-                        },
-                        {
-                            "flavor": {
-                                "cores": 4,
-                                "gpus": 0,
-                                "label": {
-                                    "description": "system-created example flavor",
-                                    "name": "Small"
-                                },
-                                "memory": 8192,
-                                "root_disk_size": 30
-                            },
-                            "node_count": 0,
-                            "role_id": "edge",
-                            "selected": true
-                        },
-                        {
-                            "flavor": {
-                                "cores": 4,
-                                "gpus": 0,
-                                "label": {
-                                    "description": "system-created example flavor",
-                                    "name": "Small"
-                                },
-                                "memory": 8192,
-                                "root_disk_size": 30
-                            },
-                            "node_count": 1,
-                            "role_id": "worker",
-                            "selected": true
-                        }
-                    ],
-                    "status": "created"
-                },
-                "status": "ready",
-                "status_message": "",
-                "tenant_id": "/api/v1/tenant/2",
-                "tenant_name": "Demo Tenant",
-                "tenant_type": "docker",
-                "two_phase_delete": false
-            }, ....
+      100 10092  100 10092    0     0   347k      0 --:--:-- --:--:-- --:--:--  365k
+      {
+          "_embedded": {
+              "clusters": [
+                  {
+                      "_links": {
+                          "all_cluster_action_histories": {
+                              "href": "/api/v2/cluster/33/action_history"
+                          },
+                          "all_cluster_action_tasks": {
+                              "href": "/api/v2/cluster/33/action_task"
+                          },
+                          "all_cluster_change_histories": {
+                              "href": "/api/v2/cluster/33/change_history"
+                          },
+                          "all_cluster_change_tasks": {
+                              "href": "/api/v2/cluster/33/change_task"
+                          },
+                          "all_cluster_nodes": {
+                              "href": "/api/v2/cluster/33/node"
+                          },
+                          "all_clusters": {
+                              "href": "/api/v2/cluster"
+                          },
+                          "include_nodes": {
+                              "href": "/api/v2/cluster/33?nodes"
+                          },
+                          "include_services": {
+                              "href": "/api/v2/cluster/33?services"
+                          },
+                          "self": {
+                              "href": "/api/v2/cluster/33"
+                          },
+                          "tenant": {
+                              "href": "/api/v1/tenant/2",
+                              "title": "Demo Tenant"
+                          }
+                      },
+                      "created_by_user": "/api/v1/user/4",
+                      "created_by_user_name": "admin",
+                      "created_time": 1525308032,
+                      "debug": true,
+                      "error_info": "",
+                      "isolated": false,
+                      "label": {
+                          "description": "cdh",
+                          "name": "cdh5121-test"
+                      },
+                      "log_url": "http://10.36.0.27:8080/Logs/33.txt",
+                      "nodegroup": {
+                          "catalog_entry": "/api/v1/catalog/21",
+                          "catalog_entry_distro_id": "bluedata/cdh5121multicr",
+                          "catalog_entry_label": {
+                              "description": "CDH 5.12.1 with YARN and HBase support. Includes Pig, Hive, Hue and Spark.",
+                              "name": "CDH 5.12.1 multirole 6x"
+                          },
+                          "catalog_entry_state": "installed",
+                          "catalog_entry_version": "2.6",
+                          "config_choice_selections": [
+                              {
+                                  "choice_id": "kerberos",
+                                  "selection_id": false
+                              },
+                              {
+                                  "choice_id": "mrtype",
+                                  "selection_id": "yarn"
+                              },
+                              {
+                                  "choice_id": "hbase",
+                                  "selection_id": false
+                              },
+                              {
+                                  "choice_id": "yarn_ha",
+                                  "selection_id": false
+                              },
+                              {
+                                  "choice_id": "apps",
+                                  "selection_id": true
+                              },
+                              {
+                                  "choice_id": "spark",
+                                  "selection_id": true
+                              }
+                          ],
+                          "config_meta": {
+                              "cdh_full_version": "5.12.1",
+                              "cdh_major_version": "CDH5",
+                              "cdh_parcel_repo": "http://archive.cloudera.com/cdh5/parcels/5.12.1",
+                              "cdh_parcel_version": "5.12.1-1.cdh5.12.1.p0.3",
+                              "impala_jar_version": "0.1-SNAPSHOT",
+                              "streaming_jar": "/opt/cloudera/parcels/CDH/lib/hadoop-mapreduce/hadoop-streaming.jar"
+                          },
+                          "constraints": [],
+                          "id": "1",
+                          "role_configs": [
+                              {
+                                  "flavor": {
+                                      "cores": 4,
+                                      "gpus": 0,
+                                      "label": {
+                                          "description": "system-created example flavor",
+                                          "name": "Small"
+                                      },
+                                      "memory": 8192,
+                                      "root_disk_size": 30
+                                  },
+                                  "node_count": 1,
+                                  "role_id": "cmserver",
+                                  "selected": true
+                              },
+                              {
+                                  "flavor": {
+                                      "cores": 4,
+                                      "gpus": 0,
+                                      "label": {
+                                          "description": "system-created example flavor",
+                                          "name": "Medium"
+                                      },
+                                      "memory": 12288,
+                                      "root_disk_size": 100
+                                  },
+                                  "node_count": 1,
+                                  "role_id": "controller",
+                                  "selected": true
+                              },
+                              {
+                                  "flavor": {
+                                      "cores": 4,
+                                      "gpus": 0,
+                                      "label": {
+                                          "description": "system-created example flavor",
+                                          "name": "Small"
+                                      },
+                                      "memory": 8192,
+                                      "root_disk_size": 30
+                                  },
+                                  "node_count": 0,
+                                  "role_id": "edge",
+                                  "selected": true
+                              },
+                              {
+                                  "flavor": {
+                                      "cores": 4,
+                                      "gpus": 0,
+                                      "label": {
+                                          "description": "system-created example flavor",
+                                          "name": "Small"
+                                      },
+                                      "memory": 8192,
+                                      "root_disk_size": 30
+                                  },
+                                  "node_count": 1,
+                                  "role_id": "worker",
+                                  "selected": true
+                              }
+                          ],
+                          "status": "created"
+                      },
+                      "status": "ready",
+                      "status_message": "",
+                      "tenant_id": "/api/v1/tenant/2",
+                      "tenant_name": "Demo Tenant",
+                      "tenant_type": "docker",
+                      "two_phase_delete": false
+                  }, ....
 
 
 ## 4. Retrieve a specific virtual cluster
