@@ -6,7 +6,7 @@ __Note__:
 
   - For Epic3.2 and later you can find v2 API docs for a given EPIC installation by connecting to the /apidocs URL on its controller host "http://{controller-IP}:8080/apidocs". For more information on difference between v1 and v2 APIs, please refer to v1_vs_v2_apidocs.pdf in the same location. These are some sample examples of v2 APIs but for more detail info please check the docs under /apidocs location on your controller host machine.
 
-  - Inorder to login and create a session and switch to the tenant there is no v2 APIs, you should still use v1 APIs to perform these actions(Refer to v1_bluedata_apis_doc for the exact commands). For now you will use a combination of v1 and v2 incase you choose to run below APIs, as not all the v1 APIs are created in our v2 version. 
+  - Inorder to login and create a session and to switch to a non-siteadmin role/tenant, you will use the v1 APIs (Refer to v1_bluedata_apis_doc for the exact commands). For now you will use a combination of v1 and v2 incase you choose to run below APIs, as not all the v1 APIs are created in our v2 version. 
   
   - [0. Fetch a session](#0-fetch-a-session)
   - [1. Retrieve all tenants](#1-retrieve-all-tenants)
