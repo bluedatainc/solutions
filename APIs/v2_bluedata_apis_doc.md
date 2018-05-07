@@ -21,7 +21,8 @@ __Note__:
   - [10. Update the hue.ini safety valve to point to datatap](#10-update-the-hue.ini-safety-valve-to-point-to-datatap)
   - [11. Mount dtap to Virtual cluster ActionScript](#11-mount-dtap-to-virtual-cluster-actionscript)
   - [12. Invoke ActionScript from dtap](#12-invoke-actionscript-from-dtap)
-  
+ 
+
 
 ## 0. Fetch a session
 
@@ -673,6 +674,7 @@ __Note__:
                     }
                 }, ...
 
+
 ## 7. Retrieve tenant filesystem information
 
   __API-URI__: /api/v2/tenant_filesystem
@@ -849,6 +851,7 @@ __Note__:
           "unmount_timeout": "infinity",
           "unmount_verbose": false
       }
+
 
 
 ## 8. Retrieve Epic platform configuration
