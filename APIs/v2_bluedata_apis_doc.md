@@ -4,9 +4,11 @@
 
 __Note__:
 
-  - For Epic3.2 and later you can find v2 API docs for a given EPIC installation by connecting to the /apidocs URL on its controller host "http://{controller-IP}:8080/apidocs". For more information on difference between v1 and v2 APIs, please refer to v1_vs_v2_apidocs.pdf in the same location. These are some sample examples of v2 APIs but for more detail info please check the docs under /apidocs location on your controller host machine.
+  - For Epic3.2 and later you can find v2 API docs for a given EPIC installation by connecting to the /apidocs URL on your controller host machine "http://{controller-IP}:8080/apidocs". 
+  - For more info on difference between v1 and v2 APIs, please refer to v1_vs_v2_apidocs.pdf in the same location. 
+  - The samples below are for v2 APIs but for more detail info please check the docs under "http://{controller-IP}:8080/apidocs".
 
-  - Inorder to login and create a session and to switch to a non-siteadmin role/tenant, you will use the v1 APIs (Refer to v1_bluedata_apis_doc for the exact commands). For now you will use a combination of v1 and v2 incase you choose to run below APIs, as not all the v1 APIs are created in our v2 version. 
+  - Inorder to login and create a session and to switch to a non-siteadmin role/tenant, you will use the v1 APIs (Refer to v1_bluedata_apis_doc for the exact commands). For now you will use a combination of v1 and v2 APIs incase you choose to run the samples below.
   
   - [0. Fetch a session](#0-fetch-a-session)
   - [1. Retrieve all tenants](#1-retrieve-all-tenants)
@@ -129,7 +131,7 @@ __Note__:
         }
     } 
 
-## 2.  Retrieve a specific tenant
+## 2. Retrieve a specific tenant
 
   __API-URI__: /api/v2/tenant/{tenant-id}
 
@@ -162,7 +164,7 @@ __Note__:
 
         
 
-## 3.  Retrieve all clusters
+## 3. Retrieve all clusters
 
   __API-URI__: /api/v2/cluster
 
@@ -445,7 +447,7 @@ __Note__:
 
 
 
-## 5.Create a new cluster
+## 5. Create a new cluster
 
   __Note__: Makesure to run Switch tenant API (v1 API) to create cluster incase you logged in as Siteadmin.
 
@@ -1122,228 +1124,228 @@ __Note__:
 
        % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100  6025  100  6025    0     0   440k      0 --:--:-- --:--:-- --:--:--  490k
-{
-    "_embedded": {
-        "nodes": [
-            {
-                "_links": {
-                    "cluster": {
-                        "href": "/api/v2/cluster/113",
-                        "title": "ESK624"
-                    },
-                    "include_catalog_entry": {
-                        "href": "/api/v2/cluster/113/node/349?catalog_entry"
-                    },
-                    "include_flavor": {
-                        "href": "/api/v2/cluster/113/node/349?flavor"
-                    },
-                    "self": {
-                        "href": "/api/v2/cluster/113/node/349?services"
-                    },
-                    "tenant": {
-                        "href": "/api/v1/tenant/3",
-                        "title": "EPIC-EUR-1"
-                    }
-                },
-                "fqdn": "bluedata-349.bdlocal",
-                "hypervisor_host": "yav-137.lab.bluedata.com",
-                "metrics_instances": [
+        100  6025  100  6025    0     0   440k      0 --:--:-- --:--:-- --:--:--  490k
+        {
+            "_embedded": {
+                "nodes": [
                     {
-                        "metric_id": "cpu",
-                        "selectors": [
-                            {
-                                "field": "docker.container.name",
-                                "value": "bluedata-349"
+                        "_links": {
+                            "cluster": {
+                                "href": "/api/v2/cluster/113",
+                                "title": "ESK624"
+                            },
+                            "include_catalog_entry": {
+                                "href": "/api/v2/cluster/113/node/349?catalog_entry"
+                            },
+                            "include_flavor": {
+                                "href": "/api/v2/cluster/113/node/349?flavor"
+                            },
+                            "self": {
+                                "href": "/api/v2/cluster/113/node/349?services"
+                            },
+                            "tenant": {
+                                "href": "/api/v1/tenant/3",
+                                "title": "EPIC-EUR-1"
                             }
-                        ]
-                    },
-                    {
-                        "metric_id": "memory",
-                        "selectors": [
+                        },
+                        "fqdn": "bluedata-349.bdlocal",
+                        "hypervisor_host": "yav-137.lab.bluedata.com",
+                        "metrics_instances": [
                             {
-                                "field": "docker.container.name",
-                                "value": "bluedata-349"
-                            }
-                        ]
-                    },
-                    {
-                        "metric_id": "network",
-                        "selectors": [
-                            {
-                                "field": "beat.hostname",
-                                "value": "yav-137.lab.bluedata.com"
+                                "metric_id": "cpu",
+                                "selectors": [
+                                    {
+                                        "field": "docker.container.name",
+                                        "value": "bluedata-349"
+                                    }
+                                ]
                             },
                             {
-                                "field": "system.network.name",
-                                "value": "59223-h"
-                            }
-                        ]
-                    },
-                    {
-                        "metric_id": "disk",
-                        "selectors": [
-                            {
-                                "field": "beat.hostname",
-                                "value": "yav-137.lab.bluedata.com"
+                                "metric_id": "memory",
+                                "selectors": [
+                                    {
+                                        "field": "docker.container.name",
+                                        "value": "bluedata-349"
+                                    }
+                                ]
                             },
                             {
-                                "field": "system.diskio.name",
-                                "value": "dm-9"
-                            }
-                        ]
-                    }
-                ],
-                "nodegroup_id": "2",
-                "private_ip": "172.18.0.79",
-                "role": "kibana",
-                "services": [
-                    {
-                        "endpoint": {
-                            "is_dashboard": false,
-                            "port": "9200",
-                            "proxy_host": "yav-036.lab.bluedata.com",
-                            "proxy_port": "10209"
-                        },
-                        "id": "elasticsearch",
-                        "label": {
-                            "description": "",
-                            "name": "Elastic Search"
-                        }
-                    },
-                    {
-                        "endpoint": {
-                            "is_dashboard": true,
-                            "path": "/",
-                            "port": "5601",
-                            "proxy_host": "yav-036.lab.bluedata.com",
-                            "proxy_port": "10207",
-                            "url_scheme": "http"
-                        },
-                        "id": "kibana",
-                        "label": {
-                            "description": "",
-                            "name": "Kibana"
-                        }
-                    },
-                    {
-                        "endpoint": {
-                            "is_dashboard": false,
-                            "port": "22",
-                            "proxy_host": "yav-036.lab.bluedata.com",
-                            "proxy_port": "10208"
-                        },
-                        "id": "ssh",
-                        "label": {
-                            "description": "",
-                            "name": "SSH"
-                        }
-                    }
-                ],
-                "status": "ready"
-            },
-            {
-                "_links": {
-                    "cluster": {
-                        "href": "/api/v2/cluster/113",
-                        "title": "ESK624"
-                    },
-                    "include_catalog_entry": {
-                        "href": "/api/v2/cluster/113/node/347?catalog_entry"
-                    },
-                    "include_flavor": {
-                        "href": "/api/v2/cluster/113/node/347?flavor"
-                    },
-                    "self": {
-                        "href": "/api/v2/cluster/113/node/347?services"
-                    },
-                    "tenant": {
-                        "href": "/api/v1/tenant/3",
-                        "title": "EPIC-EUR-1"
-                    }
-                },
-                "fqdn": "bluedata-347.bdlocal",
-                "hypervisor_host": "yav-017.lab.bluedata.com",
-                "metrics_instances": [
-                    {
-                        "metric_id": "cpu",
-                        "selectors": [
-                            {
-                                "field": "docker.container.name",
-                                "value": "bluedata-347"
-                            }
-                        ]
-                    },
-                    {
-                        "metric_id": "memory",
-                        "selectors": [
-                            {
-                                "field": "docker.container.name",
-                                "value": "bluedata-347"
-                            }
-                        ]
-                    },
-                    {
-                        "metric_id": "network",
-                        "selectors": [
-                            {
-                                "field": "beat.hostname",
-                                "value": "yav-017.lab.bluedata.com"
+                                "metric_id": "network",
+                                "selectors": [
+                                    {
+                                        "field": "beat.hostname",
+                                        "value": "yav-137.lab.bluedata.com"
+                                    },
+                                    {
+                                        "field": "system.network.name",
+                                        "value": "59223-h"
+                                    }
+                                ]
                             },
                             {
-                                "field": "system.network.name",
-                                "value": "15492-h"
+                                "metric_id": "disk",
+                                "selectors": [
+                                    {
+                                        "field": "beat.hostname",
+                                        "value": "yav-137.lab.bluedata.com"
+                                    },
+                                    {
+                                        "field": "system.diskio.name",
+                                        "value": "dm-9"
+                                    }
+                                ]
                             }
-                        ]
-                    },
-                    {
-                        "metric_id": "disk",
-                        "selectors": [
+                        ],
+                        "nodegroup_id": "2",
+                        "private_ip": "172.18.0.79",
+                        "role": "kibana",
+                        "services": [
                             {
-                                "field": "beat.hostname",
-                                "value": "yav-017.lab.bluedata.com"
+                                "endpoint": {
+                                    "is_dashboard": false,
+                                    "port": "9200",
+                                    "proxy_host": "yav-036.lab.bluedata.com",
+                                    "proxy_port": "10209"
+                                },
+                                "id": "elasticsearch",
+                                "label": {
+                                    "description": "",
+                                    "name": "Elastic Search"
+                                }
                             },
                             {
-                                "field": "system.diskio.name",
-                                "value": "dm-10"
+                                "endpoint": {
+                                    "is_dashboard": true,
+                                    "path": "/",
+                                    "port": "5601",
+                                    "proxy_host": "yav-036.lab.bluedata.com",
+                                    "proxy_port": "10207",
+                                    "url_scheme": "http"
+                                },
+                                "id": "kibana",
+                                "label": {
+                                    "description": "",
+                                    "name": "Kibana"
+                                }
+                            },
+                            {
+                                "endpoint": {
+                                    "is_dashboard": false,
+                                    "port": "22",
+                                    "proxy_host": "yav-036.lab.bluedata.com",
+                                    "proxy_port": "10208"
+                                },
+                                "id": "ssh",
+                                "label": {
+                                    "description": "",
+                                    "name": "SSH"
+                                }
                             }
-                        ]
-                    }
-                ],
-                "nodegroup_id": "1",
-                "private_ip": "172.18.0.70",
-                "role": "index",
-                "services": [
-                    {
-                        "endpoint": {
-                            "is_dashboard": false,
-                            "path": "/",
-                            "port": "9200",
-                            "proxy_host": "yav-036.lab.bluedata.com",
-                            "proxy_port": "10203",
-                            "url_scheme": "http"
-                        },
-                        "id": "elasticsearch",
-                        "label": {
-                            "description": "",
-                            "name": "Elastic Search"
-                        }
+                        ],
+                        "status": "ready"
                     },
                     {
-                        "endpoint": {
-                            "is_dashboard": false,
-                            "port": "22",
-                            "proxy_host": "yav-036.lab.bluedata.com",
-                            "proxy_port": "10204"
+                        "_links": {
+                            "cluster": {
+                                "href": "/api/v2/cluster/113",
+                                "title": "ESK624"
+                            },
+                            "include_catalog_entry": {
+                                "href": "/api/v2/cluster/113/node/347?catalog_entry"
+                            },
+                            "include_flavor": {
+                                "href": "/api/v2/cluster/113/node/347?flavor"
+                            },
+                            "self": {
+                                "href": "/api/v2/cluster/113/node/347?services"
+                            },
+                            "tenant": {
+                                "href": "/api/v1/tenant/3",
+                                "title": "EPIC-EUR-1"
+                            }
                         },
-                        "id": "ssh",
-                        "label": {
-                            "description": "",
-                            "name": "SSH"
-                        }
-                    }
-                ],
-                "status": "ready"
-            }, ...
+                        "fqdn": "bluedata-347.bdlocal",
+                        "hypervisor_host": "yav-017.lab.bluedata.com",
+                        "metrics_instances": [
+                            {
+                                "metric_id": "cpu",
+                                "selectors": [
+                                    {
+                                        "field": "docker.container.name",
+                                        "value": "bluedata-347"
+                                    }
+                                ]
+                            },
+                            {
+                                "metric_id": "memory",
+                                "selectors": [
+                                    {
+                                        "field": "docker.container.name",
+                                        "value": "bluedata-347"
+                                    }
+                                ]
+                            },
+                            {
+                                "metric_id": "network",
+                                "selectors": [
+                                    {
+                                        "field": "beat.hostname",
+                                        "value": "yav-017.lab.bluedata.com"
+                                    },
+                                    {
+                                        "field": "system.network.name",
+                                        "value": "15492-h"
+                                    }
+                                ]
+                            },
+                            {
+                                "metric_id": "disk",
+                                "selectors": [
+                                    {
+                                        "field": "beat.hostname",
+                                        "value": "yav-017.lab.bluedata.com"
+                                    },
+                                    {
+                                        "field": "system.diskio.name",
+                                        "value": "dm-10"
+                                    }
+                                ]
+                            }
+                        ],
+                        "nodegroup_id": "1",
+                        "private_ip": "172.18.0.70",
+                        "role": "index",
+                        "services": [
+                            {
+                                "endpoint": {
+                                    "is_dashboard": false,
+                                    "path": "/",
+                                    "port": "9200",
+                                    "proxy_host": "yav-036.lab.bluedata.com",
+                                    "proxy_port": "10203",
+                                    "url_scheme": "http"
+                                },
+                                "id": "elasticsearch",
+                                "label": {
+                                    "description": "",
+                                    "name": "Elastic Search"
+                                }
+                            },
+                            {
+                                "endpoint": {
+                                    "is_dashboard": false,
+                                    "port": "22",
+                                    "proxy_host": "yav-036.lab.bluedata.com",
+                                    "proxy_port": "10204"
+                                },
+                                "id": "ssh",
+                                "label": {
+                                    "description": "",
+                                    "name": "SSH"
+                                }
+                            }
+                        ],
+                        "status": "ready"
+                    }, ...
 
 </span>
