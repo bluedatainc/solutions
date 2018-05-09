@@ -10,7 +10,8 @@ __Note__:
 
   - The samples below are for v2 APIs but for more detail info please check the docs under "http://{controller-IP}:8080/apidocs".
 
-  - Inorder to login and create a session and to switch to a non-siteadmin role/tenant, you will use the v1 APIs (Refer to v1_bluedata_apis_doc for the exact commands). For now you will use a combination of v1 and v2 APIs incase you choose to run the samples below.
+  - Inorder to login and create a session and to switch to a non-siteadmin role/tenant, you will use the v1 APIs (Refer to v1_bluedata_apis_doc for the exact commands). 
+  For now you will use a combination of v1 and v2 APIs incase you choose to run the samples below.
 
 
 
@@ -27,7 +28,7 @@ __Note__:
   - [10. Update the hue.ini safety valve to point to datatap](#10-update-the-hue.ini-safety-valve-to-point-to-datatap)
   - [11. Mount dtap to Virtual cluster ActionScript](#11-mount-dtap-to-virtual-cluster-actionscript)
   - [12. Invoke ActionScript from dtap](#12-invoke-actionscript-from-dtap)
-  - [13. Retrieve public & private endpoints for cluster services](#13-retrieve-public-&-private-endpoints-for-cluster-services)
+  - [13. Retrieve public and private endpoints for cluster services](#13-retrieve-public-and-private-endpoints-for-cluster-services)
 
 
 
@@ -1108,7 +1109,7 @@ __Note__:
 	 201 created
 
 
-## 13. Retrieve public & private endpoints for cluster services
+## 13. Retrieve public and private endpoints for cluster services
 
 
   __API-URI__: /api/v2/cluster/{cluster-id}/node?services
