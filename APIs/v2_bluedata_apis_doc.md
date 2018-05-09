@@ -4,12 +4,15 @@
 
 __Note__:
 
-  - For Epic3.2 and later you can find v2 API docs for a given EPIC installation by connecting to the /apidocs URL on your controller host machine "http://{controller-IP}:8080/apidocs". 
-  - For more info on difference between v1 and v2 APIs, please refer to v1_vs_v2_apidocs.pdf in the same location. 
+  - For Epic3.2 and later you can find v2 API docs for a given EPIC installation by connecting to the "/apidocs" path on your controller host machine "http://{controller-IP}:8080/apidocs".
+
+  - For more info on difference between v1 and v2 APIs, please refer to v1_vs_v2_apidocs.pdf in the same location.
+
   - The samples below are for v2 APIs but for more detail info please check the docs under "http://{controller-IP}:8080/apidocs".
 
   - Inorder to login and create a session and to switch to a non-siteadmin role/tenant, you will use the v1 APIs (Refer to v1_bluedata_apis_doc for the exact commands). For now you will use a combination of v1 and v2 APIs incase you choose to run the samples below.
-  
+
+
   - [0. Fetch a session](#0-fetch-a-session)
   - [1. Retrieve all tenants](#1-retrieve-all-tenants)
   - [2. Retrieve a specific tenant](#2-retrieve-a-specific-tenant)
@@ -24,7 +27,7 @@ __Note__:
   - [11. Mount dtap to Virtual cluster ActionScript](#11-mount-dtap-to-virtual-cluster-actionscript)
   - [12. Invoke ActionScript from dtap](#12-invoke-actionscript-from-dtap)
   - [13. Retrieve public & private endpoints for cluster services](#13-retrieve-public-&-private-endpoints-for-cluster-services)
- 
+
 
 
 ## 0. Fetch a session
@@ -129,7 +132,7 @@ __Note__:
                 "href": "/api/v2/tenant"
             }
         }
-    } 
+    }
 
 ## 2. Retrieve a specific tenant
 
@@ -162,7 +165,7 @@ __Note__:
               }
           }
 
-        
+
 
 ## 3. Retrieve all clusters
 
@@ -550,7 +553,7 @@ __Note__:
     },
     "two_phase_delete": false
 }
-        
+
 
   __Response__:
 
@@ -1001,8 +1004,6 @@ __Note__:
 
 
 
-
-
 ## 10. Update the hue.ini safety valve to point to datatap
 
 
@@ -1107,6 +1108,7 @@ __Note__:
 
 
 ## 13. Retrieve public & private endpoints for cluster services
+
 
   __API-URI__: /api/v2/cluster/{cluster-id}/node?services
 
