@@ -1366,11 +1366,11 @@ AWS:
 
 ## 42. Get cluster service status
 
-  __API-URI__: /api/v1/cluster/<cluster-id>?nagios
+  __API-URI__: /api/v1/cluster/{cluster-id}?nagios
 
   __NOTE__:
 
-      - Inorder to get cluster service status, first run API#1 to get <session-id> and then run API#37 to switch to a specific tenant where your cluster is created.
+      - Inorder to get cluster service status, first run API#1 to get {session-id} and then run API#37 to switch to a specific tenant where your cluster is created.
 
       - The API response has parameter named "current_state" which provides the status of the services in the cluster. The current_state has four values,
 
