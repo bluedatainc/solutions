@@ -49,6 +49,7 @@ __Note__:
   - [39. Invoke ActionScript from dtap](#39-invoke-actionscript-from-dtap)
   - [40. Install catalog Image](#40-install-catalog-image)
   - [41. Get a tenant keypair file](#41-get-a-tenant-keypair-file)
+  - [42. Get cluster service status](#42-get-cluster-service-status)
 
 ## 1. Login and Session Creation
 
@@ -1362,5 +1363,249 @@ AWS:
     {"private_key":"-----BEGIN RSA PRIVATE KEY-----\nMIGeMA0GCSqGSIb3DQEBAQUAA4GMADCBiAKBgH/YVs/NDEnVyVPKOgo0ShTjsg6u CaCYJL7tNcTR8EEMZmUHYy7Bd3Et8P5CZBK0GsJL/Phl2OAIXXZ60u4tTIVU8Jpf h2VquBSm4wNoXXL9W0tfjpGx7H97BnuUy1Q6PNqUDjTm1lixqq/4am9we/JTCb2L 
     lyKPlEhupS8kequ1AgMBAAE=\n-----END RSA PRIVATE KEY-----\n"}
 
+
+## 42. Get cluster service status
+
+  __API-URI__: /api/v1/cluster/<cluster-id>?nagios
+
+  __NOTE__:
+
+      - Inorder to get cluster service status, first run API#1 to get <session-id> and then run API#37 to switch to a specific tenant where your cluster is created.
+
+      - The API response has parameter named "current_state" which provides the status of the services in the cluster. The current_state has four values,
+
+            a. '0' - 'OK' state
+            b. '1' - 'Warning' state
+            c. '2' - 'Critical' state
+            d. '3' - 'Unknown' state
+
+
+  __Curl command__:
+
+      curl -X GET -H "X-BDS-SESSION:<session-ID>" http://<controller-IP>:8080/api/v1/cluster/<cluster-id>?nagios
+
+
+  __API Type__: `GET`
+
+  __Example__:
+
+     curl -X GET -H "X-BDS-SESSION:/api/v1/session/8fdf9160-f291-4378-8d30-220c2e261bfe" http://10.36.0.17:8080/api/v1/cluster/62?nagios | python -m json.tool
+
+
+  __Response__:
+
+      Message from syslogd@yav-114 at May 16 11:58:58 ...
+      kernel:unregister_netdevice: waiting for lo to become free. Usage count = 1
+
+      % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                       Dload  Upload   Total   Spent    Left  Speed
+      100  3529  100  3529    0     0   470k      0 --:--:-- --:--:-- --:--:--  574k
+      {
+          "_links": {
+              "self": {
+                  "href": "/api/v1/cluster/62?nagios"
+              }
+          },
+          "hosts_list": [
+              {
+                  "current_state": "0",
+                  "host_name": "bluedata-199.bdlocal",
+                  "service_list": [
+                      {
+                          "current_state": "0",
+                          "last_check": "1526500331",
+                          "next_check": "1526500631",
+                          "service_description": "Spark worker",
+                          "servicegroup": "Application Services"
+                      },
+                      {
+                          "current_state": "0",
+                          "last_check": "1526500331",
+                          "next_check": "1526500631",
+                          "service_description": "BlueData Agent",
+                          "servicegroup": "System Services"
+                      },
+                      {
+                          "current_state": "0",
+                          "last_check": "1526500331",
+                          "next_check": "1526500631",
+                          "service_description": "User Auth",
+                          "servicegroup": "System Services"
+                      }
+                  ]
+              },
+              {
+                  "current_state": "0",
+                  "host_name": "bluedata-198.bdlocal",
+                  "service_list": [
+                      {
+                          "current_state": "0",
+                          "last_check": "1526500331",
+                          "next_check": "1526500631",
+                          "service_description": "Spark worker",
+                          "servicegroup": "Application Services"
+                      },
+                      {
+                          "current_state": "0",
+                          "last_check": "1526500331",
+                          "next_check": "1526500631",
+                          "service_description": "BlueData Agent",
+                          "servicegroup": "System Services"
+                      },
+                      {
+                          "current_state": "0",
+                          "last_check": "1526500331",
+                          "next_check": "1526500631",
+                          "service_description": "User Auth",
+                          "servicegroup": "System Services"
+                      }
+                  ]
+              },
+              {
+                  "current_state": "0",
+                  "host_name": "bluedata-197.bdlocal",
+                  "service_list": [
+                      {
+                          "current_state": "0",
+                          "last_check": "1526500331",
+                          "next_check": "1526500631",
+                          "service_description": "Spark worker",
+                          "servicegroup": "Application Services"
+                      },
+                      {
+                          "current_state": "0",
+                          "last_check": "1526500331",
+                          "next_check": "1526500631",
+                          "service_description": "Spark master",
+                          "servicegroup": "Application Services"
+                      },
+                      {
+                          "current_state": "0",
+                          "last_check": "1526500331",
+                          "next_check": "1526500631",
+                          "service_description": "BlueData Agent",
+                          "servicegroup": "System Services"
+                      },
+                      {
+                          "current_state": "0",
+                          "last_check": "1526500331",
+                          "next_check": "1526500631",
+                          "service_description": "User Auth",
+                          "servicegroup": "System Services"
+                      }
+                  ]
+              },
+              {
+                  "current_state": "0",
+                  "host_name": "bluedata-201.bdlocal",
+                  "service_list": [
+                      {
+                          "current_state": "0",
+                          "last_check": "1526500331",
+                          "next_check": "1526500631",
+                          "service_description": "Jupyterhub",
+                          "servicegroup": "Application Services"
+                      },
+                      {
+                          "current_state": "0",
+                          "last_check": "1526500331",
+                          "next_check": "1526500631",
+                          "service_description": "BlueData Agent",
+                          "servicegroup": "System Services"
+                      },
+                      {
+                          "current_state": "0",
+                          "last_check": "1526500331",
+                          "next_check": "1526500631",
+                          "service_description": "User Auth",
+                          "servicegroup": "System Services"
+                      }
+                  ]
+              },
+              {
+                  "current_state": "0",
+                  "host_name": "bluedata-200.bdlocal",
+                  "service_list": [
+                      {
+                          "current_state": "0",
+                          "last_check": "1526500331",
+                          "next_check": "1526500631",
+                          "service_description": "Rstudio server",
+                          "servicegroup": "Application Services"
+                      },
+                      {
+                          "current_state": "0",
+                          "last_check": "1526500331",
+                          "next_check": "1526500631",
+                          "service_description": "Shiny server",
+                          "servicegroup": "Application Services"
+                      },
+                      {
+                          "current_state": "0",
+                          "last_check": "1526500331",
+                          "next_check": "1526500631",
+                          "service_description": "BlueData Agent",
+                          "servicegroup": "System Services"
+                      },
+                      {
+                          "current_state": "0",
+                          "last_check": "1526500331",
+                          "next_check": "1526500631",
+                          "service_description": "User Auth",
+                          "servicegroup": "System Services"
+                      }
+                  ]
+              }
+          ],
+          "service_groups": [
+              {
+                  "group_name": "Application Services",
+                  "members": [
+                      "Spark worker",
+                      "Spark master",
+                      "Rstudio server",
+                      "Shiny server",
+                      "Jupyterhub"
+                  ]
+              },
+              {
+                  "group_name": "System Services",
+                  "members": [
+                      "User Auth",
+                      "BlueData Agent"
+                  ]
+              }
+          ],
+          "services_list": [
+              {
+                  "group": "Application Services",
+                  "name": "Spark worker"
+              },
+              {
+                  "group": "Application Services",
+                  "name": "Spark master"
+              },
+              {
+                  "group": "Application Services",
+                  "name": "Rstudio server"
+              },
+              {
+                  "group": "Application Services",
+                  "name": "Shiny server"
+              },
+              {
+                  "group": "Application Services",
+                  "name": "Jupyterhub"
+              },
+              {
+                  "group": "System Services",
+                  "name": "User Auth"
+              },
+              {
+                  "group": "System Services",
+                  "name": "BlueData Agent"
+              }
+          ]
+      }
 
 </span>
