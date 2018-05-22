@@ -29,7 +29,11 @@ __Note__:
   - [11. Mount dtap to Virtual cluster ActionScript](#11-mount-dtap-to-virtual-cluster-actionscript)
   - [12. Invoke ActionScript from dtap](#12-invoke-actionscript-from-dtap)
   - [13. Retrieve public and private endpoints for cluster services](#13-retrieve-public-and-private-endpoints-for-cluster-services)
-
+   - [14. Retrieve list of all FS mounts](#14-retrieve-list-of-all-fs-mounts)
+   - [15. Retrieve a specific FS mount point](#15-retrieve-a-specific-fs-mount-point)
+   - [16. Create a new FS mount](#16-create-a-new-fs-mount)
+   - [17. Delete an existing FS mount](#17-delete-an-existing-fs-mount)
+   - [18. Retrieve the status of specific FS mount point ](#18-retrieve-the-status-of-specific-fs-mount-point)
 
 
 ## 0. Fetch a session
@@ -1352,4 +1356,342 @@ __Note__:
                         "status": "ready"
                     }, ...
 
+
+## 14. Retrieve list of all FS mounts
+
+  __API-URI__: /api/v2/tenant_filesystem
+
+  __Curl command__:
+
+      curl -X GET -H "X-BDS-SESSION:<session-id>" http://<controller-ip>:8080/api/v2/tenant_filesystem
+
+  __API Type__: `GET`
+
+  __Example__:
+
+      curl -X GET -H "X-BDS-SESSION:/api/v1/session/c98cf5d2-7a76-4015-9c73-e9d44edd76ba" http://10.36.0.27:8080/api/v2/tenant_filesystem
+
+  __Response__:
+
+        % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                         Dload  Upload   Total   Spent    Left  Speed
+        100  2162  100  2162    0     0   143k      0 --:--:-- --:--:-- --:--:--  150k
+        {
+            "_embedded": {
+                "filesystems": [
+                    {
+                        "_embedded": {
+                            "mountspec": {
+                                "_links": {
+                                    "self": {
+                                        "href": "api/v2/tenant_filesystem/8/mountspec"
+                                    },
+                                    "tenant": {
+                                        "href": "/api/v1/tenant/3",
+                                        "title": "Analytics"
+                                    },
+                                    "tenant_filesystem": {
+                                        "href": "/api/v2/tenant_filesystem/8"
+                                    }
+                                },
+                                "export_path": "/exports/tom",
+                                "host": "10.2.12.86",
+                                "mount_name": "TomsShare",
+                                "read_only": false,
+                                "type": "nfs"
+                            },
+                            "status": {
+                                "_links": {
+                                    "self": {
+                                        "href": "api/v2/tenant_filesystem/8/status"
+                                    },
+                                    "tenant": {
+                                        "href": "/api/v1/tenant/3",
+                                        "title": "Analytics"
+                                    },
+                                    "tenant_filesystem": {
+                                        "href": "/api/v2/tenant_filesystem/8"
+                                    }
+                                },
+                                "status": "mounted"
+                            }
+                        },
+                        "_links": {
+                            "self": {
+                                "href": "/api/v2/tenant_filesystem/8"
+                            },
+                            "tenant": {
+                                "href": "/api/v1/tenant/3",
+                                "title": "Analytics"
+                            }
+                        }
+                    },
+                    {
+                        "_embedded": {
+                            "mountspec": {
+                                "_links": {
+                                    "self": {
+                                        "href": "api/v2/tenant_filesystem/5/mountspec"
+                                    },
+                                    "tenant": {
+                                        "href": "/api/v1/tenant/2",
+                                        "title": "Demo Tenant"
+                                    },
+                                    "tenant_filesystem": {
+                                        "href": "/api/v2/tenant_filesystem/5"
+                                    }
+                                },
+                                "export_path": "/jungle/customers",
+                                "host": "bd-nas3.lab.bluedata.com",
+                                "mount_name": "CustomerMount",
+                                "read_only": false,
+                                "type": "nfs"
+                            },
+                            "status": {
+                                "_links": {
+                                    "self": {
+                                        "href": "api/v2/tenant_filesystem/5/status"
+                                    },
+                                    "tenant": {
+                                        "href": "/api/v1/tenant/2",
+                                        "title": "Demo Tenant"
+                                    },
+                                    "tenant_filesystem": {
+                                        "href": "/api/v2/tenant_filesystem/5"
+                                    }
+                                },
+                                "status": "mounted"
+                            }
+                        },
+                        "_links": {
+                            "self": {
+                                "href": "/api/v2/tenant_filesystem/5"
+                            },
+                            "tenant": {
+                                "href": "/api/v1/tenant/2",
+                                "title": "Demo Tenant"
+                            }
+                        }
+                    },
+                    {
+                        "_embedded": {
+                            "mountspec": {
+                                "_links": {
+                                    "self": {
+                                        "href": "api/v2/tenant_filesystem/6/mountspec"
+                                    },
+                                    "tenant": {
+                                        "href": "/api/v1/tenant/2",
+                                        "title": "Demo Tenant"
+                                    },
+                                    "tenant_filesystem": {
+                                        "href": "/api/v2/tenant_filesystem/6"
+                                    }
+                                },
+                                "export_path": "/jungle/support",
+                                "host": "bd-nas3.lab.bluedata.com",
+                                "mount_name": "SupportMount",
+                                "read_only": true,
+                                "type": "nfs"
+                            },
+                            "status": {
+                                "_links": {
+                                    "self": {
+                                        "href": "api/v2/tenant_filesystem/6/status"
+                                    },
+                                    "tenant": {
+                                        "href": "/api/v1/tenant/2",
+                                        "title": "Demo Tenant"
+                                    },
+                                    "tenant_filesystem": {
+                                        "href": "/api/v2/tenant_filesystem/6"
+                                    }
+                                },
+                                "status": "mounted"
+                            }
+                        },
+                        "_links": {
+                            "self": {
+                                "href": "/api/v2/tenant_filesystem/6"
+                            },
+                            "tenant": {
+                                "href": "/api/v1/tenant/2",
+                                "title": "Demo Tenant"
+                            }
+                        }
+                    }
+                ]
+            },
+            "_links": {
+                "self": {
+                    "href": "/api/v2/tenant_filesystem"
+                }
+            },
+            "mount_timeout": "infinity",
+            "mount_verbose": false,
+            "unmount_timeout": "infinity",
+            "unmount_verbose": false
+        }
+
+## 15. Retrieve a specific FS mount point
+
+  __API-URI__: /api/v2/tenant_filesystem/{tenant_filesystem_id}
+
+  __Curl command__:
+
+      curl -X GET -H "X-BDS-SESSION:<session-id>" http://<controller-ip>:8080/api/v2/tenant_filesystem/{tenant_filesystem_id}
+
+  __API Type__: `GET`
+
+  __Example__:
+
+      curl -X GET -H "X-BDS-SESSION:/api/v1/session/c98cf5d2-7a76-4015-9c73-e9d44edd76ba" http://10.36.0.27:8080/api/v2/tenant_filesystem/8
+
+  __Response__:
+
+
+        % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                         Dload  Upload   Total   Spent    Left  Speed
+        100   639  100   639    0     0  85109      0 --:--:-- --:--:-- --:--:--  104k
+        {
+            "_embedded": {
+                "mountspec": {
+                    "_links": {
+                        "self": {
+                            "href": "api/v2/tenant_filesystem/8/mountspec"
+                        },
+                        "tenant": {
+                            "href": "/api/v1/tenant/3",
+                            "title": "Analytics"
+                        },
+                        "tenant_filesystem": {
+                            "href": "/api/v2/tenant_filesystem/8"
+                        }
+                    },
+                    "export_path": "/exports/tom",
+                    "host": "10.2.12.86",
+                    "mount_name": "TomsShare",
+                    "read_only": false,
+                    "type": "nfs"
+                },
+                "status": {
+                    "_links": {
+                        "self": {
+                            "href": "api/v2/tenant_filesystem/8/status"
+                        },
+                        "tenant": {
+                            "href": "/api/v1/tenant/3",
+                            "title": "Analytics"
+                        },
+                        "tenant_filesystem": {
+                            "href": "/api/v2/tenant_filesystem/8"
+                        }
+                    },
+                    "status": "mounted"
+                }
+            },
+            "_links": {
+                "self": {
+                    "href": "/api/v2/tenant_filesystem/8"
+                },
+                "tenant": {
+                    "href": "/api/v1/tenant/3",
+                    "title": "Analytics"
+                }
+            }
+        }
+
+## 16. Create a new FS mount point
+
+  __Note__: Makesure to run Switch tenant API (v1 API) to create a new FS mount point incase you logged in as Siteadmin.
+
+  __API-URI__: /api/v2/tenant_filesystem
+
+  __Curl command__:
+
+      curl -X POST -d@create_fsmount.json -H "X-BDS-SESSION:<session-id>" http://<controller-ip>:8080/api/v2/tenant_filesystem
+
+  __API Type__: `POST`
+
+  __Example__:
+
+      curl -X POST -d@create_fsmount.json -H "X-BDS-SESSION:/api/v1/session/446468df-6869-4e42-bbba-c8cc11cb4a54" http://10.36.0.27:8080/api/v2/tenant_filesystem
+
+ __Json-file__: create_fsmount.json:
+
+      { 
+          "read_only": true, 
+          "host": "10.32.1.46", 
+          "type": "nfs", 
+          "mount_name": "Datascience-NFS_mount", 
+          "export_path": "/exports/datascience"
+      }
+
+  __Response__:
+
+      201 Created
+
+
+
+## 17. Delete an existing FS mount
+
+
+  __API-URI__: /api/v2/tenant_filesystem/{tenant_filesystem_id}
+
+  __Curl command__:
+
+      curl -v -X DELETE -H "X-BDS-SESSION:<session-id>" http://<controller-ip>:8080//api/v2/tenant_filesystem/{tenant_filesystem_id}
+
+  __API Type__: `DELETE`
+
+  __Example__:
+
+     curl -v -X DELETE -H "X-BDS-SESSION:/api/v1/session/44aa71e2-87b9-4c9b-92b8-39eb48e916b6" http://10.32.1.46:8080/api/v2/tenant_filesystem/3
+
+  __Response__:
+
+< HTTP/1.1 202 Accepted
+< Server: BlueData EPIC 3.3
+< Date: Tue, 22 May 2018 22:29:31 GMT
+< Content-Type: text/plain
+< Content-Length: 0
+< Access-Control-Allow-Origin: *
+<
+* Connection #0 to host 10.32.1.46 left intact
+
+
+## 18. Retrieve the status of specific FS mount point
+
+  __API-URI__: /api/v2/tenant_filesystem/{tenant_filesystem_id}/status
+
+  __Curl command__:
+
+      curl -X GET -H "X-BDS-SESSION:<session-id>" http://<controller-ip>:8080/api/v2/tenant_filesystem/{tenant_filesystem_id}/status
+
+  __API Type__: `GET`
+
+  __Example__:
+
+      curl -X GET -H "X-BDS-SESSION:/api/v1/session/b584b109-318c-4aa9-b704-21fab6c44e07" http://10.36.0.27:8080/api/v2/tenant_filesystem/8/status
+
+  __Response__:
+
+       % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+        100   199  100   199    0     0  31279      0 --:--:-- --:--:-- --:--:-- 39800
+        {
+            "_links": {
+                "self": {
+                    "href": "api/v2/tenant_filesystem/8/status"
+                },
+                "tenant": {
+                    "href": "/api/v1/tenant/3",
+                    "title": "Analytics"
+                },
+                "tenant_filesystem": {
+                    "href": "/api/v2/tenant_filesystem/8"
+                }
+            },
+            "status": "mounted"
+        }
 </span>

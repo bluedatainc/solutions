@@ -1372,7 +1372,7 @@ AWS:
 
       - Inorder to get cluster service status, first run API#1 to get {session-id} and then run API#37 to switch to a specific tenant where your cluster is created.
 
-      - The API response has parameter named "current_state" which provides the status of the services in the cluster. The current_state has four values,
+      - The API response has parameter named "current_state" which provides the service status of a specific cluster. The current_state has four values,
 
             a. '0' - 'OK' state
             b. '1' - 'Warning' state
