@@ -31,7 +31,7 @@ __Note__:
   - [13. Retrieve public and private endpoints for cluster services](#13-retrieve-public-and-private-endpoints-for-cluster-services)
    - [14. Retrieve list of all FS mounts](#14-retrieve-list-of-all-fs-mounts)
    - [15. Retrieve a specific FS mount point](#15-retrieve-a-specific-fs-mount-point)
-   - [16. Create a new FS mount](#16-create-a-new-fs-mount)
+   - [16. Create a new FS mount point](#16-create-a-new-fs-mount-point)
    - [17. Delete an existing FS mount](#17-delete-an-existing-fs-mount)
    - [18. Retrieve the status of specific FS mount point ](#18-retrieve-the-status-of-specific-fs-mount-point)
 
