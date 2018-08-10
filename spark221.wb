@@ -1,0 +1,91 @@
+#!/usr/bin/env bdwb
+################################################################################
+#                                                                              #
+#  Sample workbench instructions for building a BlueData catalog entry.        #
+#                                                                              #
+################################################################################
+#
+# YOUR_ORGANIZATION_NAME must be replaced with a valid organization name. Please
+# refer to 'help builder organization' for details.
+#
+builder organization --name BlueData
+
+## Begin a new catalog entry
+catalog new --distroid spark221 --name "Spark 2.2.1 on centos7x"                           \
+            --desc "Spark 2.2.1"			\
+            --categories Spark --version 1.0
+
+## Define all node roles for the virtual cluster.
+role add controller 1
+role add worker 0+
+
+## Define all services that are available in the virtual cluster.
+
+service add --srvcid spark --name "Spark master" --scheme "http" --port 8080   \
+            --path "/" --display --onroles controller
+
+service add --srvcid spark_master --name "Spark master" --scheme "spark"       \
+            --port 7077 --export_as "spark"    \
+	    --sysctl spark-master \
+	    --onroles controller
+
+service add --srvcid spark_worker --name "Spark worker" --scheme "http"        \
+            --port 8081 --path "/" --display   \
+	    --sysctl spark-slave               \
+	    --onroles controller worker 
+
+## Appconfiguration autogenenration.
+appconfig autogen --new --configapi 7
+
+appconfig autogen --pkgfile spark/spark-defaults.conf --dest /usr/lib/spark/spark-2.2.1-bin-hadoop2.7/conf/spark-defaults.conf \
+                  --pkgfile spark/spark-env.sh --dest /usr/lib/spark/spark-2.2.1-bin-hadoop2.7/conf/spark-env.sh \
+		  --pkgfile spark/spark-master --dest /etc/init.d/   \
+		  --pkgfile spark/spark-slave --dest /etc/init.d/  \
+                  --onroles controller worker
+
+appconfig autogen --pkgfile core-site.xml --dest /usr/lib/spark/spark-2.2.1-bin-hadoop2.7/conf/core-site.xml \
+		  --pkgfile hadoop --dest /usr/bin/hadoop  \
+		  --pkgfile appjob --dest /opt/bluedata/vagent/guestconfig/appconfig/appjob \
+                  --onroles controller worker
+
+#Replace
+
+appconfig autogen --execute total_vcores.sh --onroles controller worker 
+
+appconfig autogen --replace /usr/lib/spark/spark-2.2.1-bin-hadoop2.7/conf/spark-defaults.conf \
+                  --pattern @@@@SPARK_MASTER@@@@ --macro "GET_SERVICE_URL spark_master controller" \
+                  --pattern @@@@SPARK_MAX_CORES@@@@ --macro "GET_TOTAL_VCORES" \
+                  --onroles controller worker 
+
+appconfig autogen --replace /usr/lib/spark/spark-2.2.1-bin-hadoop2.7/conf/spark-env.sh        \
+                  --pattern @@@@MASTER_HOST@@@@ --macro "GET_FQDN_LIST controller" \
+                  --pattern @@@@MEMORY@@@@ --macro "echo $(GET_TOTAL_VMEMORY_MB)m" \
+                  --pattern @@@@CORES@@@@ --macro "GET_TOTAL_VCORES" \
+                  --onroles controller worker 
+
+appconfig autogen --replace /etc/init.d/spark-slave --pattern @@@@FQDN@@@@ --macro GET_NODE_FQDN \
+		  --pattern @@@@SPARK_HOME@@@@ --macro "echo /usr/lib/spark/spark-2.2.1-bin-hadoop2.7" \
+		  --pattern @@@@SPARK_MASTER@@@@  --macro "GET_SERVICE_URL spark_master controller" \
+                  --onroles controller worker 
+
+appconfig autogen --replace /etc/init.d/spark-master --pattern @@@@FQDN@@@@ --macro GET_FQDN_LIST controller \
+		  --pattern @@@@SPARK_HOME@@@@ --macro "echo /usr/lib/spark/spark-2.2.1-bin-hadoop2.7" \
+		  --pattern @@@@SPARK_HOME@@@@ --macro "echo /usr/lib/spark/spark-2.2.1-bin-hadoop2.7" \
+                  --onroles controller worker 
+
+appconfig autogen --generate
+appconfig package
+
+## Specify a logo file for the
+logo file --filepath Logo_Spark.png
+
+################################################################################
+#                        Catalog package for CentOS                            #
+################################################################################
+
+image build --basedir image/centos/spark --image-repotag bluedata/sparkbase:2.0
+image package --image-repotag bluedata/sparkbase:2.0 --os centos7  --roles controller worker
+
+catalog save --filepath staging/spark221e1.json --force
+sources package
+catalog package

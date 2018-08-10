@@ -1,0 +1,11 @@
+#!/bin/bash
+# Copyright (c) 2015 BlueData Software, Inc.
+#
+# Simple hadoop fs utility script
+if [ "$1" != "fs" ]; then
+echo "Only hadoop fs commands supported"
+exit 1
+fi
+shift
+HADOOP_JAR="/usr/lib/spark/spark-2.2.1-bin-hadoop2.7/jars/*"
+java -cp ${HADOOP_JAR}:/opt/bluedata/bluedata-dtap.jar:/opt/bluedata/aws-java-sdk-1.7.4.jar:/opt/bluedata/hadoop-aws-2.7.1.jar:/usr/lib/spark/spark-2.2.1-bin-hadoop2.7/conf -Djava.net.preferIPv4Stack=true org.apache.hadoop.fs.FsShell $@
