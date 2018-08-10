@@ -1,0 +1,19 @@
+{
+  "env": {
+    "PYTHONPATH": "/usr/lib/spark/spark-2.2.1-bin-hadoop2.7/python:/usr/lib/spark/spark-2.2.1-bin-hadoop2.7/python/lib/py4j-0.10.4-src.zip",
+    "DEFAULT_INTERPRETER": "SQL",
+    "__TOREE_OPTS__": "",
+    "PYTHON_EXEC": "/opt/anaconda3/bin/python",
+    "SPARK_HOME": "/usr/lib/spark/spark-2.2.1-bin-hadoop2.7",
+    "__TOREE_SPARK_OPTS__": "--master=@@@@SPARK_MASTER@@@@ --driver-java-options=-Xms2048M --driver-java-options=-Xmx4096M --driver-java-options=-Dlog4j.logLevel=inf",
+    "CAPTURE_STANDARD_OUT": "true",
+    "CAPTURE_STANDARD_ERR": "true"
+  },
+  "language": "sql",
+  "argv": [
+    "/usr/local/share/jupyter/kernels/apache_toree_sql/bin/run.sh",
+    "--profile",
+    "{connection_file}"
+  ],
+  "display_name": "Apache Toree - SQL"
+}

@@ -1,0 +1,61 @@
+#!/bin/bash
+#
+# spark_master      Bring up/down the Spark Master service.
+#
+# chkconfig: 35 11 89
+# description:
+
+. /etc/init.d/functions
+
+export TERM='xterm-256color'
+export JAVA_HOME=/usr/lib/jvm/java-openjdk
+export PATH=$JAVA_HOME/bin:/root/bin:$PATH
+
+rc=0
+SPARK_HOME=@@@@SPARK_HOME@@@@
+SPARK_SBIN=${SPARK_HOME}/sbin
+SPARK_MASTER_START=${SPARK_SBIN}/start-master.sh
+SPARK_MASTER_STOP=${SPARK_SBIN}/stop-master.sh
+
+start() {
+    action $"Starting Spark Master: " ${SPARK_MASTER_START}
+    rc=$?
+}
+
+stop() {
+    action $"Stopping Spark Master: " ${SPARK_MASTER_STOP}
+    rc=$?
+}
+
+get_status() {
+    PID=`jps -lm|grep org.apache.spark.deploy.master.Master | awk -F' ' '{print $1}'`
+    if  ps -p $PID >&- ; then   rc=0; else   rc=1; fi
+
+    if [[ $rc -eq 0 ]]; then
+        echo "Spark Master is running."
+    else
+        echo "Spark Master is NOT running."
+    fi
+}
+
+case $1 in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        get_status
+        ;;
+    restart|reload)
+        $0 stop
+        $0 start
+        rc=$?
+        ;;
+    *)
+        echo $"Usage: $0 {start|stop|status|restart|reload)"
+        exit 1
+esac
+
+exit $rc

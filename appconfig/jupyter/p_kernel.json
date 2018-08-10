@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "/usr/local/share/jupyter/kernels/apache_toree_pyspark/bin/run.sh",
+    "--profile",
+    "{connection_file}"
+  ],
+  "language": "/opt/anaconda3/bin/python",
+  "display_name": "Apache Toree - PySpark",
+  "env": {
+    "DEFAULT_INTERPRETER": "PySpark",
+    "SPARK_HOME": "/usr/lib/spark/spark-2.2.1-bin-hadoop2.7",
+    "PYTHON_EXEC": "/opt/anaconda3/bin/python",
+    "__TOREE_OPTS__": "",
+    "__TOREE_SPARK_OPTS__": "--master=@@@@SPARK_MASTER@@@@ --driver-java-options=-Xms2048M --driver-java-options=-Xmx4096M --driver-java-options=-Dlog4j.logLevel=info",
+    "PYTHONPATH": "/usr/lib/spark/spark-2.2.1-bin-hadoop2.7/python:/usr/lib/spark/spark-2.2.1-bin-hadoop2.7/python/lib/py4j-0.10.4-src.zip",
+    "CAPTURE_STANDARD_OUT": "true",  
+    "CAPTURE_STANDARD_ERR": "true"  
+  }
+}

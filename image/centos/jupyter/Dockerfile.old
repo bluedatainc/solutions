@@ -1,0 +1,91 @@
+# image for RHEL/CentOS
+
+FROM bluedata/centos7:latest
+
+# Install EPEL repo
+RUN yum install -y http://download.fedoraproject.org//pub/epel/epel-release-latest-7.noarch.rpm
+
+# Install EPEL repo
+RUN yum install -y bzip2
+
+#wget Ananconda parcels
+
+RUN wget -q https://s3-us-west-2.amazonaws.com/bluedata-ds-bits/Anaconda3-5.1.0-Linux-x86_64.sh -P /root/
+RUN chmod +x /root/Anaconda3-5.1.0-Linux-x86_64.sh && /root/Anaconda3-5.1.0-Linux-x86_64.sh -b -p /opt/anaconda3 && rm -f /root/Anaconda3-5.1.0-Linux-x86_64.sh
+
+RUN yum install -y gcc-c++ make && \
+    curl -sL https://rpm.nodesource.com/setup_6.x | sudo -E bash - && \
+    sudo yum install -y nodejs && \
+    sudo npm install -g configurable-http-proxy
+
+RUN  sudo -s && \
+    /opt/anaconda3/bin/conda create -n default-notebook ipykernel -y && \
+    source /opt/anaconda3/bin/activate default-notebook && \
+    /opt/anaconda3/bin/python -m ipykernel install && \
+    source /opt/anaconda3/bin/deactivate && \
+    exit
+
+RUN sudo groupadd jupyterhub && sudo useradd -G jupyterhub jupyter
+
+#Install git
+RUN sudo yum -y install git
+
+#Install Jupyterhub
+RUN sudo /opt/anaconda3/bin/pip install git+https://github.com/jupyter/sudospawner
+
+RUN sudo groupadd shadow && \
+    sudo chgrp shadow /etc/shadow && \
+    sudo chmod g+r /etc/shadow && \
+    sudo usermod -a -G shadow jupyter && \
+    sudo setcap 'cap_net_bind_service=+ep' /usr/bin/node
+
+RUN sudo mkdir /etc/jupyterhub && \
+    cd /etc/jupyterhub && \
+    sudo chown jupyter /etc/jupyterhub && \
+    sudo -u jupyter /opt/anaconda3/bin/jupyterhub --generate-config
+
+##Install Jupyter notebook
+
+RUN mkdir -p /root/.ipython/kernels/pyspark
+
+ADD configure_jupyter.sh /root/configure_jupyter.sh
+RUN chmod +x /root/configure_jupyter.sh && /root/configure_jupyter.sh && rm -f /root/configure_jupyter.sh
+
+RUN echo "export PATH=$PATH:/opt/anaconda3/bin/" > /etc/profile.d/updatePath.sh
+
+#Install Toree kernel after Spark is installed
+RUN /opt/anaconda3/bin/pip install --upgrade pip
+
+## Install java 8 and configure
+ADD configure_java8.sh /root/configure_java8.sh
+RUN chmod +x /root/configure_java8.sh && /root/configure_java8.sh && rm -f /root/configure_java8.sh
+
+RUN echo 1 | update-alternatives --config java
+
+## Download and extract spark
+RUN mkdir /usr/lib/spark; curl -s http://archive.apache.org/dist/spark/spark-2.2.1/spark-2.2.1-bin-hadoop2.7.tgz | tar xz -C /usr/lib/spark/
+
+## Create spark-event dir and give permissions
+RUN mkdir /tmp/spark-events
+RUN chmod -R 777 /tmp/spark-events/
+ADD configure_java8.sh /root/configure_java8.sh
+RUN chmod +x /root/configure_java8.sh && /root/configure_java8.sh && rm -f /root/configure_java8.sh
+"image/centos/jupyter/Dockerfile" 94L, 3814C
+# image for RHEL/CentOS
+RUN mkdir /usr/lib/spark; curl -s http://archive.apache.org/dist/spark/spark-2.2.1/spark-2.2.1-bin-hadoop2.7.tgz | tar xz -C /usr/lib/spark/
+
+## Create spark-event dir and give permissions
+RUN mkdir /tmp/spark-events
+RUN chmod -R 777 /tmp/spark-events/
+
+## Give logs and conf permissions
+RUN mkdir -p /usr/lib/spark/spark-2.2.1-bin-hadoop2.7/logs
+RUN touch /usr/lib/spark/spark-2.2.1-bin-hadoop2.7/logs/Bluedata-spark-logs
+RUN chmod -R 1777 /usr/lib/spark/spark-2.2.1-bin-hadoop2.7/logs/
+RUN mkdir -p /usr/lib/spark/spark-2.2.1-bin-hadoop2.7/warehouse
+RUN chmod -R 1777 /usr/lib/spark/spark-2.2.1-bin-hadoop2.7/warehouse/
+
+# make spark bin dir accessible to all
+RUN echo "export PATH=$PATH:/usr/lib/spark/spark-2.2.1-bin-hadoop2.7/bin/" > /etc/profile.d/updatePath.sh
+
+RUN /opt/anaconda3/bin/pip install https://dist.apache.org/repos/dist/dev/incubator/toree/0.2.0/snapshots/dev1/toree-pip/toree-0.2.0.dev1.tar.gz && /opt/anaconda3/bin/jupyter toree install --interpreters=Scala,PySpark,SQL --spark_home=/usr/lib/spark/spark-2.2.1-bin-hadoop2.7

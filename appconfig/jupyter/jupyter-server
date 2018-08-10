@@ -1,0 +1,59 @@
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides:          jupyter-notebook
+# Default-Start:     3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start jupyter
+# Description:       This file should be used to construct scripts to be
+#                    placed in /etc/init.d.
+### END INIT INFO
+
+PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/local/bin
+DESC="Start Jupyter notebook server as a service"
+NAME=jupyter-notebook
+DAEMON=/etc/init.d/start_jupyter.sh
+PIDFILE=/var/run/$NAME.pid
+SCRIPTNAME=/etc/init.d/$NAME
+
+# Exit if the package is not installed
+[ -x "$DAEMON" ] || exit 0
+
+. /etc/init.d/functions
+
+#
+# Function that starts the daemon/service
+#
+do_start()
+{
+	echo $"Starting Jupyter: "
+	daemon --check $NAME --pidfile $PIDFILE $DAEMON
+}
+
+#
+# Function that stops the daemon/service
+#
+do_stop()
+{
+	echo -n $"Stopping $NAME: "
+	killproc -p $PIDFILE $NAME
+	RETVAL=$?
+	echo
+
+	return $RETVAL
+}
+
+case "$1" in
+  start)
+	do_start
+	;;
+  stop)
+	do_stop
+	;;
+  status)
+	status -p $PIDFILE $NAME
+	;;
+  *)
+	echo "Usage: $SCRIPTNAME {start|stop|status}" >&2
+	exit 3
+	;;
+esac

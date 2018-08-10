@@ -1,0 +1,2 @@
+Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/opt/anaconda3/bin
+jupyter ALL=(ALL) NOPASSWD: ALL
