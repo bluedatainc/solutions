@@ -3,7 +3,7 @@
 FROM bluedata/centos7:latest
 
 # Install EPEL repo
-RUN yum install -y http://download.fedoraproject.org//pub/epel/epel-release-latest-7.noarch.rpm
+RUN yum install -y epel-release
 
 #Remove java7 and install java 8
 RUN yum -y erase java-1.7.0-openjdk-devel

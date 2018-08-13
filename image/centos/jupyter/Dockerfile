@@ -3,7 +3,7 @@
 FROM bluedata/centos7:latest
 
 # Install EPEL repo
-RUN yum install -y http://download.fedoraproject.org//pub/epel/epel-release-latest-7.noarch.rpm
+RUN yum install -y epel-release
 
 # Install EPEL repo
 RUN yum install -y bzip2
