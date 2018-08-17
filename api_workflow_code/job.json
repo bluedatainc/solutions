@@ -1,0 +1,4 @@
+{
+	"spark_command_line": " ", "app_name": "wordcount", "jar_path": "/srv/bluedata/job-a1226be7083d6f4704febdb273023251/jar/hdp-examples.jar", "job_type": "Hadoop Custom Jar", "command_line": "hadoop jar  $jar_path$ $app_name$ dtap://TenantStorage/test/sahithi/customer_demographics.csvdtap://TenantStorage/test/out1", "dependencies": [], "cluster_context": "Persistent", "cluster_uuid": "78", "job_name": "API-Test"
+    }
+

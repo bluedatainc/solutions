@@ -1,0 +1,14 @@
+    {
+      "bdfs_root": {
+                      "path_from_endpoint": "/tmp"
+                   },
+      "endpoint": {
+                      "host": "bd-045.lab.bluedata.com",
+                      "type": "hdfs",
+                      "port": 8020
+                  },
+      "label":    {
+                      "name": "StagingDataLake",
+                      "description": "External Staging Datalake"
+                  }
+    }
