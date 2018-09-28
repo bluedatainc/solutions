@@ -12,7 +12,7 @@ __Note__:
   - [2. Retrieve available cluster images](#2-retrieve-available-cluster-images)
   - [3. Retrieve available tenants](#3-retrieve-available-tenants)
   - [4. Retrieve tenant information such as resources security and other settings](#4-retrieve-tenant-information-such-as-resources-security-and-other-settings)
-  - [5. Retrieve tenant virtual clusters](#5-retrieve-tenant-virtual-clusters)
+  - [5. Retrieve all virtual clusters](#5-retrieve-all-virtual-clusters)
   - [6. Retrieve a virtual cluster configuration](#6-retrieve-a-virtual-cluster-configuration)
   - [7. Get created DataTap in a certain Tenant](#7-get-created-datatap-in-a-certain-tenant)
   - [8. Create a new cluster](#8-create-a-new-cluster)
@@ -257,7 +257,7 @@ __Note__:
       }
 
 
-## 5. Retrieve tenant virtual clusters
+## 5. Retrieve all virtual clusters
 
   __API-URI__: /api/v1/cluster
 
