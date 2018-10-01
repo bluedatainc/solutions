@@ -16,14 +16,16 @@ builder organization --name Bluedata
 ######## Identification #############
 # App id, name, version, description, group (category)
 ######################################
-catalog new --distroid helloworld --name "Hello World on Centos"  \
+catalog new --distroid Helloworld --name "Hello World on Centos"  \
             --desc "http service running Hello World page"    \
-            --categories Greetings --version 3.0
+            --categories Greetings --version 10.0
 
 ####### Supported Roles ############
 # All possible roles supported in the app
 #######################################
 role add webserver 1
+role add controller 1
+role add worker 0+
 
 ############## All registered services #########
 # All possible services running on any of the nodes. 
@@ -32,7 +34,7 @@ role add webserver 1
 service add --srvcid httpd --name "HelloWorld" --scheme "http" --port 80 \
             --path "/" --display  \
             --sysctl httpd \
-            --onroles webserver   
+            --onroles webserver controller worker    
 
 #################### CONTAINER CONFIGURATION SCRIPT (STARTSCRIPT) #################################
 #  This section generates or loads the startscript that runs on each container                     # 
@@ -57,6 +59,7 @@ appconfig autogen --new --configapi 5
 # After a cluster is created, it will be copied to specified destinations
 ############
 appconfig autogen --pkgfile index.html --dest /var/www/html/index.html
+                  --onroles webserver controller worker
 
 ########### Update files with runtime information ############
 # Replace template variables with runtime values 
@@ -65,6 +68,7 @@ appconfig autogen --replace /var/www/html/index.html \
                   --pattern @@@@FQDN@@@@  --macro GET_NODE_FQDN  \
                   --pattern @@@@CORES@@@@ --macro GET_TOTAL_VCORES \
                   --pattern @@@@MEMORY@@@@ --macro GET_TOTAL_VMEMORY_MB
+                  --onroles webserver controller worker
 
 ########### Copy init.d or systemctl (service) scripts to /etc/init.d ####
 # To automatically register and start/stop services create and copy systemd scripts
@@ -89,7 +93,13 @@ logo file --filepath helloworld-logo.png
 ################### Final bin package creation ###############################
 #  This section creates docker tgz and bin file                              #
 ##############################################################################
-image build --basedir image/centos --imgversion 1.0 --os centos7
+image build --basedir image/centos --image-repotag bluedata/helloworld:1.0
+image package --image-repotag bluedata/helloworld:1.0 --os centos7  --roles webserver controller worker
+
+
+#image build --basedir image/centos --image-repotag bluedata/helloworld
+#image package --image-repotag bluedata/helloworld --os centos7 --roles controller worker
+
 catalog save --filepath staging/helloworld-centos.json --force
 sources package
 catalog package

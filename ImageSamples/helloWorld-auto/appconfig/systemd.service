@@ -1,0 +1,20 @@
+# Copy this file to /usr/lib/systemd/system/
+
+[Unit]
+Description=@@@@SERVICE_DESCRIPTION@@@@
+After=@@@@AFTER_DEPS@@@
+Requires=@@@@REQUIRES@@@
+
+[Service]
+Type=simple
+ExecStart=@@@@START_COMMAND@@@@
+ExecStop=@@@@STOOP_COMMAND@@@@
+RemainAfterExit=yes
+TimeoutSec=0
+
+# Output needs to appear in instance console output
+StandardOutput=journal+console
+StandardError=journal+console
+
+[Install]
+WantedBy=multi-user.target
