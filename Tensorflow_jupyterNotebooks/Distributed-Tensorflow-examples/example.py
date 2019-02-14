@@ -1,5 +1,5 @@
 '''
-Distributed Tensorflow 1.2.0 example of using data parallelism and share model parameters.
+Distributed Tensorflow 1.9.0 example of using data parallelism and share model parameters.
 Trains a simple sigmoid neural network on mnist for 20 epochs on three machines using one parameter server. 
 
 Change the hardcoded host urls below with your own hosts. 
