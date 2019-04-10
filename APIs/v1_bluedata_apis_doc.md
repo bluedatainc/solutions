@@ -4,7 +4,7 @@
 
 __Note__:
 
-  - For Epic3.2 and later you can find v2 API docs for a given EPIC installation by connecting to the /apidocs URL on its controller host "http://<controller-IP>:8080/apidocs". For more information on difference between v1 and v2 APIs, plase refer to v1_vs_v2_apidocs.pdf in the same location.
+  - For Epic3.2 and later you can find v2 API docs for a given EPIC installation by connecting to the /apidocs URL on its controller host "http://<controller-IP>/apidocs". For more information on difference between v1 and v2 APIs, plase refer to v1_vs_v2_apidocs.pdf in the same location.
 
   -  Make sure to run API#1 and API#37 prior to running other API's.
 

@@ -4,11 +4,11 @@
 
 __Note__:
 
-  - For Epic3.2 and later you can find v2 API docs for a given EPIC installation by connecting to the "/apidocs" path on your controller host machine "http://{controller-IP}:8080/apidocs".
+  - For Epic3.2 and later you can find v2 API docs for a given EPIC installation by connecting to the "/apidocs" path on your controller host machine "http://{controller-IP}/apidocs".
 
   - For more info on difference between v1 and v2 APIs, please refer to v1_vs_v2_apidocs.pdf in the same location.
 
-  - The samples below are for v2 APIs, but for more detail info please check under "http://{controller-IP}:8080/apidocs".
+  - The samples below are for v2 APIs, but for more detail info please check under "http://{controller-IP}/apidocs".
 
   - Inorder to login and create a session and to switch to a non-siteadmin role/tenant, you will use the v1 APIs (Refer to v1_bluedata_apis_doc for the exact commands). 
 
