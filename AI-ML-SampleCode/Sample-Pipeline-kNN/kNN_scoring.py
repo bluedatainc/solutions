@@ -59,6 +59,26 @@ We call the script using the deployment cluster. The URL is specidifed under "Mo
 eg: http://<host>:<port>/<<model_name>>/<<model_version>>/predict
 
 
+Sample JSON body to call POST service:
+
+
+{
+        "use_scoring": true,
+        "scoring_args": "data/test_data.npy data/test_label.npy"
+}
+
+'scoring_args' are space-separated parameters to the scoring script. In this script, 
+we read them on Line 18 and 19 with np.load() calls
+
+Headers:
+
+X-Auth-Token : <auth token in Deployment Cluster's Model Serving LoadBalancer service> 
+
+This header is optional. In the case that this header is not used, it is required to have a auth=none parameter 
+in the called URL
+
+----------------------------
+
 Sample  Output:
 
 {
