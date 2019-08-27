@@ -75,7 +75,7 @@ Headers:
 X-Auth-Token : <auth token in Deployment Cluster's Model Serving LoadBalancer service> 
 
 This header is optional. In the case that this header is not used, it is required to have a auth=none parameter 
-in the called URL
+in the called URL. The URL in this case becomes http://<host>:<port>/<<model_name>>/<<model_version>>/predict?auth=none
 
 ----------------------------
 
