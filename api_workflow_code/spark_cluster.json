@@ -1,8 +1,0 @@
-{
-    "cluster_name": "Spark-201",
-    "cluster_type": "Spark",
-    "distro_name": "Spark 2.0.1",
-    "master_flavor": "/api/v1/flavor/2",
-    "slave_count": 1,
-    "slave_flavor": "/api/v1/flavor/1"
-}
