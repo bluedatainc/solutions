@@ -47,8 +47,7 @@ pred = kNN_model.predict(pca_test)
 # the corresponding set of labels in test_labels
 acc = metrics.accuracy_score(test_labels, pred)
 
-print("Accuracy for kNN model is: ", acc)
-print("Accuracy for kNN model is: ", float(acc*100.0))
+print("Accuracy for kNN model is: ", float(acc*100.0),"%")
 
 
 
