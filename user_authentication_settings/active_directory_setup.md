@@ -56,7 +56,7 @@ sudo docker run --privileged --restart=unless-stopped \
        -d \
        --entrypoint "/bin/bash" \
        rsippl/samba-ad-dc \
-       -c "chmod +x /usr/local/bin/custom.sh &&. /init.sh app:start
+       -c "chmod +x /usr/local/bin/custom.sh &&. /init.sh app:start"
 ```
 
 ### BlueData UI Configuration
@@ -75,7 +75,7 @@ System Settings -> User Authentication
    -> Bind Password: 5ambaPwd@
 ```
 
-Configure a tenant (e.g. Demo Tenant) in the BlueData UI with:
+Configure a tenant's (e.g. Demo Tenant) **External Authentication** in the BlueData UI with:
 
 ```
 Tenant Settings
