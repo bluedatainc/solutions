@@ -24,7 +24,7 @@ Steps to run this pipeline
 1. Download the dataset above and dump it under data/ directory in your project repo
 2. Rename the files as described above
 3. Create training cluster (Python ML and DL Toolkit)
-4. Open Jupyter notebook and import first notebook and execute (afeter changing NFS path ofcourse) - Decompose images.ipynb 
+4. Open Jupyter notebook and import first notebook and execute (after changing NFS path ofcourse) - Decompose images.ipynb 
 5. Next import kNN in Training Enviornment.ipnyb notebook and execute
 6. Last step would spit out a model, which you could then register with EPIC
 7. While registering the model usee kNN_scrring.py script
