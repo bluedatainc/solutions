@@ -12,10 +12,10 @@ Four files are available on this site:
 
 
 Once these are downloaded, change the name(s) to 
-train-images-idx3-ubyte.gz -> train-images
-train-labels-idx1-ubyte.gz -> train-labels
-t10k-images-idx3-ubyte.gz  -> test-images
-t10k-labels-idx1-ubyte.gz  -> test-labels
+1. train-images-idx3-ubyte.gz -> train-images
+2. train-labels-idx1-ubyte.gz -> train-labels
+3. t10k-images-idx3-ubyte.gz  -> test-images
+4. t10k-labels-idx1-ubyte.gz  -> test-labels
 
 
 
