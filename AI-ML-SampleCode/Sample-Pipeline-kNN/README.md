@@ -4,6 +4,7 @@ In this example we are using MNIST database to find handwritten digits.
 Dataset can be downloaded from - http://yann.lecun.com/exdb/mnist/
 
 Four files are available on this site:
+
 train-images-idx3-ubyte.gz:  training set images (9912422 bytes)
 train-labels-idx1-ubyte.gz:  training set labels (28881 bytes)
 t10k-images-idx3-ubyte.gz:   test set images (1648877 bytes)
