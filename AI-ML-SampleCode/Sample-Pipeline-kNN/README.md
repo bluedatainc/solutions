@@ -27,7 +27,7 @@ Steps to run this pipeline
 4. Open Jupyter notebook and import first notebook and execute (after changing NFS path ofcourse) - Decompose images.ipynb 
 5. Next import kNN in Training Enviornment.ipnyb notebook and execute
 6. Last step would spit out a model, which you could then register with EPIC
-7. While registering the model usee kNN_scrring.py script
+7. While registering the model usee kNN_scoring.py script
 8. Next create deployment cluster (Python ML/DL Toolkit) with model registered in previous step as attached model
 9. Once deployment cluster comes up use the loadbalancer URL to make REST API calls to serve the model (this can be done using any REST client like 
 postman, python request , curl etc)
