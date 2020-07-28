@@ -9,7 +9,7 @@ from sklearn.metrics import accuracy_score
 
 #Function for obtaining NFS path
 def saveInProjectRepo(path):
-   ProjectRepo = os.popen('bdvcli --get cluster.project_repo').read().rstrip()
+   ProjectRepo = "/bd-fs-mnt/project_repo"
    return str(ProjectRepo + '/' + path)
 
 #Loading XGB model file 
