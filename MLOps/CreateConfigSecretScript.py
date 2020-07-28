@@ -1,5 +1,4 @@
 import requests
-import pprint
 from kubernetes import client, config
 import base64
 import json
