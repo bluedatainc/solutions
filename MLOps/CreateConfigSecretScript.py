@@ -80,7 +80,7 @@ def createKubeconfigSecret(ip, username, password):
 
     # load kubeconfig from user's machine for the purpose of connecting to CoreV1Api, then create secret
     try:
-        secret_name = 'config-' + username
+        secret_name = 'kubeconfig-' + username
         config.load_kube_config()
         core_api_instance = client.CoreV1Api()
         try:
