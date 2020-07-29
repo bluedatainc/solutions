@@ -1,0 +1,39 @@
+POST url: http://mip-ap23-vm02.mip.storage.hpecorp.net:10039/Taxi_Duration/1/predict
+
+
+API body:
+{
+    "use_scoring": true,
+    "scoring_args": {
+        "f0": 1,
+        "f1": 40.57689727,
+        "f2": -73.99047356,
+        "f3": 40.72058154,
+        "f4": -73.99740673,
+        "f5": 5,
+        "f6": 1,
+        "f7": 9,
+        "f8": 0,
+        "f9": 1,
+        "f10": 0,
+        "f11": 0,
+        "f12": 0,
+        "f13": 0
+    }
+}
+
+# Notes:
+# f0 is a boolean for work hours (1 if the ride occurs Mon-Fri 8am-5pm, 0 otherwise)
+# f1 is the pickup location latitude
+# f2 is the pickup location longitude
+# f3 is the dropoff location latitude
+# f4 is the dropoff location longitude
+# f5 is the trip distance in miles
+# f6 is a boolean for weekday (1 if the ride occurs on Mon-Fri, 0 otherwise)
+# f7 is the hour of day (0 to 23)
+# f8 is a boolean if the ride is is in January (1 if true, 0 otherwise)
+# f9 is a boolean if the ride is is in February (1 if true, 0 otherwise)
+# f10 is a boolean if the ride is is in March (1 if true, 0 otherwise)
+# f11 is a boolean if the ride is is in April (1 if true, 0 otherwise)
+# f12 is a boolean if the ride is is in May (1 if true, 0 otherwise)
+# f13 is a boolean if the ride is is in June (1 if true, 0 otherwise)
