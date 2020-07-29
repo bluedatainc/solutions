@@ -22,17 +22,21 @@ def main():
   hour = input("Please indicate what hour of day the trip occurred (range: 0 to 23): ")
 
   url = accessUrl + modelName + "/" + modelVersion + "/predict?X-Auth-Token=" + authToken
-  url = accessUrl + modelName + "/" + modelVersion + "/predict?X-Auth-Token=" + authToken
 
-  payload = "{\r\n    \"use_scoring\": true,\r\n    \"scoring_args\": {\r\n        \"work\": " + work + "," \
-            "\r\n        \"startstationlatitude\": " + startLat + "," \
-            "\r\n        \"startstationlongitude\": " + startLong + "," \
-            "\r\n        \"endstationlatitude\": " + endLat + "," \
-            "\r\n        \"endstationlongitude\": " + endLong + "," \
-            "\r\n        \"trip_distance\": " + miles + "," \
-            "\r\n        \"weekday\": " + weekday + "," \
-            "\r\n        \"hour\": " + hour + "" \
-            "\r\n    }\r\n}"
+  payload = json.dumps({
+    "use_scoring": "true",
+    "scoring_args": {
+        "work": work,
+        "startstationlatitude": startLat,
+        "startstationlongitude": startLong,
+        "endstationlatitude": endLat,
+        "endstationlongitude": endLong,
+        "trip_distance": miles,
+        "weekday": weekday,
+        "hour": hour
+    }
+  })
+
   headers = {
     'X-Auth-Token': authToken,
     'Content-Type': 'application/json'
