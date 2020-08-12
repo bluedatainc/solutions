@@ -1,6 +1,6 @@
-## Using `connection` in Cluster YAML
+## Using `connections` in Cluster YAML
 
-`connection` is useful in scenarios where there is a need to attach addditonal information to the cluster. There are three types of Kubernetes resources that can be used with `connection` - `configmap`, `secret`, and `kdcluster` (syntactically called `cluster` in the YAML).
+`connections` is useful in scenarios where there is a need to attach addditonal information to the cluster. There are three types of Kubernetes resources that can be used with `connections` - `configmap`, `secret`, and `kdcluster` (syntactically called `cluster` in the YAML).
 
 **Note**: The resources that are to be used with connections should be created before using them in the YAMLs
 
