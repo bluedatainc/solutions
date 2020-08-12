@@ -8,7 +8,7 @@ Following are examples that illustrate the use of each resource
 
 ### 1. `configmap`
 
-One of the most frequent use-cases of using a `configmap` is when we attach a model from the model registry to a deployment engine. 
+One of the most frequent use-cases of using a `configmap` is when we attach a model from the model registry to a deployment engine. The connected configmap needs to have the following label: `'kubedirector.hpe.com/cmType': '<some-type>'`
 
 A sample configuration looks like:
 
@@ -50,7 +50,9 @@ In this example, `convolutional-nn-model` and `fullyconnected-nn-model` are the 
 
 
 ### 2. `secret`
-An example that uses `secret` as a connection resource is while configuring a notebook cluster with source control. The YAML snippet below illustrates the syntax:
+An example that uses `secret` as a connection resource is while configuring a notebook cluster with source control. The connected secret needs to have the following label: `'kubedirector.hpe.com/secretType': '<some-type>'` 
+
+The YAML snippet below illustrates the syntax:
 
 ```yaml
 apiVersion: "kubedirector.hpe.com/v1beta1"
