@@ -50,7 +50,7 @@ In this example, `convolutional-nn-model` and `fullyconnected-nn-model` are the 
 
 
 ### 2. `secret`
-An example that uses `secret` as a connection resource is while configuring a notebook cluster with source control. The connected secret needs to have the following label: `'kubedirector.hpe.com/secretType': '<some-type>'` 
+An example that uses `secret` as a connection resource is while configuring a notebook cluster with source control. The connected secret needs to have the following label: `'kubedirector.hpe.com/secretType': '<some-type>'`. The information populated in the cluster using `secret` resource would be encoded in `base64` format. This includes all the resource attributes (`metadata`, `annotations`, `data`, `labels`)
 
 The YAML snippet below illustrates the syntax:
 

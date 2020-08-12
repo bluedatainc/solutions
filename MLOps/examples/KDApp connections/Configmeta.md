@@ -33,106 +33,6 @@ The `configmeta.json`  in the cluster looks like:
 
 ```json
 {
-    "version": "7",
-    "services": {
-        "jupyter-nb": {
-            "1": {
-                "controller": {
-                    "bdvlibrefkey": ["nodegroups", "1", "roles", "controller", "services", "jupyter-nb"]
-                }
-            }
-        },
-        "ssh": {
-            "1": {
-                "controller": {
-                    "bdvlibrefkey": ["nodegroups", "1", "roles", "controller", "services", "ssh"]
-                }
-            }
-        }
-    },
-    "nodegroups": {
-        "1": {
-            "roles": {
-                "controller": {
-                    "services": {
-                        "jupyter-nb": {
-                            "qualifiers": [],
-                            "name": "Jupyter Notebook",
-                            "id": "jupyter-nb",
-                            "hostnames": {
-                                "bdvlibrefkey": ["nodegroups", "1", "roles", "controller", "hostnames"]
-                            },
-                            "global_id": "1_controller_jupyter-nb",
-                            "fqdns": {
-                                "bdvlibrefkey": ["nodegroups", "1", "roles", "controller", "fqdns"]
-                            },
-                            "exported_service": "",
-                            "endpoints": ["http://kdss-dnlkm-0.kdhs-f2vb7.kubecon.svc.cluster.local:8888"],
-                            "authToken": "7aaae3eaafeeb3a777f8547ab2197e84"
-                        },
-                        "ssh": {
-                            "qualifiers": [],
-                            "name": "SSH",
-                            "id": "ssh",
-                            "hostnames": {
-                                "bdvlibrefkey": ["nodegroups", "1", "roles", "controller", "hostnames"]
-                            },
-                            "global_id": "1_controller_ssh",
-                            "fqdns": {
-                                "bdvlibrefkey": ["nodegroups", "1", "roles", "controller", "fqdns"]
-                            },
-                            "exported_service": "",
-                            "endpoints": ["://kdss-dnlkm-0.kdhs-f2vb7.kubecon.svc.cluster.local:22"],
-                            "authToken": ""
-                        }
-                    },
-                    "node_ids": ["1"],
-                    "hostnames": ["kdss-dnlkm-0.kdhs-f2vb7.kubecon.svc.cluster.local"],
-                    "fqdns": ["kdss-dnlkm-0.kdhs-f2vb7.kubecon.svc.cluster.local"],
-                    "fqdn_mappings": {
-                        "kdss-dnlkm-0.kdhs-f2vb7.kubecon.svc.cluster.local": "1"
-                    },
-                    "flavor": {
-                        "storage": "n/a",
-                        "name": "n/a",
-                        "memory": "4096",
-                        "description": "n/a",
-                        "cores": "1"
-                    }
-                }
-            },
-            "distro_id": "hpecp/jupyter-notebook",
-            "catalog_entry_version": "1.0",
-            "config_metadata": null
-        }
-    },
-    "distros": {
-        "hpecp/jupyter-notebook": {
-            "1": {
-                "bdvlibrefkey": ["nodegroups", "1"]
-            }
-        }
-    },
-    "cluster": {
-        "name": "jupyter-notebook-instance",
-        "isolated": false,
-        "id": "b78091cc-ac55-4b4f-800d-12e039597684",
-        "config_metadata": {
-            "1": {
-                "bdvlibrefkey": ["nodegroups", "1", "config_metadata"]
-            }
-        }
-    },
-    "node": {
-        "role_id": "controller",
-        "nodegroup_id": "1",
-        "id": "1",
-        "hostname": "kdss-dnlkm-0.kdhs-f2vb7.kubecon.svc.cluster.local",
-        "fqdn": "kdss-dnlkm-0.kdhs-f2vb7.kubecon.svc.cluster.local",
-        "domain": "kdhs-f2vb7.kubecon.svc.cluster.local",
-        "distro_id": "hpecp/jupyter-notebook",
-        "depends_on": {}
-    },
     "connections": {
         "clusters": {},
         "configmaps": {
@@ -176,7 +76,8 @@ with open("configmeta.json", "r") as f:
     obj = json.load(f)
 
 # access objects
-obj['connections']['configmaps']['source-control']
+obj['connections']['configmaps']['source-control'][0]['data']['proxy-hostname'] 
+# >> 'web-proxy.corp.hpecorp.net'
 
 ```
 
