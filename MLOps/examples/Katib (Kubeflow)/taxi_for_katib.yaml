@@ -1,0 +1,66 @@
+apiVersion: "kubeflow.org/v1alpha3"
+kind: Experiment
+metadata:
+  namespace: kubeflow-user
+  name: katib-example-taxi
+spec:
+  parallelTrialCount: 3
+  maxTrialCount: 30
+  maxFailedTrialCount: 3
+  objective:
+    type: minimize
+    goal: 10000
+    objectiveMetricName: mean_squared_error
+  algorithm:
+    algorithmName: random
+  metricsCollectorSpec:
+    collector:
+      kind: StdOut
+  parameters:
+    - name: --first_layer
+      parameterType: int
+      feasibleSpace:
+        min: "25"
+        max: "125"
+    - name: --second_layer
+      parameterType: int
+      feasibleSpace:
+        min: "25"
+        max: "125"
+    - name: --third_layer
+      parameterType: int
+      feasibleSpace:
+        min: "25"
+        max: "125"
+    - name: --batch_size
+      parameterType: int
+      feasibleSpace:
+        min: "64"
+        max: "512"
+  trialTemplate:
+    goTemplate:
+        rawTemplate: |-
+          apiVersion: "kubeflow.org/v1"
+          kind: TFJob
+          metadata:
+            name: {{.Trial}}
+            namespace: {{.NameSpace}}
+          spec:
+           tfReplicaSpecs:
+            Worker:
+              replicas: 1
+              restartPolicy: OnFailure
+              template:
+                spec:
+                  containers:
+                    - name: tensorflow
+                      image: [YOUR DOCKER IMAGE REPO]
+                      imagePullPolicy: Always
+                      command:
+                        - "python"
+                        - "/opt/taxi/taxi_for_katib.py"
+                        {{- with .HyperParameters}}
+                        {{- range .}}
+                        - "{{.Name}}={{.Value}}"
+                        {{- end}}
+                        {{- end}}
